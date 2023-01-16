@@ -13,3 +13,6 @@ def Basic_pf_1(request):
 def Basic_pf_2(request):
     return render(request,'Basic_Pf_2.html')
 
+def Premium_pf_1(request):
+    return render(request,'Premium_Pf_1.html')
+
