@@ -17,5 +17,8 @@ def Premium_pf_1(request):
     return render(request,'Premium_Pf_1.html')
 
 def Premium_pf_2(request):
-    return render(request,'Premium_Pf_2.html')    
+    return render(request,'Premium_Pf_2.html')   
+    
+def Premium_pf_3(request):
+    return render(request,'Premium_Pf_3.html')   
 
