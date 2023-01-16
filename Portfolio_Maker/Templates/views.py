@@ -10,5 +10,6 @@ def temp_detail(request):
 def premium_r_1(request):
     return render(request,'Premium_R_1.html')
 
-
+def premium_r_2(request):
+    return render(request,'Premium_R_2.html')
 
