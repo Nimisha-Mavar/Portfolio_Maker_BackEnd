@@ -16,3 +16,6 @@ def premium_r_2(request):
 def premium_r_3(request):
     return render(request,'Premium_R_3.html')
 
+def basic_resume_1(request):
+    return render(request,'Basic_Resume_1.html')
+
