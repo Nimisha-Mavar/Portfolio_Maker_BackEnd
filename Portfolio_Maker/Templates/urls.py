@@ -8,6 +8,7 @@ urlpatterns = [
    path('Basic_pf_1',views.Basic_pf_1),
    path('Basic_pf_2',views.Basic_pf_2),
    path('Premium_pf_1',views.Premium_pf_1),
+   path('Premium_pf_2',views.Premium_pf_2),
 ]
 
 
