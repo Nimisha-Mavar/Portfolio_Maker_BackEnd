@@ -13,3 +13,6 @@ def premium_r_1(request):
 def premium_r_2(request):
     return render(request,'Premium_R_2.html')
 
+def premium_r_3(request):
+    return render(request,'Premium_R_3.html')
+
