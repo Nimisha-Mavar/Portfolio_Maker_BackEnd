@@ -10,3 +10,6 @@ def temp_detail(request):
 def Basic_pf_1(request):
     return render(request,'Basic_Pf_1.html')
 
+def Basic_pf_2(request):
+    return render(request,'Basic_Pf_2.html')
+
