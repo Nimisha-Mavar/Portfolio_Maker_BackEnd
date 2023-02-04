@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('Index.urls')),
     path('Temp/',include('Templates.urls')),
-    path('scan/',include('Scanner.urls'))
+    path('scan/',include('Scanner.urls')),
+    path('Account/',include('Account.urls'))
 ]
