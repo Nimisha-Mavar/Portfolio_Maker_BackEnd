@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,16 +12,16 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="{% static 'home_page/vendor/aos/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'home_page/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'home_page/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'home_page/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'home_page/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'home_page/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+    <link href="{% static 'home_page/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="{% static 'home_page/css/style.css' %}" rel="stylesheet">
   </head>
 <body style="background-color: hsl(204, 50%, 96%)">
 
@@ -115,7 +116,7 @@
           </div>
         </div>
         <div class="col-lg-6 mb-5 mb-lg-0">
-          <img src="assets/img/Register.jpg" class="w-100 rounded-4 shadow-4" class="img-fluid animated">
+          <img src="{% static 'home_page/img/Register.jpg' %}" class="w-100 rounded-4 shadow-4" class="img-fluid animated">
         </div>
       </div>
     </div>
