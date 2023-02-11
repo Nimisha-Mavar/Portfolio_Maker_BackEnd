@@ -77,22 +77,23 @@
           </div>
           <div class="card">
             <div class="card-body py-5 px-md-5">
-              <form>
+              <form action="login" method="post">
+                {% csrf_token %}
               <!-- Email input -->
                 <div class="form-outline mb-4">
-                  <input type="email" id="form3Example3" class="form-control" />
+                  <input type="email" id="form3Example3" class="form-control" name="email"/>
                   <label class="form-label" for="form3Example3">Email address</label>
                 </div>
 
                 <!-- Password input -->
                 <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4" class="form-control" />
+                  <input type="password" id="form3Example4" class="form-control" name="password1"/>
                   <label class="form-label" for="form3Example4">Password</label>
                 </div>
 
                 <!-- Submit button -->
                 <button type="submit" class="btn mb-4 rounded" style="background-color:#3498db;color:#fff;">
-                  <a class="" href="Login.html" style="color: #fff;">Login</a>
+                  <a class="" href="login" style="color: #fff;">Login</a>
                 </button><br>
                 <a class="small text-muted" href="#!">Forgot password?</a>
                 <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? 
