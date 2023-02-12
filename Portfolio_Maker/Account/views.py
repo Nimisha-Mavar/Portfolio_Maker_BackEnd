@@ -32,17 +32,16 @@ def Register(request):
 
 def login(request):
     if request.method=='POST':
-        email=request.POST['email']
-        password=request.POST['password1']
+        username=request.POST['uname']
+        password=request.POST['password']
 
-        user= auth.authenticate(email=email, password=password)
-
+        user=auth.authenticate(username=username,password=password)
         if user is not None:
-            print('Hello')
-            auth.login(request, user)
-            return render(request, 'index.html')
+            auth.login(request,user)
+            return redirect('/')
+
         else:
-            print('Invalid')
             return redirect('login')
+
     else:
-        return render(request,'Login.html')
+     return render(request,'login.html')
