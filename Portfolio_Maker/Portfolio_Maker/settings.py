@@ -80,9 +80,9 @@ WSGI_APPLICATION = 'Portfolio_Maker.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'register',
+        'NAME': 'Portfolio_Maker',
         'USER': 'postgres',
-        'PASSWORD':'nidhi',
+        'PASSWORD':'PG12345',
         'HOST':'localhost'
     }
 }
