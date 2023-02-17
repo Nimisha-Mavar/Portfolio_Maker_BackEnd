@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'Index',
     'Templates',
     'Scanner',
-    'Account'
+    'Account',
+    'Template_Preview'
 ]
 
 MIDDLEWARE = [

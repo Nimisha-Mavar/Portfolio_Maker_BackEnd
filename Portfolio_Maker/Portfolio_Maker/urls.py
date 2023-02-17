@@ -22,5 +22,6 @@ urlpatterns = [
     path('',include('Index.urls')),
     path('Temp/',include('Templates.urls')),
     path('scan/',include('Scanner.urls')),
-    path('Account/',include('Account.urls'))
+    path('Account/',include('Account.urls')),
+    path('Livedemo/',include('Template_Preview.urls'))
 ]
