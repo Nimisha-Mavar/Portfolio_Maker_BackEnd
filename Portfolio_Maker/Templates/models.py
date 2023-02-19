@@ -6,17 +6,18 @@ class Offer(models.Model):
     Offer_value=models.IntegerField()
     Start_date=models.DateField()
     End_date=models.DateField()
+    
 
 # Create your models here.
 class Detail(models.Model):
     Temp_Cat=(
-        ('P','Portfolio'),
-        ('R','Resume'),
-        ('A','ATS')
+        ('Portfolio','Portfolio'),
+        ('Resume','Resume'),
+        ('ATS','ATS')
     )
     Temp_Type=(
-        ('B','Basic'),
-        ('P','Premium')
+        ('Basic','Basic'),
+        ('Premium','Premium')
     )
     Temp_name=models.CharField(max_length=100)
     Temp_cat=models.CharField(max_length=30,default="Portfolio",choices=Temp_Cat)
@@ -30,3 +31,6 @@ class Detail(models.Model):
     Temp_file=models.FileField(upload_to='Template_files')
     Temp_active=models.BooleanField(default=False)
     Temp_offer=models.ForeignKey('Offer',default=0,on_delete=models.SET_DEFAULT)
+
+    def __str__(self):
+        return self.Temp_name
