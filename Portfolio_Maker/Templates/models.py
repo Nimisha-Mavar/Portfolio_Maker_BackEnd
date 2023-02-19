@@ -27,6 +27,6 @@ class Detail(models.Model):
     Temp_img3=models.ImageField(upload_to='Temp_Imgs',null=True)
     Temp_des=models.TextField()
     Temp_price=models.IntegerField()
-    Temp_file=models.FileField(upload_to='Template')
+    Temp_file=models.FileField(upload_to='Template_files')
     Temp_active=models.BooleanField(default=False)
     Temp_offer=models.ForeignKey('Offer',default=0,on_delete=models.SET_DEFAULT)
