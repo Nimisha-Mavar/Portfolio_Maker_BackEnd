@@ -16,6 +16,7 @@ def ATS_list(request):
     ATS=Detail.objects.filter(Temp_cat=temp)
     return render(request,'Template_list.html',{'Temps':ATS})
 
-def temp_detail(request):
-    return render(request,'Template_detail.html')
+def temp_detail(request,id):
+    data=Detail.objects.get(id=id)
+    return render(request,'Template_detail.html',{'data':data})
 
