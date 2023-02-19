@@ -18,7 +18,7 @@ def Premium_pf_3(request):
 
 # Resume Template
 def Basic_Rm_1(request):
-    return render(request,'Basic_Resune_1.html')
+    return render(request,'Basic_Resume_1.html')
 
 def Basic_Rm_2(request):
     return render(request,'Premium_R_2.html')

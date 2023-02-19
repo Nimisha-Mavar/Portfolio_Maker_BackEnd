@@ -1,24 +1,21 @@
 from django.shortcuts import render
-
+from .models import Detail
 # Create your views here.
-def temp_list(request):
-    return render(request,'Template_list.html')
+def Resume_list(request):
+    temp="Resume"
+    resume=Detail.objects.filter(Temp_cat=temp)
+    return render(request,'Template_list.html',{'Temps':resume})
+
+def Portfolio_list(request):
+    temp="Portfolio"
+    Ports=Detail.objects.filter(Temp_cat=temp)
+    return render(request,'Template_list.html',{'Temps':Ports})
+
+def ATS_list(request):
+    temp="ATS"
+    ATS=Detail.objects.filter(Temp_cat=temp)
+    return render(request,'Template_list.html',{'Temps':ATS})
 
 def temp_detail(request):
     return render(request,'Template_detail.html')
-
-def Basic_pf_1(request):
-    return render(request,'Basic_Pf_1.html')
-
-def Basic_pf_2(request):
-    return render(request,'Basic_Pf_2.html')
-
-def Premium_pf_1(request):
-    return render(request,'Premium_Pf_1.html')
-
-def Premium_pf_2(request):
-    return render(request,'Premium_Pf_2.html')   
-    
-def Premium_pf_3(request):
-    return render(request,'Premium_Pf_3.html')   
 
