@@ -151,7 +151,11 @@
               <div class="row">
                 <div class="col-sm-12">
                   <a href="Portfolio_form.html">
-                    <button type="button" style="background-color:rgb(51, 152, 241); color:#fff;" class="btn btn-lg">Select Template</button>
+                  <form action="Form" method="post">
+                  {% csrf_token %}
+                    <input type="hidden" value="{{data.Temp_cat}}" name="cat">
+                    <button type="submit" style="background-color:rgb(51, 152, 241); color:#fff;" class="btn btn-lg">Select Template</button>
+                  </form>
                   </a>
                 </div>
               </div>

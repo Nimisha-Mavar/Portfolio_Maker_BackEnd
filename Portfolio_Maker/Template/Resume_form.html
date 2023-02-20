@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Form</title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    
+    <style>
+        .services .icon-box:hover::before {
+            background: #fff;
+            right: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 0px;
+          }
+
+          .services .icon-box:hover .title a,
+          .services .icon-box:hover .description {
+            color:black;
+          }
+          label
+          {
+            margin-left: 10px;
+          }
+          hr
+          {
+            background-color: skyblue;
+            height: 5px;
+          }
+          
+    </style>
+</head>
+<body style="background-color: hsl(204, 50%, 96%)">
+    <!-- ======= Services Section ======= -->
+
+     <!-- ======= Header ======= -->
+ <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+  
+      <div class="logo">
+        <h1><a href="index.html">Portfolio Maker</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+  
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="index.html">Home</a></li>
+          <li><a class="nav-link scrollto" href="index.html#about">About</a></li>
+          <li><a class="nav-link scrollto" href="index.html#services">Services</a></li>
+          <li class="dropdown"><a href="index.html#templates"><span>Templates</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="Template_list.html">Resume</a></li>
+              <li><a href="Template_list.html">Portfolio</a></li>
+              <li><a href="Template_list.html">ATS Resume</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="index.html#team">Team</a></li>
+          <li class="dropdown"><a href="index.html#faq"><span>FAQs</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="FAQ.html#resume">Resume</a></li>
+              <li><a href="FAQ.html">Portfolio</a></li>
+              <li><a href="FAQ.html#resume_scan">Resume Scanner</a></li>
+              <li><a href="FAQ.html#ATS">ATS</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="index.html#contact">Contact</a></li>
+          <li><a class="getstarted scrollto" href="Login.html">Get Started</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+  
+    </div>
+  </header><!-- End Header -->
+  <br><br>
+    <form>
+    <section id="" class="services">
+        <div class="container">
+  
+          <div class="section-title" data-aos="fade-up">
+            <h2>Resume Form</h2>
+          </div>
+          
+          <!--==>Personal info form<==-->
+          <div class="row justify-content-center">
+            <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
+              <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                <h1 class="title fs-2">Personal Infomation</h1>
+                <hr>
+                
+                  <div class="row">
+                    <div class="col form-floating mb-3">
+                      <input type="text" class="form-control" placeholder="First name" id="fname" name="fname" required>
+                      <label for="fname">First name</label>
+                    </div>
+                    <div class="col form-floating">
+                      <input type="text" class="form-control" placeholder="Last name" id="lname" name="lname" required>
+                      <label for="lname">Last name</label>
+                    </div>
+                    <div class="form-floating mb-3 mt-3">
+                      <textarea type="text" class="form-control" id="address" placeholder="Enter address" name="address" required></textarea> 
+                      <label for="address">Address</label>
+                      <br>
+                    </div>
+                    <div class="col form-floating mb-3">
+                      <input type="number" class="form-control" id="phone" placeholder="Phone"
+                      name="phone"
+                      maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
+                      <label for="phone">Phone number</label>
+                    </div>
+                    <div class="col form-floating">
+                      <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
+                      <label for="email">Email</label>
+                    </div>
+                    <div class="form-floating mb-3 mt-3">
+                      <input type="date" class="form-control" id="dob" placeholder="Date of birth" name="dob" required> 
+                      <label for="dob">Date of Birth</label>
+                    </div>
+                    <div class="form-floating mb-3 mt-3">
+                      <input type="text" class="form-control" id="philo" placeholder=" philosophy statement" name="philo" required> 
+                      <label for="philo">Philosophy Statement</label>
+                    </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <!--==>Personal info form ended<==-->
+          <br><br><br>
+          
+          <!--==>Education form<==-->
+          <div class="container">            
+          <div class="row justify-content-center">
+              <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
+                  
+                  <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                      <div id="d1">
+                          <div class="row">
+                              <div class="col-lg-6" style="padding-left:20px;">
+                                  Institute Name : LJ College
+                              </div>
+                              <div class="col-lg-6" style="padding-left:20px;">
+                                  Degree : BCA
+                              </div>
+                              <div class="col-lg-6" style="padding-left:20px;">
+                                  Start Year : 2019
+                              </div>
+                              <div class="col-lg-6" style="padding-left:20px;">
+                                  Start Year : 2022
+                              </div>
+                          </div>
+                      </div>
+                      <br>
+                      <h1 class="title fs-2">Education</h1>
+                      <hr>
+
+                      <div class="row">
+                          <div class="form-floating mb-3 mt-3">
+                              <input type="text" class="form-control" id="iname" placeholder="Institute name" name="iname" required>
+                              <label for="iname">Institute Name</label>
+                          </div>
+                          <div class="form-floating mb-3 mt-3">
+                              <input type="text" class="form-control" id="degree" placeholder=" philosophy statement" name="degree" required>
+                              <label for="philo">Degree</label>
+                              <br>
+                          </div>
+                          <div class="col form-floating mb-3">
+                              <input type="number" class="form-control" placeholder="Start year" id="syear" name="syear" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
+                              <label for="iname">Start Year</label>
+                          </div>
+                          <div class="col form-floating">
+                              <input type="number" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
+                              <label for="degree">End Year</label>
+                              <br>
+                          </div>
+                          <div>
+                              <button id="button1">Add</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <!--==>Education ended<==-->
+          <br><br><br>
+          <!--==>Experience form<==-->
+          <div class="container">
+          <div class="row justify-content-center">
+            <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
+                <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                    <div id="d1">
+                        <div class="row">
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                Company Name : Google
+                            </div>
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                Role Name : Web Developer
+                            </div>
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                Start Year : 2019
+                            </div>
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                Start Year : 2022
+                            </div>
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                Discription : Creating website layout/user interfaces by using standard HTML/CSS practices
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <h1 class="title fs-2">Experience</h1>
+                    <hr>
+
+                    <div class="row">
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="cname" placeholder="company name" name="cname" required>
+                            <label for="cname">Company Name</label>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="rname" placeholder="Role name" name="rname" required>
+                            <label for="rname">Role Name</label>
+                            <br>
+                        </div>
+                        <div class="col form-floating mb-3">
+                            <input type="number" class="form-control" placeholder="Start year" id="syear" name="syear" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
+                            <label for="iname">Start Year</label>
+                        </div>
+                        <div class="col form-floating">
+                            <input type="number" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
+                            <label for="degree">End Year</label>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="des" placeholder="description" name="des" required>
+                            <label for="des">Description</label>
+                        </div>
+                        <div>
+                            <button id="button1">Add</button>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--==>Experience ended<==-->
+          <br><br><br>
+          <!--==>Project form<==-->
+          <div class="container">
+          <div class="row justify-content-center">
+            <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
+                <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                    <div id="d1">
+                        <div class="row">
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                Project Title : Portfolio Maker
+                            </div>
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                Currently working : yes
+                            </div>
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                Start Year : 2022
+                            </div>
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                End Year : 2023
+                            </div>
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                Start month : 6
+                            </div>
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                End month : 2
+                            </div>
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                Discription : Project is about to making portfolio and resumes easily
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <h1 class="title fs-2">Project</h1>
+                    <hr>
+                    <div class="row">
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="ptitle" placeholder="Project title" name="ptitle" required>
+                            <label for="ptitle">Project Title</label>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                            <select name="working" id="work" class="form-control">
+                                <option value="">Currently working?</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                            <br>
+                        </div>
+                        <div class="col form-floating mb-3">
+                            <input type="number" class="form-control" placeholder="Start year" id="syear" name="syear" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
+                            <label for="iname">Start Year</label>
+                        </div>
+                        <div class="col form-floating">
+                            <input type="number" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
+                            <label for="degree">End Year</label>
+                            <br>
+                        </div>
+                        <div class="col form-floating mb-3">
+                            <input type="number" class="form-control" placeholder="Start month" id="smonth" name="smonth" maxlength="2" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1" max="12" required>
+                            <label for="smonth">Start Month</label>
+                        </div>
+                        <div class="col form-floating">
+                            <input type="number" class="form-control" placeholder="End month" id="emonth" name="emonth" maxlength="2" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1" max="12" required>
+                            <label for="smonth">End Month</label>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="des" placeholder="description" name="des" required>
+                            <label for="des">Description</label>
+                        </div>
+                        <div>
+                            <button id="button1">Add</button>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--==>project ended<==-->
+          <br><br><br>
+          <!--==>skill form<==-->
+          <div class="container">
+          <div class="row justify-content-center">
+            <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
+                <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                    <div id="d1">
+                        <div class="row">
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                Skill Name : HTML
+                            </div>
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                Skill level : Expert
+                            </div>                          
+                        </div>
+                    </div>
+                    <br>
+                    <h1 class="title fs-2">Skill</h1>
+                    <hr>
+                    <div class="row">
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="sname" placeholder="Skill name" name="sname" required>
+                            <label for="sname">Skill Name</label>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                            <select name="working" id="work" class="form-control">
+                                <option value="">Skill level</option>
+                                <option value="yes">Average</option>
+                                <option value="no">Good</option>
+                                <option value="no">Very Good</option>
+                                <option value="no">Better</option>
+                                <option value="no">Expert</option>
+                            </select>
+                        </div>
+                        <div>
+                            <button id="button1">Add</button>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--==>skill ended<==-->
+          <br><br><br>
+
+        </div>
+      </section>
+      <input type="submit" name="">
+      </form>
+
+      <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-lg-6 text-lg-left text-center">
+          <div class="copyright">
+            &copy; Copyright <strong>Portfolio Maker</strong>. All Rights Reserved
+          </div>
+          <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/vesperr-free-bootstrap-template/ -->
+            Designed by <a href="#team">Development Team</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+       <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

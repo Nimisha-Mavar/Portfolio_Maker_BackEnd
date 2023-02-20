@@ -20,3 +20,9 @@ def temp_detail(request,id):
     data=Detail.objects.get(id=id)
     return render(request,'Template_detail.html',{'data':data})
 
+def form(request):
+    Cat=request.POST["cat"]
+    if Cat=="Portfolio":
+        return render(request,'Portfolio_form.html')
+    else:
+        return render(request,'Resume_form.html')
