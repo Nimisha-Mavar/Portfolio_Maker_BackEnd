@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'Templates',
     'Scanner',
     'Account',
-    'Template_Preview'
+    'Template_Preview',
+    'Services'
 ]
 
 MIDDLEWARE = [

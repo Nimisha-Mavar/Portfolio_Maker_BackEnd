@@ -24,5 +24,6 @@ urlpatterns = [
     path('Temp/',include('Templates.urls')),
     path('scan/',include('Scanner.urls')),
     path('Account/',include('Account.urls')),
-    path('Livedemo/',include('Template_Preview.urls'))
+    path('Livedemo/',include('Template_Preview.urls')),
+    path('Service/',include('Services.urls'))
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
