@@ -7,3 +7,9 @@ class Portfolio(models.Model):
     Portfolio_id=models.IntegerField(primary_key=True)
     Template=models.ForeignKey(Detail,default=0,on_delete=models.CASCADE)
     User=models.ForeignKey(User,default=0,on_delete=models.CASCADE)
+
+#Resume model
+class Resume(models.Model):
+    Resume_id=models.IntegerField(primary_key=True)
+    Template=models.ForeignKey(Detail,default=0,on_delete=models.CASCADE)
+    User=models.ForeignKey(User,default=0,on_delete=models.CASCADE)
