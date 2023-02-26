@@ -77,5 +77,12 @@ class Award(models.Model):
     Year=models.CharField(max_length=10)
     Descriotion=models.TextField(default="NO")
 
+class Social_Media(models.Model):
+    Social_id=models.IntegerField(primary_key=True)
+    Portfolio=models.ForeignKey(Portfolio,default=0,on_delete=models.CASCADE)
+    Name=models.CharField(max_length=50)
+    Url=models.TextField()
+
+
 
 
