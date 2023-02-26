@@ -68,5 +68,14 @@ class Skill(models.Model):
     Name=models.CharField(max_length=30)
     Level=models.CharField(max_length=20)
 
+#Award model
+class Award(models.Model):
+    Award_id=models.IntegerField(primary_key=True)
+    Portfolio=models.ForeignKey(Portfolio,default=0,on_delete=models.CASCADE)
+    Title=models.CharField(max_length=50)
+    Institute=models.CharField(max_length=50)
+    Year=models.CharField(max_length=10)
+    Descriotion=models.TextField(default="NO")
+
 
 
