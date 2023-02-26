@@ -73,7 +73,11 @@
                         </ul>
                     </li>
                     <li><a class="nav-link scrollto" href="/#contact">Contact</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a>{{user.username}}</a></li>
+                    {% else %}
                     <li><a class="getstarted scrollto" href="Account/login">Login</a></li>
+                    {% endif %}
                     &nbsp;&nbsp;
                     <li><a href="file:///C:/Users/pc/OneDrive/Desktop/Project/iPortfolio/dashboard.html"><i class='bx bxs-user fs-3'></i></a></li>
                 </ul>

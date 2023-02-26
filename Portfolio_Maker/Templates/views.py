@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Detail
 from Services.models import Portfolio,Resume
 from django.contrib.auth.models import User,auth
@@ -27,18 +27,22 @@ def form(request):
     T_id=request.POST["id"]
     u_id=request.user
     if Cat=="Portfolio":
-        port_id=Portfolio.objects.only('Portfoli_id').count()
-        port_id+=1
-        Port=Portfolio(Portfolio_id=port_id,Template_id=T_id,User_id=u_id.id)
-        Port.save()
-        P_id=Portfolio.objects.get(User_id=u_id.id)
-        Pid=P_id.Portfolio_id
-        return render(request,'Portfolio_form.html',{'Portid':Pid})
+            if Portfolio.objects.filter(Template_id=T_id,User_id=u_id.id).exists():
+                 return redirect('/')
+            else:
+                port_id=Portfolio.objects.only('Portfoli_id').count()
+                port_id+=1
+                Port=Portfolio(Portfolio_id=port_id,Template_id=T_id,User_id=u_id.id)
+                Port.save()
+                Pid=Port.Portfolio_id
+                return render(request,'Portfolio_form.html',{'Portid':Pid})
     else:
-        res_id=Resume.objects.only('Resume_id').count()
-        res_id+=1
-        Res=Resume(Resume_id=res_id,Template_id=T_id,User_id=u_id.id)
-        Res.save()
-        R_id=Resume.objects.get(User_id=u_id.id)
-        Rid=R_id.Portfolio_id
-        return render(request,'Resume_form.html',{'Resid':Rid})
+            if Resume.objects.filter(Template_id=T_id,User_id=u_id.id):
+                return redirect('/')
+            else:
+                res_id=Resume.objects.only('Resume_id').count()
+                res_id+=1
+                Res=Resume(Resume_id=res_id,Template_id=T_id,User_id=u_id.id)
+                Res.save()
+                R_id=Res.Resume_id
+                return render(request,'Resume_form.html',{'Resid':R_id})
