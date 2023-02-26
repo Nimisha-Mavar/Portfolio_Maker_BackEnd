@@ -154,6 +154,7 @@
                   <form action="Form" method="post">
                   {% csrf_token %}
                     <input type="hidden" value="{{data.Temp_cat}}" name="cat">
+                    <input type="hidden" value="{{data.Template_id}}" name="id">
                     <button type="submit" style="background-color:rgb(51, 152, 241); color:#fff;" class="btn btn-lg">Select Template</button>
                   </form>
                   </a>
