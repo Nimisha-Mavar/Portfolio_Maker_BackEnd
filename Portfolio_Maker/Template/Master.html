@@ -74,7 +74,6 @@
                     </li>
                     <li><a class="nav-link scrollto" href="/#contact">Contact</a></li>
                     {% if user.is_authenticated %}
-                    <li><a class="scrollto">{{user.username}}</a></li>
                     &nbsp;&nbsp;
                     <li><a href="{% url 'Dashboard' %}"><i class='bx bxs-user fs-3'></i></a></li>
                     {% else %}
