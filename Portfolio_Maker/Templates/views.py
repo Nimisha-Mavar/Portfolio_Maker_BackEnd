@@ -28,7 +28,9 @@ def form(request):
     u_id=request.user
     if Cat=="Portfolio":
             if Portfolio.objects.filter(Template_id=T_id,User_id=u_id.id).exists():
-                 return redirect('/')
+                 msg="Already selected by you"
+                 ttl="Already Exist"
+                 return render(request,'Error.html',{'msg':msg})
             else:
                 port_id=Portfolio.objects.only('Portfoli_id').count()
                 port_id+=1
@@ -46,3 +48,6 @@ def form(request):
                 Res.save()
                 R_id=Res.Resume_id
                 return render(request,'Resume_form.html',{'Resid':R_id})
+            
+def err(request):
+     return render(request,'Error.html')
