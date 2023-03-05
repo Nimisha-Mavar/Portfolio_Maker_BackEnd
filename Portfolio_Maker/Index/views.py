@@ -21,3 +21,10 @@ def contact1(request):
         Contact=contact(name=name, email=email ,subject=subject, message=message)
         Contact.save()
         return HttpResponse('Your message has been sent. Thank you!')
+    else:
+        return HttpResponse('not sent')
+
+
+def feedback(request):
+    return render(request,'feedback1.html')
+

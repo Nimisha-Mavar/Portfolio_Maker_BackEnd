@@ -1,0 +1,122 @@
+{% extends 'Master.html' %} {% block content %} {% load static %}
+<style>
+    textarea {
+        height: 150px;
+    }
+    
+    .rating {
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotateY(180deg);
+        display: flex;
+    }
+    
+    .rating input {
+        display: none;
+    }
+    
+    .rating label {
+        display: block;
+        cursor: pointer;
+        width: 50px;
+    }
+    
+    .rating label:before {
+        content: '\f005';
+        font-family: fontAwesome;
+        position: relative;
+        display: block;
+        font-size: 50px;
+        color: black;
+    }
+    
+    .rating label:after {
+        content: '\f005';
+        font-family: fontAwesome;
+        position: absolute;
+        display: block;
+        font-size: 50px;
+        color: #3498db;
+        top: 0;
+        opacity: 0;
+        transition: .5s;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, .5);
+    }
+    
+    .rating label:hover:after,
+    .rating label:hover~label:after,
+    .rating input:checked~label:after {
+        opacity: 1;
+    }
+    
+    #in {
+        border: none;
+        outline: none;
+        width: 50%;
+        height: 100px;
+        background: none;
+        font-size: 30px;
+        color: black;
+        border-bottom: 1px solid black;
+    }
+    
+    #in:focus {
+        border-bottom: 2px solid black;
+    }
+</style>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<!-- Section: Design Block -->
+<section class="">
+    <!-- Jumbotron -->
+    <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(204, 50%, 96%)">
+        <div class="container">
+            <div class="row gx-lg-5 align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="section-title" data-aos="">
+                        <h2>Feedback</h2>
+                    </div>
+                    <div class="card">
+                        <div class="card-body py-5 px-md-5">
+                            {% csrf_token %}
+
+                            <p><b>Template</b> : iportfolio</p>
+                            <!-- starts  -->
+
+                            <div class="rating">
+                                <input type="radio" name="star" id="star1"><label for="star1"></label>
+                                <input type="radio" name="star" id="star2"><label for="star2"></label>
+                                <input type="radio" name="star" id="star3"><label for="star3"></label>
+                                <input type="radio" name="star" id="star4"><label for="star4"></label>
+                                <input type="radio" name="star" id="star5"><label for="star5"></label>
+                            </div>
+                            <!--stars ends-->
+                            <!-- Password input -->
+                            <br>
+                            <br>
+                            <br>
+
+                            <div class="form-outline mb-4">
+                                <textarea type="text" id="form3Example4" class="form-control" name="Message"></textarea>
+                                <label class="form-label" for="form3Example4">Message</label>
+                            </div>
+
+                            <!-- Submit button -->
+                            <input type="submit" class="btn mb-4 rounded" style="background-color:#3498db;color:#fff;float:right;" value="send">
+                            <br>
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <img src="{% static 'home_page/img/Login.jpg' %}" class="w-100 rounded-4 shadow-4">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Jumbotron -->
+</section>
+<!-- Section: Design Block -->
+{% endblock %}
