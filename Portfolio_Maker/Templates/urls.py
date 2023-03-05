@@ -11,4 +11,3 @@ urlpatterns = [
    path('error',views.err,name="error"),
 ]
 
-
