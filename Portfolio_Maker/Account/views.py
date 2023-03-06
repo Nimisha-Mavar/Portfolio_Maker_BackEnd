@@ -49,3 +49,9 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
+def forgot_password(request):
+    return render(request, 'forgot_password.html')
+
+def forgot_pass1(request):
+    return render(request, 'forgot_pass1.html')
