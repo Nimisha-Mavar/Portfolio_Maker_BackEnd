@@ -41,7 +41,7 @@ def login(request):
             return redirect('/')
 
         else:
-            return redirect('login')
+            return redirect('Login')
 
     else:
      return render(request,'login.html')
@@ -51,7 +51,23 @@ def logout(request):
     return redirect('/')
 
 def forgot_password(request):
-    return render(request, 'forgot_password.html')
+    if request.method == 'POST':
+        uname=request.POST['usernm']
+        if User.objects.filter(username=uname).exists():
+            return render(request, 'forgot_pass1.html',{'uname':uname})
+        else:
+            return render(request, 'forgot_password.html')
+    else:
+        return render(request, 'forgot_password.html')
 
-def forgot_pass1(request):
-    return render(request, 'forgot_pass1.html')
+
+def set_pass(request):
+    npass=request.POST['newpass']
+    cpass=request.POST['cpass']
+    unm=request.POST['uname']
+    if npass==cpass:
+        User.objects.filter(username=unm).update(password=npass)
+        return redirect('Login')
+    else:
+        return render(request, 'forgot_pass1.html')
+

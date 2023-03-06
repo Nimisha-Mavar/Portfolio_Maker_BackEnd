@@ -14,23 +14,22 @@
             <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
               <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                 <h1 class="title fs-2"><a href=""></a></h1>
+                <form action="set_pass" method="post">
+                  {% csrf_token %}
                 <div class="mb-3">
                     <label for="formFileMultiple" class="description form-label">New Password</label>
-                    <input class="form-control" type="password" id="formFileMultiple">
+                    <input class="form-control" type="password" id="formFileMultiple" name="newpass">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="description form-label">Confirm Password</label>
-                    <input class="form-control" type="password" id="formFileMultiple1">
+                    <input class="form-control" type="password" id="formFileMultiple1" name="cpass">
                 </div>
-                
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp; &nbsp;
-                <button onclick="myFunction()" type="button" class="btn btn-primary btn-lg">Save</button>
+                <input type="hidden" value="{{uname}}" name="uname">
+               
+                <button type="submit" class="btn btn-primary btn-lg">Save</button>
               </div>
             </div>
-  
+          </form>
             <div id="result" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0" style="display:none;">
               <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
                 <h3 class="title fs-2"><a href="">Keywords</a></h3>
@@ -53,12 +52,6 @@
         </div>
       </section><!-- End Services Section -->
 
-  <script>
-    function myFunction() {
-      var x = document.getElementById("result");
-      x.style.display = "block";
-      var y = document.getElementById("key");
-      y.style.display = "none";
-     }
-    </script>
+  
+    
 {% endblock %}
