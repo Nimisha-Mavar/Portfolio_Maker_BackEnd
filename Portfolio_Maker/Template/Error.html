@@ -15,7 +15,13 @@
           .services .icon-box:hover .description {
             color:black;
           }
+          body
+          {
+            background-repeat:no-repeat;
+            background-size:100%
+          }
     </style>
+    <body>
      <section id="" class="services">
         <div class="container">
   
@@ -23,7 +29,7 @@
             <h2>{{ttl}}</h2>
           </div>
   
-          <div class="row justify-content-center">
+          <div class="row justify-content-center section-title">
 
             <div id="key" class="col-md-12 col-lg-6 align-items-stretch mb-5 mb-lg-0">
               <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
@@ -38,7 +44,7 @@
                       </button>
                     </div>
                     <div class="col-lg-6 col-md-6 col-3">
-                      <button class="btn btn-lg mb-4 rounded float-end" style="background-color:#3498db;color:#fff;">
+                      <button class="btn btn-lg mb-4 rounded float" style="background-color:#3498db;color:#fff;">
                         <a class="" href="Login.html" style="color: #fff;">Login</a>
                       </button>
                     </div>
@@ -50,5 +56,5 @@
   
         </div>
       </section><!-- End Services Section -->
-
+    </body>
 {% endblock %}
