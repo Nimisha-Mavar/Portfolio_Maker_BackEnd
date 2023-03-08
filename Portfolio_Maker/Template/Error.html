@@ -37,18 +37,39 @@
                 <h5 class="text-danger">{{msg}}</h5>
                 <!--<a href=""><button class="btn">Next</button></a>-->
                   <br><br>
+                  {% if log %}
                   <div class="row">
                     <div class="col-lg-6 col-md-6 col-3">
                       <button type="submit" class="btn btn-lg mb-4 rounded" style="background-color:#3498db;color:#fff;">
-                        <a class="" href="Login.html" style="color: #fff;">Cancel</a>
+                        <a class="" href="/" style="color: #fff;">Cancel</a>
                       </button>
                     </div>
                     <div class="col-lg-6 col-md-6 col-3">
                       <button class="btn btn-lg mb-4 rounded float" style="background-color:#3498db;color:#fff;">
-                        <a class="" href="Login.html" style="color: #fff;">Login</a>
+                        <a class="" href="{% url 'Login' %}" style="color: #fff;">Login</a>
                       </button>
                     </div>
-                </div>
+                  </div>
+                  {% endif %}
+                  {% if active %}
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-3">
+                    <form action="{% url 'select_delete' %}" method="post">
+                    {% csrf_token %}
+                      <input type="hidden" name="t_cat" value={{temp_cat}}>
+                      <input type="hidden" name="t_id" value={{temp_id}}>
+                      <button type="submit" class="btn btn-lg mb-4 rounded" style="background-color:#3498db;color:#fff;">
+                        <a style="color: #fff;">Remove</a>
+                      </button>
+                    </form>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-3">
+                      <button class="btn btn-lg mb-4 rounded float" style="background-color:#3498db;color:#fff;">
+                        <a class="" href="{% url 'Dashboard' %}" style="color: #fff;">Countine</a>
+                      </button>
+                    </div>
+                  </div>
+                  {% endif %}
               </div>
             </div>
             

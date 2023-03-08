@@ -22,6 +22,7 @@ def temp_detail(request,id):
     data=Detail.objects.get(id=id)
     return render(request,'Template_detail.html',{'data':data})
 
+#forms and REsuem and portfolio insert logic
 def form(request):
     Cat=request.POST["cat"]
     T_id=request.POST["id"]
@@ -30,7 +31,10 @@ def form(request):
             if Portfolio.objects.filter(Template_id=T_id,User_id=u_id.id).exists():
                  err= {
                       'msg':"Already selected by you",
-                      'ttl':"Already Exist"
+                      'ttl':"Already Exist",
+                      'active':'True',
+                      'temp_cat':Cat,
+                      'temp_id':T_id
                  }
                  return render(request,'Error.html',err)
             else:
@@ -44,7 +48,8 @@ def form(request):
                 except:
                     err= {
                       'msg':"Used after login",
-                      'ttl':"Login requierd"
+                      'ttl':"Login requierd",
+                      'log':'True'
                     }
                     return render(request,'Error.html',err)
                 
@@ -52,7 +57,10 @@ def form(request):
             if Resume.objects.filter(Template_id=T_id,User_id=u_id.id):
                 err= {
                       'msg':"Already selected by you",
-                      'ttl':"Already Exist"
+                      'ttl':"Already Exist",
+                      'active':'True',
+                      'temp_cat':Cat,
+                      'temp_id':T_id
                  }
                 return render(request,'Error.html',err)
             else:
@@ -66,9 +74,21 @@ def form(request):
                 except:
                     err= {
                       'msg':"Used after login",
-                      'ttl':"Login requierd"
+                      'ttl':"Login requierd",
+                      'log':'True'
                     }
                     return render(request,'Error.html',err)
             
-def err(request):
-     return render(request,'Error.html')
+#selected template delete
+def select_dlt(request):
+    cat=request.POST['t_cat']
+    temp_id=request.POST['t_id']
+    u_id=request.user
+    if cat=="Portfolio":
+         Port=Portfolio.objects.get(Template_id=temp_id,User_id=u_id.id)
+         Port.delete()
+         return redirect('Portfolio-list')
+    else:
+         Res=Resume.objects.get(Template_id=temp_id,User_id=u_id.id)
+         Res.delete()
+         return redirect('Resume-list')
