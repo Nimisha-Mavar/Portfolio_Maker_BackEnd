@@ -28,26 +28,47 @@ def form(request):
     u_id=request.user
     if Cat=="Portfolio":
             if Portfolio.objects.filter(Template_id=T_id,User_id=u_id.id).exists():
-                 msg="Already selected by you"
-                 ttl="Already Exist"
-                 return render(request,'Error.html',{'msg':msg})
+                 err= {
+                      'msg':"Already selected by you",
+                      'ttl':"Already Exist"
+                 }
+                 return render(request,'Error.html',err)
             else:
                 port_id=Portfolio.objects.only('Portfoli_id').count()
                 port_id+=1
-                Port=Portfolio(Portfolio_id=port_id,Template_id=T_id,User_id=u_id.id)
-                Port.save()
-                Pid=Port.Portfolio_id
-                return render(request,'Portfolio_form.html',{'Portid':Pid})
+                try:
+                    Port=Portfolio(Portfolio_id=port_id,Template_id=T_id,User_id=u_id.id)
+                    Port.save()
+                    Pid=Port.Portfolio_id
+                    return render(request,'Portfolio_form.html',{'Portid':Pid})
+                except:
+                    err= {
+                      'msg':"Used after login",
+                      'ttl':"Login requierd"
+                    }
+                    return render(request,'Error.html',err)
+                
     else:
             if Resume.objects.filter(Template_id=T_id,User_id=u_id.id):
-                return redirect('/')
+                err= {
+                      'msg':"Already selected by you",
+                      'ttl':"Already Exist"
+                 }
+                return render(request,'Error.html',err)
             else:
                 res_id=Resume.objects.only('Resume_id').count()
                 res_id+=1
-                Res=Resume(Resume_id=res_id,Template_id=T_id,User_id=u_id.id)
-                Res.save()
-                R_id=Res.Resume_id
-                return render(request,'Resume_form.html',{'Resid':R_id})
+                try:
+                    Res=Resume(Resume_id=res_id,Template_id=T_id,User_id=u_id.id)
+                    Res.save()
+                    R_id=Res.Resume_id
+                    return render(request,'Resume_form.html',{'Resid':R_id})
+                except:
+                    err= {
+                      'msg':"Used after login",
+                      'ttl':"Login requierd"
+                    }
+                    return render(request,'Error.html',err)
             
 def err(request):
      return render(request,'Error.html')
