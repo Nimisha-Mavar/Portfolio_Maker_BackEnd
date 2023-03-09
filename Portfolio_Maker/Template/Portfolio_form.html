@@ -31,7 +31,6 @@
 </style>
  <!-- ======= Services Section ======= -->
      <!-- ======= Services Section ======= -->
-     <form>
       <section id="services" class="services">
           <div class="container">
     
@@ -43,43 +42,50 @@
             <div class="row justify-content-center">
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                  <h1 class="title fs-2">Personal Infomation</h1>
-                  <hr>
-                  
-                    <div class="row">
-                      <div class="col form-floating mb-3">
-                        <input type="text" class="form-control" placeholder="First name" id="fname" name="fname" required>
-                        <label for="fname">First name</label>
-                      </div>
-                      <div class="col form-floating">
-                        <input type="text" class="form-control" placeholder="Last name" id="lname" name="lname" required>
-                        <label for="lname">Last name</label>
-                      </div>
-                      <div class="form-floating mb-3 mt-3">
-                        <textarea type="text" class="form-control" id="address" placeholder="Enter address" name="address" required></textarea> 
-                        <label for="address">Address</label>
-                        <br>
-                      </div>
-                      <div class="col form-floating mb-3">
-                        <input type="number" class="form-control" id="phone" placeholder="Phone"
-                        name="phone"
-                        maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
-                        <label for="phone">Phone number</label>
-                      </div>
-                      <div class="col form-floating">
-                        <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
-                        <label for="email">Email</label>
-                      </div>
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="date" class="form-control" id="dob" placeholder="Date of birth" name="dob" required> 
-                        <label for="dob">Date of Birth</label>
-                      </div>
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="philo" placeholder=" philosophy statement" name="philo" required> 
-                        <label for="philo">Philosophy Statement</label>
-                      </div>
-                      </div>
-                    </div>
+                    <h1 class="title fs-2">Personal Infomation</h1>
+                    <hr>
+                    <form>
+                        {% csrf_token %}
+                        <div class="row">
+                          <div class="col form-floating mb-3">
+                            <input type="text" class="form-control" placeholder="First name" id="fname" name="fname" required>
+                            <label for="fname">First name</label>
+                          </div>
+                          <div class="col form-floating">
+                            <input type="text" class="form-control" placeholder="Last name" id="lname" name="lname" required>
+                            <label for="lname">Last name</label>
+                          </div>
+                          <div class="form-floating mb-3 mt-3">
+                            <textarea type="text" class="form-control" id="address" placeholder="Enter address" name="address" required></textarea> 
+                            <label for="address">Address</label>
+                            <br>
+                          </div>
+                          <div class="col form-floating mb-3">
+                            <input type="number" class="form-control" id="phone" placeholder="Phone"
+                            name="phone"
+                            maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
+                            <label for="phone">Phone number</label>
+                          </div>
+                          <div class="col form-floating">
+                            <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
+                            <label for="email">Email</label>
+                          </div>
+                          <div class="form-floating mb-3 mt-3">
+                            <input type="date" class="form-control" id="dob" placeholder="Date of birth" name="dob" required> 
+                            <label for="dob">Date of Birth</label>
+                          </div>
+                          <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="philo" placeholder=" philosophy statement" name="philo" required> 
+                            <label for="philo">Philosophy Statement</label>
+                          </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12 float-end">
+                              <button id="button1">Save</button>
+                            </div>
+                          </div> 
+                        </div>
+                    </form>
                 </div>
               </div>
             </div>
@@ -110,35 +116,37 @@
                 <br>
                   <h1 class="title fs-2">Education</h1>
                   <hr>
-                  
+                  <form>
+                    {% csrf_token %}
                     <div class="row">
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="iname" placeholder="Institute name" name="iname" required> 
-                        <label for="iname">Institute Name</label>
-                      </div>
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="degree" placeholder=" philosophy statement" name="degree" required> 
-                        <label for="philo">Degree</label>
-                        <br>
-                      </div>
-                      <div class="col form-floating mb-3">
-                        <input type="number" class="form-control" placeholder="Start year" id="syear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
-                        <label for="iname">Start Year</label>
-                      </div>
-                      <div class="col form-floating">
-                        <input type="number" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
-                        <label for="degree">End Year</label>
-                      </div> 
-                      <div class="row">
-                        <div class="col-lg-6">
-                          <button id="button1" class="float-start">Add</button>
-                        </div>  
-                        <div class="col-lg-6">
-                          <button id="button1">Save</button>
+                        <div class="form-floating mb-3 mt-3">
+                          <input type="text" class="form-control" id="iname" placeholder="Institute name" name="iname" required> 
+                          <label for="iname">Institute Name</label>
                         </div>
-                      </div>                  
+                        <div class="form-floating mb-3 mt-3">
+                          <input type="text" class="form-control" id="degree" placeholder=" philosophy statement" name="degree" required> 
+                          <label for="philo">Degree</label>
+                          <br>
+                        </div>
+                        <div class="col form-floating mb-3">
+                          <input type="number" class="form-control" placeholder="Start year" id="syear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
+                          <label for="iname">Start Year</label>
+                        </div>
+                        <div class="col form-floating">
+                          <input type="number" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
+                          <label for="degree">End Year</label>
+                        </div> 
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <button id="button1" class="float-start">Add</button>
+                          </div>  
+                          <div class="col-lg-6">
+                            <button id="button1">Save</button>
+                          </div>
+                        </div>                  
                       </div>
-                    </div>
+                  </form>
+                  </div>
                 </div>
               </div>
             </div>
@@ -170,39 +178,42 @@
                 </div>
                 <br>
                   <h1 class="title fs-2">Experience</h1>
-                  <hr>               
-                    <div class="row">
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="cname" placeholder="company name" name="cname" required> 
-                        <label for="cname">Company Name</label>
-                      </div>
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="rname" placeholder="Role name" name="rname" required> 
-                        <label for="rname">Role Name</label>
-                        <br>
-                      </div>
-                      <div class="col form-floating mb-3">
-                        <input type="number" class="form-control" placeholder="Start year" id="syear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
-                        <label for="iname">Start Year</label>
-                      </div>
-                      <div class="col form-floating">
-                        <input type="number" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
-                        <label for="degree">End Year</label>
-                      </div>  
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="des" placeholder="description" name="des" required> 
-                        <label for="des">Description</label>
-                      </div>
+                  <hr> 
+                    <form>  
+                      {% csrf_token %}            
                       <div class="row">
-                        <div class="col-lg-6">
-                          <button id="button1" class="float-start">Add</button>
-                        </div>  
-                        <div class="col-lg-6">
-                          <button id="button1">Save</button>
+                        <div class="form-floating mb-3 mt-3">
+                          <input type="text" class="form-control" id="cname" placeholder="company name" name="cname" required> 
+                          <label for="cname">Company Name</label>
                         </div>
-                      </div>                 
+                        <div class="form-floating mb-3 mt-3">
+                          <input type="text" class="form-control" id="rname" placeholder="Role name" name="rname" required> 
+                          <label for="rname">Role Name</label>
+                          <br>
+                        </div>
+                        <div class="col form-floating mb-3">
+                          <input type="number" class="form-control" placeholder="Start year" id="syear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
+                          <label for="iname">Start Year</label>
+                        </div>
+                        <div class="col form-floating">
+                          <input type="number" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
+                          <label for="degree">End Year</label>
+                        </div>  
+                        <div class="form-floating mb-3 mt-3">
+                          <input type="text" class="form-control" id="des" placeholder="description" name="des" required> 
+                          <label for="des">Description</label>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <button id="button1" class="float-start">Add</button>
+                          </div>  
+                          <div class="col-lg-6">
+                            <button id="button1">Save</button>
+                          </div>
+                        </div>                 
                       </div>
-                    </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
@@ -240,51 +251,54 @@
                 </div>
                 <br>
                   <h1 class="title fs-2">Project</h1>
-                  <hr>                
-                    <div class="row">
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="ptitle" placeholder="Project title" name="ptitle" required> 
-                        <label for="ptitle">Project Title</label>
-                      </div>
-                      <div class="form-floating mb-3 mt-3">
-                        <select name="working" id="work" class="form-control">
-                          <option value="">Currently working?</option>
-                          <option value="yes">Yes</option>
-                          <option value="no">No</option>
-                        </select>                                         
-                        <br>
-                      </div>
-                      <div class="col form-floating mb-3">
-                        <input type="number" class="form-control" placeholder="Start year" id="syear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
-                        <label for="iname">Start Year</label>
-                      </div>
-                      <div class="col form-floating">
-                        <input type="number" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
-                        <label for="degree">End Year</label>
-                        <br>
-                      </div> 
-                      <div class="col form-floating mb-3">
-                        <input type="number" class="form-control" placeholder="Start month" id="smonth" name="smonth" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
-                        <label for="smonth">Start Month</label>
-                      </div>
-                      <div class="col form-floating">
-                        <input type="number" class="form-control" placeholder="End month" id="emonth" name="emonth" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
-                        <label for="smonth">End Month</label>
-                      </div>
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="des" placeholder="description" name="des" required> 
-                        <label for="des">Description</label>
-                      </div>  
+                  <hr> 
+                    <form>
+                      {% csrf_token %}               
                       <div class="row">
-                        <div class="col-lg-6">
-                          <button id="button1" class="float-start">Add</button>
-                        </div>  
-                        <div class="col-lg-6">
-                          <button id="button1">Save</button>
+                        <div class="form-floating mb-3 mt-3">
+                          <input type="text" class="form-control" id="ptitle" placeholder="Project title" name="ptitle" required> 
+                          <label for="ptitle">Project Title</label>
                         </div>
-                      </div>                
+                        <div class="form-floating mb-3 mt-3">
+                          <select name="working" id="work" class="form-control">
+                            <option value="">Currently working?</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                          </select>                                         
+                          <br>
+                        </div>
+                        <div class="col form-floating mb-3">
+                          <input type="number" class="form-control" placeholder="Start year" id="syear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
+                          <label for="iname">Start Year</label>
+                        </div>
+                        <div class="col form-floating">
+                          <input type="number" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
+                          <label for="degree">End Year</label>
+                          <br>
+                        </div> 
+                        <div class="col form-floating mb-3">
+                          <input type="number" class="form-control" placeholder="Start month" id="smonth" name="smonth" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
+                          <label for="smonth">Start Month</label>
+                        </div>
+                        <div class="col form-floating">
+                          <input type="number" class="form-control" placeholder="End month" id="emonth" name="emonth" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
+                          <label for="smonth">End Month</label>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                          <input type="text" class="form-control" id="des" placeholder="description" name="des" required> 
+                          <label for="des">Description</label>
+                        </div>  
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <button id="button1" class="float-start">Add</button>
+                          </div>  
+                          <div class="col-lg-6">
+                            <button id="button1">Save</button>
+                          </div>
+                        </div>                
                       </div>
-                    </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
@@ -307,7 +321,9 @@
                 </div>
                 <br>
                   <h1 class="title fs-2">Skill</h1>
-                  <hr>                
+                  <hr>    
+                  <form>
+                    {% csrf_token %}            
                     <div class="row">
                       <div class="form-floating mb-3 mt-3">
                         <input type="text" class="form-control" id="sname" placeholder="Skill name" name="sname" required> 
