@@ -7,12 +7,28 @@ class Portfolio(models.Model):
     Portfolio_id=models.IntegerField(primary_key=True)
     Template=models.ForeignKey(Detail,default=0,on_delete=models.CASCADE)
     User=models.ForeignKey(User,default=0,on_delete=models.CASCADE)
+    def __str__(self):
+        return self.User
+    def temp_nm(self):
+        return self.Template.Temp_name
+    def temp_cat(self):
+        return self.Template.Temp_cat
+    def temp_img(self):
+        return self.Template.Temp_img1
 
 #Resume model
 class Resume(models.Model):
     Resume_id=models.IntegerField(primary_key=True)
     Template=models.ForeignKey(Detail,default=0,on_delete=models.CASCADE)
     User=models.ForeignKey(User,default=0,on_delete=models.CASCADE)
+    def __str__(self):
+        return self.User
+    def temp_nm(self):
+        return self.Template.Temp_name
+    def temp_cat(self):
+        return self.Template.Temp_cat
+    def temp_img(self):
+        return self.Template.Temp_img1
 
 #Personal Information
 class Personal_info(models.Model):

@@ -47,7 +47,7 @@ def form(request):
                     return render(request,'Portfolio_form.html',{'Portid':Pid})
                 except:
                     err= {
-                      'msg':"Used after login",
+                      'msg':"Template use after login",
                       'ttl':"Login requierd",
                       'log':'True'
                     }
@@ -73,7 +73,7 @@ def form(request):
                     return render(request,'Resume_form.html',{'Resid':R_id})
                 except:
                     err= {
-                      'msg':"Used after login",
+                      'msg':"Template used after login",
                       'ttl':"Login requierd",
                       'log':'True'
                     }
