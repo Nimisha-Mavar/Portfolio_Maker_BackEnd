@@ -178,9 +178,9 @@
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
-          <li><a href="#home" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Documet</span></a></li>
+          <li><a href="/" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="#home" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Document</span></a></li>
           <li><a href="#pytm" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Pyment</span></a></li>
-          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Feedback</span></a></li>
           <li><a href="#pass" class="nav-link scrollto"><i class='bx bx-cog' ></i> <span>Change Password</span></a></li>
           <li><a href="#log" class="nav-link scrollto"><i class='bx bx-log-out'></i> <span>Logout</span></a></li>
         </ul>
@@ -207,12 +207,22 @@
               <h1 class="title fs-2"><a href="Scan_Keyword.html" style="color:#222222;">{{port.temp_nm}}</a></h1>
               <p class="description">{{port.temp_cat}}</p>
               <div class="row">
-                <div class="col-lg-6 col-md-6 col-3">
-                  <button type="submit" class="btn mb-4 rounded" style="background-color:#3498db;color:#fff;">
+                <div class="col-lg-4 col-md-6 col-3">
+                  <form action="{% url 'select_delete' %}" method="post">
+                    {% csrf_token %}
+                      <input type="hidden" name="t_cat" value={{port.temp_cat}}>
+                      <input type="hidden" name="t_id" value={{port.Template_id}}>
+                      <button type="submit" class="btn mb-4 rounded" style="background-color:#3498db;color:#fff;">
+                        <a style="color: #fff;">Remove</a>
+                      </button>
+                    </form>
+                </div>
+                <div class="col-lg-4 col-md-6 col-3">
+                  <button type="submit" class="btn mb-4 rounded float-end" style="background-color:#3498db;color:#fff;">
                     <a class="" href="Login.html" style="color: #fff;">Edit</a>
                   </button>
                 </div>
-                <div class="col-lg-6 col-md-6 col-3">
+                <div class="col-lg-4 col-md-6 col-3">
                   <button type="submit" class="btn mb-4 rounded float-end" style="background-color:#3498db;color:#fff;">
                     <a class="" href="Login.html" style="color: #fff;">View</a>
                   </button>
@@ -228,12 +238,22 @@
               <h1 class="title fs-2"><a href="Scan_Keyword.html" style="color:#222222;">{{res.temp_nm}}</a></h1>
               <p class="description">{{res.temp_cat}}</p>
               <div class="row">
-                <div class="col-lg-6 col-md-6 col-3">
-                  <button type="submit" class="btn mb-4 rounded" style="background-color:#3498db;color:#fff;">
+                <div class="col-lg-4 col-md-6 col-3">
+                    <form action="{% url 'select_delete' %}" method="post">
+                    {% csrf_token %}
+                      <input type="hidden" name="t_cat" value={{res.temp_cat}}>
+                      <input type="hidden" name="t_id" value={{res.Template_id}}>
+                      <button type="submit" class="btn mb-4 rounded" style="background-color:#3498db;color:#fff;">
+                        <a style="color: #fff;">Remove</a>
+                      </button>
+                    </form>
+                </div>
+                <div class="col-lg-4 col-md-6 col-3">
+                  <button type="submit" class="btn mb-4 rounded float-end" style="background-color:#3498db;color:#fff;">
                     <a class="" href="Login.html" style="color: #fff;">Edit</a>
                   </button>
                 </div>
-                <div class="col-lg-6 col-md-6 col-3">
+                <div class="col-lg-4 col-md-6 col-3">
                   <button type="submit" class="btn mb-4 rounded float-end" style="background-color:#3498db;color:#fff;">
                     <a class="" href="Login.html" style="color: #fff;">View</a>
                   </button>
