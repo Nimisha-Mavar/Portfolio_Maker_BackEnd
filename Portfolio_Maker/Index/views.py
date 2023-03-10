@@ -1,6 +1,6 @@
 from django.http import HttpResponse
-from django.shortcuts import render
-from Index.models import contact
+from django.shortcuts import render,redirect
+from Index.models import contact,feedback
 
 # Create your views here.
 def home(request):
@@ -26,5 +26,19 @@ def contact1(request):
 
 
 def feedback(request):
-    return render(request,'feedback1.html')
+    if request.method == 'POST':
+        rate = request.POST['star']
+        message = request.POST['Message']
+        u_id=request.user
+        t_id=1
+        print(rate)
+        obj=feedback(User=u_id.id,Template=t_id, Rate1=rate, Message1=message)
+        obj.save()
+        print(obj)
+        
+        return render(request,'index.html')
+    else:
+        return render(request,'feedback1.html')
+    
+    
 
