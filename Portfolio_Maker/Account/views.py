@@ -66,7 +66,9 @@ def set_pass(request):
     cpass=request.POST['cpass']
     unm=request.POST['uname']
     if npass==cpass:
-        User.objects.filter(username=unm).update(password=npass)
+        u = User.objects.get(username=unm)
+        u.set_password(npass)
+        u.save()
         return redirect('Login')
     else:
         return render(request, 'forgot_pass1.html')
