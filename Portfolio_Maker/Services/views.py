@@ -4,6 +4,6 @@ from django.shortcuts import render
 def edit(request):
     cat=request.POST['cat']
     if cat=="Portfolio":
-        return render(request,'Edit_port.html')
+        return render(request,'Portfolio_form.html')
     else:
-        return render(request,'FAQ.html')
+        return render(request,'Resume_form.html')
