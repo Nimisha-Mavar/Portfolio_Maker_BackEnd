@@ -10,8 +10,10 @@ class contact(models.Model):
     message = models.TextField()
     
 class feedback(models.Model):
-    User=models.ForeignKey(User,default=0,on_delete=models.CASCADE)
-    Template=models.ForeignKey(Detail,default=0,on_delete=models.CASCADE)
+
     Rate1 = models.IntegerField(default=0)
     Message1 = models.TextField(max_length=200)
     Date1 = models.DateField(auto_now_add=True)
+    
+    def __str__(self):
+        return str(self.id)

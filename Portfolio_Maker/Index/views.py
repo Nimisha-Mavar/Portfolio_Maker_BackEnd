@@ -25,16 +25,12 @@ def contact1(request):
         return HttpResponse('not sent')
 
 
-def feedback(request):
+def feed(request):
     if request.method == 'POST':
         rate = request.POST['star']
         message = request.POST['Message']
-        u_id=request.user
-        t_id=1
-        print(rate)
-        obj=feedback(User=u_id.id,Template=t_id, Rate1=rate, Message1=message)
-        obj.save()
-        print(obj)
+        
+        feedback(Rate1=rate, Message1=message).save()
         
         return render(request,'index.html')
     else:
