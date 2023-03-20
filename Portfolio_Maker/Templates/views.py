@@ -92,3 +92,13 @@ def select_dlt(request):
          Res=Resume.objects.get(Template_id=temp_id,User_id=u_id.id)
          Res.delete()
          return redirect('Resume-list')
+    
+
+def edit(request):
+    cat=request.POST['Ccat']
+    pid=request.POST['port_id']
+    if cat=="Portfolio":
+        return render(request,'Portfolio_form.html',{'portid':pid})
+    else:
+        return render(request,'Resume_form.html')
+    

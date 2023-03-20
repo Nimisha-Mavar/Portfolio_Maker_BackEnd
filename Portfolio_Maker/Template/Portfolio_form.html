@@ -1,41 +1,51 @@
 {% extends 'Master.html' %}
 {% block content %}
 {% load static %}
-<style>
-  body
-  {
-    background-color: hsl(204, 50%, 96%)
-  }
-  .services .icon-box:hover::before {
-            background: #fff;
-            right: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 0px;
-          }
 
-          .services .icon-box:hover .title a,
-          .services .icon-box:hover .description {
-            color:black;
-          }
-          label
-          {
-            margin-left: 10px;
-          }
-          hr
-          {
-            background-color: skyblue;
-            height: 5px;
-          }
-</style>
- <!-- ======= Services Section ======= -->
-     <!-- ======= Services Section ======= -->
-      <section id="services" class="services">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <style>
+        body
+        {
+          background-color: hsl(204, 50%, 96%)
+        }
+        .services .icon-box:hover::before {
+                  background: #fff;
+                  right: 0;
+                  top: 0;
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 0px;
+                }
+
+                .services .icon-box:hover .title a,
+                .services .icon-box:hover .description {
+                  color:black;
+                }
+                label
+                {
+                  margin-left: 10px;
+                }
+                hr
+                {
+                  background-color: skyblue;
+                  height: 5px;
+                }
+    </style>
+
+    <!-- =======================================================
+  * Template Name: Vesperr - v4.9.1
+  * Template URL: https://bootstrapmade.com/vesperr-free-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+         <!-- ======= Services Section ======= -->
+<section id="services" class="services">
           <div class="container">
     
-            <div class="section-title" data-aos="fade-up">
-              <h2>Portfolio Form</h2>
+            <div class="section-title">
+              <h2>Portfolio Form {{portid}}</h2>
             </div>
             
             <!--==>Personal info form<==-->
@@ -43,10 +53,13 @@
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                     <h1 class="title fs-2">Personal Infomation</h1>
+                    <h2 id="msg1" class="bg-warning"></h2>
                     <hr>
-                    <form>
+                    <form id="Personal_info">
                         {% csrf_token %}
                         <div class="row">
+                          <input type="hidden" value="{{portid}}" id="pid">
+                          <input type="hidden" value="Portfolio" id="catt">
                           <div class="col form-floating mb-3">
                             <input type="text" class="form-control" placeholder="First name" id="fname" name="fname" required>
                             <label for="fname">First name</label>
@@ -81,7 +94,7 @@
                           </div>
                           <div class="row">
                             <div class="col-lg-12 float-end">
-                              <button id="button1">Save</button>
+                              <input id="button1" value="save" type="submit">
                             </div>
                           </div> 
                         </div>
@@ -152,6 +165,7 @@
             </div>
             <!--==>Education ended<==-->
             <br><br><br>
+
             <!--==>Experience form<==-->
             <div class="row justify-content-center">
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
@@ -221,6 +235,7 @@
             </div>
             <!--==>Experience ended<==-->
             <br><br><br>
+
             <!--==>Project form<==-->
             <div class="row justify-content-center">
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
@@ -308,6 +323,7 @@
             </div>
             <!--==>project ended<==-->
             <br><br><br>
+
             <!--==>skill form<==-->
             <div class="row justify-content-center">
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
@@ -361,6 +377,7 @@
             </div>
             <!--==>skill ended<==-->
             <br><br><br>
+
             <!--==>award form<==-->
             <div class="row justify-content-center">
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
@@ -424,8 +441,9 @@
             </div>
             <!--==>award ended<==-->
             <br><br><br>
+            
             <!--==>Social media form<==-->
-            <div class="row justify-content-center">
+            <div class="row justify-content-center">s
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                   <div id="d1">
@@ -483,4 +501,34 @@
         </div>
       </div>
       <br><br>
-{% endblock %}
+
+    <script>
+    //for Persnol info
+    $(document).on('submit','#Personal_info',function(e){
+        e.preventDefault();
+        $.ajax({
+            type:'POST',
+            url:"{% url 'Personal_data' %}",
+            data:{
+                port_id:$('#pid').val(),
+                catt:$('#catt').val(),
+                fnm:$('#fname').val(),
+                lnm:$('#lname').val(),
+                adr:$('#address').val(),
+                phn:$('#phone').val(),
+                eml:$('#email').val(),
+                dob:$('#dob').val(),
+                philo:$('#philo').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                
+            },
+           
+            success: function (data) {
+                // alert the error if any error occured
+                $("#msg1").html(data)
+                
+            }
+        })
+    })
+  </script>
+    {% endblock %}

@@ -7,8 +7,6 @@ class Portfolio(models.Model):
     Portfolio_id=models.IntegerField(primary_key=True)
     Template=models.ForeignKey(Detail,default=0,on_delete=models.CASCADE)
     User=models.ForeignKey(User,default=0,on_delete=models.CASCADE)
-    def __str__(self):
-        return self.User
     def temp_nm(self):
         return self.Template.Temp_name
     def temp_cat(self):
@@ -21,8 +19,6 @@ class Resume(models.Model):
     Resume_id=models.IntegerField(primary_key=True)
     Template=models.ForeignKey(Detail,default=0,on_delete=models.CASCADE)
     User=models.ForeignKey(User,default=0,on_delete=models.CASCADE)
-    def __str__(self):
-        return self.User
     def temp_nm(self):
         return self.Template.Temp_name
     def temp_cat(self):
@@ -33,8 +29,8 @@ class Resume(models.Model):
 #Personal Information
 class Personal_info(models.Model):
     Personal_id=models.IntegerField(primary_key=True)
-    Resume=models.ForeignKey(Resume,default=0,on_delete=models.CASCADE)
-    Portfolio=models.ForeignKey(Portfolio,default=0,on_delete=models.CASCADE)
+    Resume=models.ForeignKey(Resume,null=True,on_delete=models.CASCADE)
+    Portfolio=models.ForeignKey(Portfolio,null=True,on_delete=models.CASCADE)
     First_name=models.CharField(max_length=30)
     Last_name=models.CharField(max_length=30)
     Address=models.TextField()
