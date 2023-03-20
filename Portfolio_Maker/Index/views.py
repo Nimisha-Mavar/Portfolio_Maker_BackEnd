@@ -21,3 +21,6 @@ def contact1(request):
         Contact=contact(name=name, email=email ,subject=subject, message=message)
         Contact.save()
         return HttpResponse('Your message has been sent. Thank you!')
+    
+def payment1(request):
+    return render(request,'payment.html')
