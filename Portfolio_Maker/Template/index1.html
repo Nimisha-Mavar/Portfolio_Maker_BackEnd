@@ -1,63 +1,62 @@
-{% extends 'Master.html' %}
-{% block content %}
-{% load static %}
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex align-items-center">
+{% extends 'Master.html' %} {% block content %} {% load static %}
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center">
 
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-                    <h1 data-aos="fade-up">Bulid your portfolio and resume in an effective way</h1>
-                    <h2 data-aos="fade-up" data-aos-delay="400">We are team of talented designers making websites with Bootstrap</h2>
-                    <div data-aos="fade-up" data-aos-delay="800">
-                        <a href="Account/login" class="btn-get-started scrollto">Get Started</a>
-                    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                <h1 data-aos="fade-up">Bulid your portfolio and resume in an effective way</h1>
+                <h2 data-aos="fade-up" data-aos-delay="400">We are team of talented designers making websites with Bootstrap</h2>
+                <div data-aos="fade-up" data-aos-delay="800">
+                    <a href="Account/login" class="btn-get-started scrollto">Get Started</a>
+                    <a href="payment" class="btn-get-started scrollto">Payment</a>
                 </div>
-                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
-                    <img src="{% static 'home_page/img/front_img.jpg' %}" class="img-fluid animated" alt="">
-                </div>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
+                <img src="{% static 'home_page/img/front_img.jpg' %}" class="img-fluid animated" alt="">
             </div>
         </div>
+    </div>
 
-    </section>
-    <!-- End Hero -->
+</section>
+<!-- End Hero -->
 
-    <main id="main">
-        <!-- ======= About Us Section ======= -->
-        <section id="about" class="about">
-            <div class="container">
+<main id="main">
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+        <div class="container">
 
-                <div class="section-title" data-aos="fade-up">
-                    <h2>About Us</h2>
-                </div>
-
-                <div class="row content">
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="150">
-                        <p>
-                            Portfolio Maker will be used to create Resume and Portfolio at one place. Users can easily create responsive , modern digital portfolios.
-                        </p>
-                        <ul>
-                            <li><i class="ri-check-double-line"></i> Form based easy inputs.</li>
-                            <li><i class="ri-check-double-line"></i> Resume scanner to rate resume.</li>
-                            <li><i class="ri-check-double-line"></i> Dynamic aesthetic templates for portfolios.</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-up" data-aos-delay="300">
-                        <p>
-                            The site offers different type of templates like resume, portfolio and also provides ATS friendly resume templates.
-                        </p>
-                        <p>
-                            Features include a resume scanner that finds keywords from job description and gives rate.
-                        </p>
-                        <a href="#" class="btn-learn-more">Learn More</a>
-                    </div>
-                </div>
-
+            <div class="section-title" data-aos="fade-up">
+                <h2>About Us</h2>
             </div>
-        </section>
-        <!-- End About Us Section -->
 
-        <!-- ======= Counts Section ======= 
+            <div class="row content">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="150">
+                    <p>
+                        Portfolio Maker will be used to create Resume and Portfolio at one place. Users can easily create responsive , modern digital portfolios.
+                    </p>
+                    <ul>
+                        <li><i class="ri-check-double-line"></i> Form based easy inputs.</li>
+                        <li><i class="ri-check-double-line"></i> Resume scanner to rate resume.</li>
+                        <li><i class="ri-check-double-line"></i> Dynamic aesthetic templates for portfolios.</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-up" data-aos-delay="300">
+                    <p>
+                        The site offers different type of templates like resume, portfolio and also provides ATS friendly resume templates.
+                    </p>
+                    <p>
+                        Features include a resume scanner that finds keywords from job description and gives rate.
+                    </p>
+                    <a href="#" class="btn-learn-more">Learn More</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- End About Us Section -->
+
+    <!-- ======= Counts Section ======= 
     <section id="counts" class="counts">
       <div class="container">
 
@@ -108,149 +107,149 @@
       </div>
     </section> End Counts Section -->
 
-        <!-- ======= Services Section ======= -->
-        <section id="services" class="services">
-            <div class="container">
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+        <div class="container">
 
-                <div class="section-title" data-aos="fade-up">
-                    <h2>Services</h2>
-                    <p>Portfolio Maker provide three services</p>
+            <div class="section-title" data-aos="fade-up">
+                <h2>Services</h2>
+                <p>Portfolio Maker provide three services</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                        <div class="icon"><i class='bx bxs-inbox'></i></div>
+                        <h4 class="title"><a href="Temp/Portfolio-list">Portfolio</a></h4>
+                        <p class="description">Create your portfolio by following some steps</p>
+                    </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
-                        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                            <div class="icon"><i class='bx bxs-inbox'></i></div>
-                            <h4 class="title"><a href="Temp/Portfolio-list">Portfolio</a></h4>
-                            <p class="description">Create your portfolio by following some steps</p>
-                        </div>
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                        <div class="icon"><i class="bx bx-file"></i></div>
+                        <h4 class="title"><a href="Temp/Resume-list">Resume</a></h4>
+                        <p class="description">Create your resuem by following some steps</p>
                     </div>
+                </div>
 
-                    <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
-                        <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-                            <div class="icon"><i class="bx bx-file"></i></div>
-                            <h4 class="title"><a href="Temp/Resume-list">Resume</a></h4>
-                            <p class="description">Create your resuem by following some steps</p>
-                        </div>
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+                        <div class="icon"><i class="bx bx-tachometer"></i></div>
+                        <h4 class="title"><a href="scan/scanner">Resume Scanner</a></h4>
+                        <p class="description">Resume scanner use to find keywords and rate resume</p>
                     </div>
-
-                    <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
-                        <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-                            <div class="icon"><i class="bx bx-tachometer"></i></div>
-                            <h4 class="title"><a href="scan/scanner">Resume Scanner</a></h4>
-                            <p class="description">Resume scanner use to find keywords and rate resume</p>
-                        </div>
-                    </div>
-
                 </div>
 
             </div>
-        </section>
-        <!-- End Services Section -->
+
+        </div>
+    </section>
+    <!-- End Services Section -->
 
 
 
-        <!-- ======= Testimonials Section ======= -->
-        <section id="testimonials" class="testimonials section-bg">
-            <div class="container">
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials section-bg">
+        <div class="container">
 
-                <div class="section-title" data-aos="fade-up">
-                    <h2>Testimonials</h2>
-                    <p>Magnam dolores commodi suscipit eum quidem consectetur velit</p>
-                </div>
-
-                <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-                    <div class="swiper-wrapper">
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-wrap">
-                                <div class="testimonial-item">
-                                    <img src="{% static 'home_page/img/testimonials/testimonials-1.jpg' %}" class="testimonial-img" alt="">
-                                    <h3>Saul Goodman</h3>
-                                    <h4>Ceo &amp; Founder</h4>
-                                    <p>
-                                        <i class="bx bxs-quote-alt-left quote-icon-left"></i> Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen
-                                        aliquam, risus at semper.
-                                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-wrap">
-                                <div class="testimonial-item">
-                                    <img src="{% static 'home_page/img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
-                                    <h3>Sara Wilsson</h3>
-                                    <h4>Designer</h4>
-                                    <p>
-                                        <i class="bx bxs-quote-alt-left quote-icon-left"></i> Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure
-                                        amet legam anim culpa.
-                                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-wrap">
-                                <div class="testimonial-item">
-                                    <img src="{% static 'home_page/img/testimonials/testimonials-3.jpg' %}" class="testimonial-img" alt="">
-                                    <h3>Jena Karlis</h3>
-                                    <h4>Store Owner</h4>
-                                    <p>
-                                        <i class="bx bxs-quote-alt-left quote-icon-left"></i> Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis
-                                        sint minim.
-                                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-wrap">
-                                <div class="testimonial-item">
-                                    <img src="{% static 'home_page/img/testimonials/testimonials-4.jpg' %}" class="testimonial-img" alt="">
-                                    <h3>Matt Brandon</h3>
-                                    <h4>Freelancer</h4>
-                                    <p>
-                                        <i class="bx bxs-quote-alt-left quote-icon-left"></i> Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore
-                                        quem dolore labore illum veniam.
-                                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-wrap">
-                                <div class="testimonial-item">
-                                    <img src="{% static 'home_page/img/testimonials/testimonials-5.jpg' %}" class="testimonial-img" alt="">
-                                    <h3>John Larson</h3>
-                                    <h4>Entrepreneur</h4>
-                                    <p>
-                                        <i class="bx bxs-quote-alt-left quote-icon-left"></i> Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam
-                                        esse veniam culpa fore nisi cillum quid.
-                                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End testimonial item -->
-
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-
+            <div class="section-title" data-aos="fade-up">
+                <h2>Testimonials</h2>
+                <p>Magnam dolores commodi suscipit eum quidem consectetur velit</p>
             </div>
-        </section>
-        <!-- End Testimonials Section -->
 
-        <!-- ======= Templates Section ======= 
+            <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-wrap">
+                            <div class="testimonial-item">
+                                <img src="{% static 'home_page/img/testimonials/testimonials-1.jpg' %}" class="testimonial-img" alt="">
+                                <h3>Saul Goodman</h3>
+                                <h4>Ceo &amp; Founder</h4>
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i> Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam,
+                                    risus at semper.
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-wrap">
+                            <div class="testimonial-item">
+                                <img src="{% static 'home_page/img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
+                                <h3>Sara Wilsson</h3>
+                                <h4>Designer</h4>
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i> Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure
+                                    amet legam anim culpa.
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-wrap">
+                            <div class="testimonial-item">
+                                <img src="{% static 'home_page/img/testimonials/testimonials-3.jpg' %}" class="testimonial-img" alt="">
+                                <h3>Jena Karlis</h3>
+                                <h4>Store Owner</h4>
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i> Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint
+                                    minim.
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-wrap">
+                            <div class="testimonial-item">
+                                <img src="{% static 'home_page/img/testimonials/testimonials-4.jpg' %}" class="testimonial-img" alt="">
+                                <h3>Matt Brandon</h3>
+                                <h4>Freelancer</h4>
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i> Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem
+                                    dolore labore illum veniam.
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-wrap">
+                            <div class="testimonial-item">
+                                <img src="{% static 'home_page/img/testimonials/testimonials-5.jpg' %}" class="testimonial-img" alt="">
+                                <h3>John Larson</h3>
+                                <h4>Entrepreneur</h4>
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i> Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse
+                                    veniam culpa fore nisi cillum quid.
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End testimonial item -->
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+        </div>
+    </section>
+    <!-- End Testimonials Section -->
+
+    <!-- ======= Templates Section ======= 
     <section id="templates" class="portfolio">
       <div class="container">
 
@@ -403,250 +402,250 @@
       </div>
     </section><!-- End Template Section -->
 
-        <!-- ======= Team Section ======= -->
-        <section id="team" class="team section-bg">
-            <div class="container">
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team section-bg">
+        <div class="container">
 
-                <div class="section-title" data-aos="fade-up">
-                    <h2>Team</h2>
-                    <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem</p>
+            <div class="section-title" data-aos="fade-up">
+                <h2>Team</h2>
+                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem</p>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="member" data-aos="fade-up" data-aos-delay="100">
+                        <div class="member-img">
+                            <img src="{% static 'home_page/img/team/team-1.jpg' %}" class="img-fluid" alt="">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Walter White</h4>
+                            <span>Chief Executive Officer</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="row">
-
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="100">
-                            <div class="member-img">
-                                <img src="{% static 'home_page/img/team/team-1.jpg' %}" class="img-fluid" alt="">
-                                <div class="social">
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                            <div class="member-info">
-                                <h4>Walter White</h4>
-                                <span>Chief Executive Officer</span>
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="member" data-aos="fade-up" data-aos-delay="200">
+                        <div class="member-img">
+                            <img src="{% static 'home_page/img/team/team-2.jpg' %}" class="img-fluid" alt="">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="200">
-                            <div class="member-img">
-                                <img src="{% static 'home_page/img/team/team-2.jpg' %}" class="img-fluid" alt="">
-                                <div class="social">
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                            <div class="member-info">
-                                <h4>Sarah Jhonson</h4>
-                                <span>Product Manager</span>
-                            </div>
+                        <div class="member-info">
+                            <h4>Sarah Jhonson</h4>
+                            <span>Product Manager</span>
                         </div>
                     </div>
+                </div>
 
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="300">
-                            <div class="member-img">
-                                <img src="{% static 'home_page/img/team/team-3.jpg' %}" class="img-fluid" alt="">
-                                <div class="social">
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                            <div class="member-info">
-                                <h4>William Anderson</h4>
-                                <span>CTO</span>
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="member" data-aos="fade-up" data-aos-delay="300">
+                        <div class="member-img">
+                            <img src="{% static 'home_page/img/team/team-3.jpg' %}" class="img-fluid" alt="">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="400">
-                            <div class="member-img">
-                                <img src="{% static 'home_page/img/team/team-4.jpg' %}" class="img-fluid" alt="">
-                                <div class="social">
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                            <div class="member-info">
-                                <h4>Amanda Jepson</h4>
-                                <span>Accountant</span>
-                            </div>
+                        <div class="member-info">
+                            <h4>William Anderson</h4>
+                            <span>CTO</span>
                         </div>
                     </div>
+                </div>
 
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="member" data-aos="fade-up" data-aos-delay="400">
+                        <div class="member-img">
+                            <img src="{% static 'home_page/img/team/team-4.jpg' %}" class="img-fluid" alt="">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Amanda Jepson</h4>
+                            <span>Accountant</span>
+                        </div>
+                    </div>
                 </div>
 
             </div>
-        </section>
-        <!-- End Team Section -->
+
+        </div>
+    </section>
+    <!-- End Team Section -->
 
 
 
-        <!-- ======= F.A.Q Section ======= -->
-        <section id="faq" class="faq">
-            <div class="container">
+    <!-- ======= F.A.Q Section ======= -->
+    <section id="faq" class="faq">
+        <div class="container">
 
-                <div class="section-title" data-aos="fade-up">
-                    <h2>Frequently Asked Questions</h2>
-                </div>
-
-                <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-                    <div class="col-lg-5">
-                        <i class="ri-question-line"></i>
-                        <h4>Why use portfolio maker?</h4>
-                    </div>
-                    <div class="col-lg-7">
-                        <p>
-                            Portfolio maker provide resume, portfolio and resume scanner at one place.
-                        </p>
-                    </div>
-                </div>
-                <!-- End F.A.Q Item-->
-
-                <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-                    <div class="col-lg-5">
-                        <i class="ri-question-line"></i>
-                        <h4>Which types of templates available in portfolio maker?</h4>
-                    </div>
-                    <div class="col-lg-7">
-                        <p>
-                            There are three types of template available here
-                        </p>
-                        <p>1. Portfolio Templates</p>
-                        <p>2. Resume template</p>
-                        <p>3. ATS resume template</p>
-                    </div>
-                </div>
-                <!-- End F.A.Q Item-->
-
-                <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
-                    <div class="col-lg-5">
-                        <i class="ri-question-line"></i>
-                        <h4>How to create portfolio in portfolio maker?</h4>
-                    </div>
-                    <div class="col-lg-7">
-                        <p>
-                            Registration and login must required before portfolio process being start, after that you need to select the appropiat template and fill the form.
-                        </p>
-                    </div>
-                </div>
-                <!-- End F.A.Q Item-->
-
-                <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
-                    <div class="col-lg-5">
-                        <i class="ri-question-line"></i>
-                        <h4>How many methods are available for payments</h4>
-                    </div>
-                    <div class="col-lg-7">
-                        <p>
-                            1. UPI<br>2. Card<br>&nbsp;&nbsp;a. Credit<br>&nbsp;&nbsp;b. Debit
-                        </p>
-                    </div>
-                </div>
-                <!-- End F.A.Q Item-->
-
-                <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="500">
-                    <div class="col-lg-5">
-                        <i class="ri-question-line"></i>
-                        <h4>You want more information?</h4>
-                    </div>
-                    <div class="col-lg-7">
-                        <p>
-                            Then visit our FAQS page by clicking on this ==>> <a href="FAQ.html">More info</a>
-                        </p>
-                    </div>
-                </div>
-                <!-- End F.A.Q Item-->
-
+            <div class="section-title" data-aos="fade-up">
+                <h2>Frequently Asked Questions</h2>
             </div>
-        </section>
-        <!-- End F.A.Q Section -->
 
-        <!-- ======= Contact Section ======= -->
-        <section id="contact" class="contact">
-            <div class="container">
-
-                <div class="section-title" data-aos="fade-up">
-                    <h2>Contact Us</h2>
+            <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-5">
+                    <i class="ri-question-line"></i>
+                    <h4>Why use portfolio maker?</h4>
                 </div>
+                <div class="col-lg-7">
+                    <p>
+                        Portfolio maker provide resume, portfolio and resume scanner at one place.
+                    </p>
+                </div>
+            </div>
+            <!-- End F.A.Q Item-->
 
-                <div class="row">
+            <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-lg-5">
+                    <i class="ri-question-line"></i>
+                    <h4>Which types of templates available in portfolio maker?</h4>
+                </div>
+                <div class="col-lg-7">
+                    <p>
+                        There are three types of template available here
+                    </p>
+                    <p>1. Portfolio Templates</p>
+                    <p>2. Resume template</p>
+                    <p>3. ATS resume template</p>
+                </div>
+            </div>
+            <!-- End F.A.Q Item-->
 
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="contact-about">
-                            <h3>Portfolio Maker</h3>
-                            <p>Cras fermentum odio eu feugiat. Justo eget magna fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
-                            <div class="social-links">
-                                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-                            </div>
+            <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-lg-5">
+                    <i class="ri-question-line"></i>
+                    <h4>How to create portfolio in portfolio maker?</h4>
+                </div>
+                <div class="col-lg-7">
+                    <p>
+                        Registration and login must required before portfolio process being start, after that you need to select the appropiat template and fill the form.
+                    </p>
+                </div>
+            </div>
+            <!-- End F.A.Q Item-->
+
+            <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+                <div class="col-lg-5">
+                    <i class="ri-question-line"></i>
+                    <h4>How many methods are available for payments</h4>
+                </div>
+                <div class="col-lg-7">
+                    <p>
+                        1. UPI<br>2. Card<br>&nbsp;&nbsp;a. Credit<br>&nbsp;&nbsp;b. Debit
+                    </p>
+                </div>
+            </div>
+            <!-- End F.A.Q Item-->
+
+            <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="500">
+                <div class="col-lg-5">
+                    <i class="ri-question-line"></i>
+                    <h4>You want more information?</h4>
+                </div>
+                <div class="col-lg-7">
+                    <p>
+                        Then visit our FAQS page by clicking on this ==>> <a href="FAQ.html">More info</a>
+                    </p>
+                </div>
+            </div>
+            <!-- End F.A.Q Item-->
+
+        </div>
+    </section>
+    <!-- End F.A.Q Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+        <div class="container">
+
+            <div class="section-title" data-aos="fade-up">
+                <h2>Contact Us</h2>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="contact-about">
+                        <h3>Portfolio Maker</h3>
+                        <p>Cras fermentum odio eu feugiat. Justo eget magna fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+                        <div class="social-links">
+                            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
-                        <div class="info">
-                            <div>
-                                <i class="ri-map-pin-line"></i>
-                                <p>Vartual</p>
-                            </div>
-
-                            <div>
-                                <i class="ri-mail-send-line"></i>
-                                <p>nimisha.mavar01@gmail.com</p>
-                            </div>
-
-                            <div>
-                                <i class="ri-phone-line"></i>
-                                <p>+1 5589 55488 55s</p>
-                            </div>
-
+                <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+                    <div class="info">
+                        <div>
+                            <i class="ri-map-pin-line"></i>
+                            <p>Vartual</p>
                         </div>
-                    </div>
 
-                    <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
-                        <form action="contact1" method="post" role="form" class="php-email-form">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-                            </div>
-                            <div class="my-3">
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Your message has been sent. Thank you!</div>
-                            </div>
-                            <div class="text-center"><button type="submit">Send Message</button></div>
-                        </form>
-                    </div>
+                        <div>
+                            <i class="ri-mail-send-line"></i>
+                            <p>nimisha.mavar01@gmail.com</p>
+                        </div>
 
+                        <div>
+                            <i class="ri-phone-line"></i>
+                            <p>+1 5589 55488 55s</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
+                    <form action="contact1" method="post" role="form" class="php-email-form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                        </div>
+                        <div class="my-3">
+                            <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                        </div>
+                        <div class="text-center"><button type="submit">Send Message</button></div>
+                    </form>
                 </div>
 
             </div>
-        </section>
-        <!-- End Contact Section -->
 
-    </main>
-    <!-- End #main -->
+        </div>
+    </section>
+    <!-- End Contact Section -->
+
+</main>
+<!-- End #main -->
 {% endblock %}
