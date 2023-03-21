@@ -42,8 +42,8 @@ class Personal_info(models.Model):
 #educaion model
 class Education(models.Model):
     Education_id=models.IntegerField(primary_key=True)
-    Resume=models.ForeignKey(Resume,default=0,on_delete=models.CASCADE)
-    Portfolio=models.ForeignKey(Portfolio,default=0,on_delete=models.CASCADE)
+    Resume=models.ForeignKey(Resume,null=True,on_delete=models.CASCADE)
+    Portfolio=models.ForeignKey(Portfolio,null=True,on_delete=models.CASCADE)
     Institute=models.CharField(max_length=50)
     Degree=models.CharField(max_length=50)
     Start_year=models.CharField(max_length=10)
