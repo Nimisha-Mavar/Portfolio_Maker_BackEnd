@@ -53,13 +53,14 @@ class Education(models.Model):
 #Experience model
 class Experience(models.Model):
     Experience_id=models.IntegerField(primary_key=True)
-    Resume=models.ForeignKey(Resume,default=0,on_delete=models.CASCADE)
-    Portfolio=models.ForeignKey(Portfolio,default=0,on_delete=models.CASCADE)
+    Resume=models.ForeignKey(Resume,null=True,on_delete=models.CASCADE)
+    Portfolio=models.ForeignKey(Portfolio,null=True,on_delete=models.CASCADE)
     Company=models.CharField(max_length=50)
     Role=models.CharField(max_length=30)
     Start_year=models.CharField(max_length=10)
     End_year=models.CharField(max_length=10,default='no')
     Current=models.BooleanField(default=False)
+    Description=models.TextField(default="NO")
 
 #Project model
 class Project(models.Model):

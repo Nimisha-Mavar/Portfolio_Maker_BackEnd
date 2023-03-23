@@ -123,7 +123,7 @@
                             Start Year : {{i.Start_year}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Start Year : {{i.End_year}}
+                            End Year : {{i.End_year}}
                             {% csrf_token %}
                             <input type="hidden" value="Portfolio" id="tcat">
                             <input type="hidden" value="{{i.Education_id}}" id="euid">
@@ -156,9 +156,6 @@
                           <input type="taxt" class="form-control" placeholder="Start year" id="syear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
                           <label for="iname">Start Year</label>
                         </div>
-                        <div class="col form-floating mb-3">
-                          <input type="radio" value="True" id="curnt" name="curnt">Present
-                        </div>
                         <div class="col form-floating">
                           <input type="taxt" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030">
                           <label for="degree">End Year</label>
@@ -184,32 +181,35 @@
             <div class="row justify-content-center">
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                {% for i in ex %}
                   <div id="d1">
                     <div class="row">
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Company Name : Google
+                            Company Name : {{i.Company}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Role Name : Web Developer
+                            Role Name : {{i.Role}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Start Year : 2019
+                            Start Year : {{i.Start_year}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Start Year : 2022
+                            End Year : {{i.End_year}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Discription : Creating website layout/user interfaces by using standard HTML/CSS practices
+                            Discription : {{i.Description}}
                         </div>
                         <div class="col-lg-6">
-                          <button class="btn=sm" id="button1">delete</button>
+                          <button class="btn=sm" id="button1">delete{{i.Experience_id}}</button>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
                 <br>
                   <h1 class="title fs-2">Experience</h1>
+                  <h2 id="msg3" class="bg-warning"></h2>
                   <hr> 
-                    <form>  
+                    <form id="Experience">  
                       {% csrf_token %}            
                       <div class="row">
                         <div class="form-floating mb-3 mt-3">
@@ -222,11 +222,11 @@
                           <br>
                         </div>
                         <div class="col form-floating mb-3">
-                          <input type="number" class="form-control" placeholder="Start year" id="syear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
+                          <input type="text" class="form-control" placeholder="Start year" id="syear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
                           <label for="iname">Start Year</label>
                         </div>
                         <div class="col form-floating">
-                          <input type="number" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
+                          <input type="text" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
                           <label for="degree">End Year</label>
                         </div>  
                         <div class="form-floating mb-3 mt-3">
@@ -238,7 +238,7 @@
                             <button id="button1" class="float-start">Add</button>
                           </div>  
                           <div class="col-lg-6">
-                            <button id="button1">Save</button>
+                            <input id="button1" value="save" type="submit">
                           </div>
                         </div>                 
                       </div>
@@ -562,7 +562,6 @@
                 iname:$('#iname').val(),
                 degree:$('#degree').val(),
                 syear:$('#syear').val(),
-                curnt:$('#curnt').val(),
                 eyear:$('#eyear').val(),
                 csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
                 
@@ -591,6 +590,32 @@
             success: function (data) {
                 // alert the error if any error occured
                 $("#msg2").html(data)
+                
+            }
+        })
+    })
+
+     //for Exeperience
+    $(document).on('submit','#Experience',function(e){
+        e.preventDefault();
+        $.ajax({
+            type:'POST',
+            url:"{% url 'Experience_data' %}",
+            data:{
+                port_id:$('#pid').val(),
+                catt:$('#catt').val(),
+                cname:$('#cname').val(),
+                rname:$('#rname').val(),
+                syear:$('#syear').val(),
+                eyear:$('#eyear').val(),
+                des:$('#des').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                
+            },
+           
+            success: function (data) {
+                // alert the error if any error occured
+                $("#msg3").html(data)
                 
             }
         })

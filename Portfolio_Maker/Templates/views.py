@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Detail
-from Services.models import Portfolio,Resume,Education
+from Services.models import *
 from django.contrib.auth.models import User,auth
 # Create your views here.
 def Resume_list(request):
@@ -98,9 +98,11 @@ def edit(request):
     cat=request.POST['Ccat']
     pid=request.POST['port_id']
     edu=Education.objects.filter(Portfolio_id=pid)
+    ex=Experience.objects.filter(Portfolio_id=pid)
     contaxt={
          'portid':pid,
-         'edu':edu
+         'edu':edu,
+         'ex':ex
     }
     if cat=="Portfolio":
         return render(request,'Portfolio_form.html',contaxt)

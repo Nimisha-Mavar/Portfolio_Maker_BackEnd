@@ -1,5 +1,5 @@
 from django.shortcuts import render,HttpResponse
-from .models import Personal_info,Education
+from .models import Personal_info,Education,Experience
 
 # Create your views here.
 # Personal info function
@@ -34,7 +34,6 @@ def Personal(request):
                 obj.save()
                 return HttpResponse('Data stored successfully')
         else:
-            print("is in else part")
             res_id=request.POST['res_id']
             p_id=Personal_info.objects.only('Personal_id').count()
             p_id=p_id+1
@@ -53,24 +52,22 @@ def Education_data(request):
         degree=request.POST['degree']
         syear=request.POST['syear']
         eyear=request.POST['eyear']
-        prsnt=request.POST['curnt']
         if cat=="Portfolio":
-            eid=Education.objects.only('Education_id').count()
-            eid=eid+1
-            edu=Education.objects.filter(Portfolio_id=port_id)
-            context={
-                    'edu':edu
-                }
-            if prsnt == "True":
-                obj=Education(Education_id=eid,Portfolio_id=port_id,Institute=iname,Degree=degree,Start_year=syear,Current=prsnt)
-                obj.save()
-                return HttpResponse("Data stored successfully...",context)
+            if Education.objects.filter(Portfolio_id=port_id,Institute=iname,Degree=degree).exists():
+                return HttpResponse("Record exist....")
             else:
+                eid=Education.objects.only('Education_id').count()
+                eid=eid+1
                 obj=Education(Education_id=eid,Portfolio_id=port_id,Institute=iname,Degree=degree,Start_year=syear,End_year=eyear)
                 obj.save()
-                return HttpResponse("Data stored successfully...",context)
+                return HttpResponse("Data stored successfully...")
         else:
-            return HttpResponse("Resume")
+            res_id=request.POST['res_id']
+            eid=Education.objects.only('Education_id').count()
+            eid=eid+1
+            obj=Education(Education_id=eid,Resume_id=res_id,Institute=iname,Degree=degree,Start_year=syear,End_year=eyear)
+            obj.save()
+            return HttpResponse("Data stored successfully...")
     else:
         return HttpResponse("Error")
 
@@ -86,3 +83,32 @@ def Education_del(request):
             obj=Education.objects.get(Education_id=Eu_id)
             obj.delete()
             return HttpResponse("Record deleted successfully")
+
+#foe experience
+def Experience_data(request):
+    if request.method == 'POST': 
+        port_id=request.POST['port_id']
+        cat=request.POST['catt']
+        cname=request.POST['cname']
+        rname=request.POST['rname']
+        syear=request.POST['syear']
+        eyear=request.POST['eyear']
+        des=request.POST['des']
+        if cat=="Portfolio":
+            if Experience.objects.filter(Portfolio_id=port_id,Company=cname,Role=rname).exists():
+               return HttpResponse("Record Exist...")
+            else:
+                eid=Experience.objects.only('Experience_id').count()
+                eid=eid+1
+                obj=Experience(Experience_id=eid,Portfolio_id=port_id,Company=cname,Role=rname,Start_year=syear,End_year=eyear,Description=des)
+                obj.save()
+                return HttpResponse("Data stored successfully...")
+        else:
+            res_id=request.POST['res_id']
+            eid=Experience.objects.only('Experience_id').count()
+            eid=eid+1
+            obj=Experience(Experience_id=eid,Resume_id=res_id,Company=cname,Role=rname,Start_year=syear,End_year=eyear,Description=des)
+            obj.save()
+            return HttpResponse("Data stored successfully...")
+    else:
+        return HttpResponse("Error")
