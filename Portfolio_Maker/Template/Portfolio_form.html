@@ -333,44 +333,49 @@
             <div class="row justify-content-center">
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                  {% for i in sk %}
                   <div id="d1">
                     <div class="row">
                         <div class="col-lg-4" style="padding-left:20px;">
-                            Skill Name : HTML
+                            Skill Name : {{i.Name}}
                         </div>
                         <div class="col-lg-4" style="padding-left:20px;">
-                            Skill level : Expert
+                            Skill level : {{i.Level}}
                         </div>                   
                     </div>
-                </div>
+                </div><br>
+                  {% endfor %}
                 <br>
                   <h1 class="title fs-2">Skill</h1>
+                  <h2 id="msg5" class="bg-warning"></h2>
                   <hr>    
-                    <form>
+                    <form id="Skill">
                       {% csrf_token %}            
                       <div class="row">
                         <div class="form-floating mb-3 mt-3">
+                          <input type="hidden" value="{{portid}}" id="pid">
+                          <input type="hidden" value="Portfolio" id="catt">
                           <input type="text" class="form-control" id="sname" placeholder="Skill name" name="sname" required> 
                           <label for="sname">Skill Name</label>
                         </div>
                         <div class="form-floating mb-3 mt-3">
-                          <select name="working" id="work" class="form-control">
-                            <option value="">Skill level</option>
-                            <option value="yes">Average</option>
-                            <option value="no">Good</option>
-                            <option value="no">Very Good</option>
-                            <option value="no">Better</option>
-                            <option value="no">Expert</option>
+                          <select name="working" id="level" class="form-control" required>
+                            <option>Skill level</option>
+                            <option value="Average">Average</option>
+                            <option value="Good">Good</option>
+                            <option value="Very Good">Very Good</option>
+                            <option value="Better">Better</option>
+                            <option value="Expert">Expert</option>
                           </select>                                                           
                         </div>
                         <div class="row">
                           <div class="col-lg-6">
-                            <button id="button1" class="float-start">Add</button>
+                            <input id="button1" class="float-start" value="Clear" type="button" onclick="Skill_reset()">
                           </div>  
                           <div class="col-lg-6">
-                            <button id="button1">Save</button>
+                            <input id="button1" type="submit" value="Save">
                           </div>
-                        </div>                
+                        </div>                 
                       </div>
                     </form>
                   </div>
@@ -384,57 +389,57 @@
             <div class="row justify-content-center">
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                {% for i in awd %}
                   <div id="d1">
                     <div class="row">
                         <div class="col-lg-6" style="padding-left:20px;">
-                            AWard Name : Best Programmer
+                            AWard Name : {{i.Title}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Institute Name : Amazon
+                            Institute Name : {{i.Institute}}
                         </div> 
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Year : 2020
+                            Year : {{i.Year}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Description : won the best programmer award in 2020 at amazon
+                            Description : {{i.Description}}
                         </div>
                         <div class="col-lg-6">
-                        </div>
-                        <div class="col-lg-6">
-                          <button class="btn=sm" id="button1">delete</button>
                         </div>
                     </div>
-                </div>
+                </div><br>
+                {% endfor %}
                 <br>
                   <h1 class="title fs-2">Award</h1>
+                  <h2 id="msg6" class="bg-warning"></h2>
                   <hr> 
-                    <form>
+                    <form id="Award">
                       {% csrf_token %}               
                       <div class="row">
                         <div class="form-floating mb-3 mt-3">
-                          <input type="text" class="form-control" id="atitle" placeholder="Award title" name="atitle" required> 
+                          <input type="text" class="form-control" id="Atitle" placeholder="Award title" name="atitle" required> 
                           <label for="atitle">Award Title</label>
                         </div>
                         <div class="form-floating mb-3 mt-3">
-                          <input type="text" class="form-control" id="inname" placeholder="Institute Name" name="inname" required> 
+                          <input type="text" class="form-control" id="intname" placeholder="Institute Name" name="inname" required> 
                           <label for="inname">Institute Name</label>
                         </div> 
                         <div class="form-floating mb-3 mt-3">
-                          <input type="number" class="form-control" id="year" placeholder="year" name="year" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required> 
+                          <input type="number" class="form-control" id="Ayear" placeholder="year" name="year" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required> 
                           <label for="year">Year</label>
                         </div>    
                         <div class="form-floating mb-3 mt-3">
-                          <input type="text" class="form-control" id="des" placeholder="description" name="des" required> 
+                          <input type="text" class="form-control" id="Ades" placeholder="description" name="des" required> 
                           <label for="des">Description</label>
                         </div>  
                         <div class="row">
                           <div class="col-lg-6">
-                            <button id="button1" class="float-start">Add</button>
+                            <input id="button1" class="float-start" value="Clear" type="button" onclick="Award_reset()">
                           </div>  
                           <div class="col-lg-6">
-                            <button id="button1">Save</button>
+                            <input id="button1" type="submit" value="Save">
                           </div>
-                        </div>    
+                        </div>   
                         </div>
                     </form>
                   </div>
@@ -445,32 +450,37 @@
             <br><br><br>
             
             <!--==>Social media form<==-->
-            <div class="row justify-content-center">s
+            <div class="row justify-content-center">
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                {% for i in scl %}
                   <div id="d1">
                     <div class="row">
-                        <div class="col-lg-6" style="padding-left:20px;">
-                            Account Name : Linkedin
+                        <div class="col-lg-12" style="padding-left:20px;">
+                            Account Name : {{i.Name}}
                         </div>
-                        <div class="col-lg-6" style="padding-left:20px;">
-                            URL : https://www.linkedin.com/in/krishna-mavar-04a000250/
+                        <div class="col-lg-12" style="padding-left:20px;">
+                            URL : {{i.Url}}
                         </div> 
-                        <div class="col-lg-6"></div>
-                        <div class="col-lg-6">
-                          <button class="btn=sm" id="button1">delete</button>
-                        </div>
                     </div>
-                </div>
+                </div><br>
+                {% endfor %}
                 <br>
                   <h1 class="title fs-2">Social Media Accounts</h1>
+                  <h2 id="msg7" class="bg-warning"></h2>
                   <hr>    
-                    <form>
+                    <form id="Social_Media">
                       {% csrf_token %}            
                       <div class="row">
                         <div class="form-floating mb-3 mt-3">
-                          <input type="text" class="form-control" id="aname" placeholder="account name" name="aname" required> 
-                          <label for="ptitle">Account Name</label>
+                          <select name="working" id="snm" class="form-control" required>
+                            <option>Accounts</option>
+                            <option value="Twiter">Twiter</option>
+                            <option value="Facebook">Facebook</option>
+                            <option value="Instagram">Instagram</option>
+                            <option value="Linkedin">Linkedin</option>
+                            <option value="Github">Github</option>
+                          </select>                                                           
                         </div>
                         <div class="form-floating mb-3 mt-3">
                           <input type="text" class="form-control" id="url" placeholder="URL" name="des" name="url" required> 
@@ -478,12 +488,12 @@
                         </div>  
                         <div class="row">
                           <div class="col-lg-6">
-                            <button id="button1" class="float-start">Add</button>
+                            <input id="button1" class="float-start" value="Clear" type="button" onclick="Social_reset()">
                           </div>  
                           <div class="col-lg-6">
-                            <button id="button1">Save</button>
+                            <input id="button1" type="submit" value="Save">
                           </div>
-                        </div>              
+                        </div>               
                       </div>
                     </form>
                   </div>
@@ -507,13 +517,25 @@
     <script>
 
     function Educat_reset() {
-    document.getElementById("Education").reset();
+      document.getElementById("Education").reset();
     }
     function Exp_reset() {
-    document.getElementById("Experience").reset();
+      document.getElementById("Experience").reset();
     }
     function Pro_reset() {
-    document.getElementById("Project").reset();
+      document.getElementById("Project").reset();
+    }
+    function Skill_reset()
+    {
+      document.getElementById("Skill").reset();
+    }
+    function Award_reset()
+    {
+      document.getElementById("Award").reset();
+    }
+    function Social_reset()
+    {
+      document.getElementById("Social_Media").reset();
     }
     //for Persnol info
     $(document).on('submit','#Personal_info',function(e){
@@ -636,6 +658,69 @@
             success: function (data) {
                 // alert the error if any error occured
                 $("#msg4").html(data)
+                
+            }
+        })
+    })
+
+     //For Skill
+    $(document).on('submit','#Skill',function(e){
+        e.preventDefault();
+        $.ajax({
+            type:'POST',
+            url:"{% url 'Skill_data' %}",
+            data:{
+                port_id:$('#pid').val(),
+                catt:$('#catt').val(),
+                sk_nm:$('#sname').val(),
+                lvl:$('#level').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success: function (data) {
+                // alert the error if any error occured
+                $("#msg5").html(data)
+                
+            }
+        })
+    })
+
+    //for Award
+    $(document).on('submit','#Award',function(e){
+        e.preventDefault();
+        $.ajax({
+            type:'POST',
+            url:"{% url 'Award_data' %}",
+            data:{
+                port_id:$('#pid').val(),
+                ttl:$('#Atitle').val(),
+                ints:$('#intname').val(),
+                year:$('#Ayear').val(),
+                des:$('#Ades').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success: function (data) {
+                // alert the error if any error occured
+                $("#msg6").html(data)
+                
+            }
+        })
+    })
+
+    //For Social Media
+    $(document).on('submit','#Social_Media',function(e){
+        e.preventDefault();
+        $.ajax({
+            type:'POST',
+            url:"{% url 'Social_data' %}",
+            data:{
+                port_id:$('#pid').val(),
+                snm:$('#snm').val(),
+                url:$('#url').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success: function (data) {
+                // alert the error if any error occured
+                $("#msg7").html(data)
                 
             }
         })

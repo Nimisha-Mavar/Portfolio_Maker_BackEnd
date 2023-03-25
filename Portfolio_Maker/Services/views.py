@@ -1,5 +1,5 @@
 from django.shortcuts import render,HttpResponse
-from .models import Personal_info,Education,Experience,Project
+from .models import Personal_info,Education,Experience,Project,Skill,Award,Social_Media
 
 # Create your views here.
 # Personal info function
@@ -116,7 +116,6 @@ def Experience_data(request):
 #for Project
 def Project_data(request):
     if request.method == 'POST': 
-        port_id=request.POST['port_id']
         cat=request.POST['catt']
         title=request.POST['title']
         curnt=request.POST['curnt']
@@ -125,6 +124,7 @@ def Project_data(request):
         des=request.POST['des']
         print(curnt)
         if cat=="Portfolio":
+            port_id=request.POST['port_id']
             if Project.objects.filter(Portfolio_id=port_id,Title=title).exists():
                return HttpResponse("Record Exist...")
             else:
@@ -146,3 +146,57 @@ def Project_data(request):
             return HttpResponse("Data stored successfully...")
     else:
         return HttpResponse("GET method called...")
+    
+def Skill_data(request):
+    if request.method == 'POST':
+        cat=request.POST['catt']
+        sname=request.POST['sk_nm']
+        lvl=request.POST['lvl']
+        if cat=="Portfolio":
+           port_id=request.POST['port_id']
+           if Skill.objects.filter(Portfolio_id=port_id,Name=sname).exists():
+               return HttpResponse("Record Exist...")
+           else:
+                sid=Skill.objects.only('Skill_id').count()
+                sid=sid+1 
+                obj=Skill(Skill_id=sid,Portfolio_id=port_id,Name=sname,Level=lvl)
+                obj.save()
+                return HttpResponse("Data stored successfully...")
+        else:
+            return HttpResponse("Resumee")
+    else:
+       return HttpResponse("GET method called...")
+
+def Award_data(request):
+    if request.method == 'POST':
+        port_id=request.POST['port_id']
+        title=request.POST['ttl']
+        institute=request.POST['ints']
+        year=request.POST['year']
+        des=request.POST['des']
+        if Award.objects.filter(Portfolio_id=port_id,Title=title,Institute=institute).exists():
+            return HttpResponse("Record Exist...")
+        else:
+            aid=Award.objects.only('Award_id').count()
+            aid=aid+1 
+            obj=Award(Award_id=aid,Portfolio_id=port_id,Title=title,Institute=institute,Year=year,Description=des)
+            obj.save()
+            return HttpResponse("Data stored successfully...")
+    else:
+       return HttpResponse("GET method called...")  
+    
+def Social_data(request):
+    if request.method == 'POST':
+        act=request.POST['snm']
+        url=request.POST['url']
+        port_id=request.POST['port_id']
+        if Social_Media.objects.filter(Portfolio_id=port_id,Name=act).exists():
+            return HttpResponse("Record Exist...")
+        else:
+            sid=Social_Media.objects.only('Social_id').count()
+            sid=sid+1 
+            obj=Social_Media(Social_id=sid,Portfolio_id=port_id,Name=act,Url=url)
+            obj.save()
+            return HttpResponse("Data stored successfully...")
+    else:
+       return HttpResponse("GET method called...")

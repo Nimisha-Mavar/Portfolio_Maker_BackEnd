@@ -76,8 +76,8 @@ class Project(models.Model):
 #Skill model
 class Skill(models.Model):
     Skill_id=models.IntegerField(primary_key=True)
-    Resume=models.ForeignKey(Resume,default=0,on_delete=models.CASCADE)
-    Portfolio=models.ForeignKey(Portfolio,default=0,on_delete=models.CASCADE)
+    Resume=models.ForeignKey(Resume,null=True,on_delete=models.CASCADE)
+    Portfolio=models.ForeignKey(Portfolio,null=True,on_delete=models.CASCADE)
     Name=models.CharField(max_length=30)
     Level=models.CharField(max_length=20)
 
@@ -88,7 +88,7 @@ class Award(models.Model):
     Title=models.CharField(max_length=50)
     Institute=models.CharField(max_length=50)
     Year=models.CharField(max_length=10)
-    Descriotion=models.TextField(null=True)
+    Description=models.TextField(null=True)
 
 class Social_Media(models.Model):
     Social_id=models.IntegerField(primary_key=True)

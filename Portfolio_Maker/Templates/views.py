@@ -102,23 +102,29 @@ def edit(request):
         ex=Experience.objects.filter(Portfolio_id=idd)
         proj=Project.objects.filter(Portfolio_id=idd)
         skill=Skill.objects.filter(Portfolio_id=idd)
+        award=Award.objects.filter(Portfolio_id=idd)
+        social=Social_Media.objects.filter(Portfolio_id=idd)
         contaxt={
             'portid':idd,
             'edu':edu,
             'ex':ex,
             'pro':proj,
-            'sk':skill
+            'sk':skill,
+            'awd':award,
+            'scl':social
         }
         return render(request,'Portfolio_form.html',contaxt)
     else:
         edu=Education.objects.filter(Resume_id=idd)
         ex=Experience.objects.filter(Resume_id=idd)
         proj=Project.objects.filter(Resume_id=idd)
+        skill=Skill.objects.filter(Portfolio_id=idd)
         contaxt={
             'resid':idd,
             'edu':edu,
             'ex':ex,
-            'pro':proj
+            'pro':proj,
+            'sk':skill
         }
         return render(request,'Resume_form.html')
     
