@@ -96,18 +96,29 @@ def select_dlt(request):
 
 def edit(request):
     cat=request.POST['Ccat']
-    pid=request.POST['port_id']
-    edu=Education.objects.filter(Portfolio_id=pid)
-    ex=Experience.objects.filter(Portfolio_id=pid)
-    proj=Project.objects.filter(Portfolio_id=pid)
-    contaxt={
-         'portid':pid,
-         'edu':edu,
-         'ex':ex,
-         'pro':proj
-    }
+    idd=request.POST['id']
     if cat=="Portfolio":
+        edu=Education.objects.filter(Portfolio_id=idd)
+        ex=Experience.objects.filter(Portfolio_id=idd)
+        proj=Project.objects.filter(Portfolio_id=idd)
+        skill=Skill.objects.filter(Portfolio_id=idd)
+        contaxt={
+            'portid':idd,
+            'edu':edu,
+            'ex':ex,
+            'pro':proj,
+            'sk':skill
+        }
         return render(request,'Portfolio_form.html',contaxt)
     else:
+        edu=Education.objects.filter(Resume_id=idd)
+        ex=Experience.objects.filter(Resume_id=idd)
+        proj=Project.objects.filter(Resume_id=idd)
+        contaxt={
+            'resid':idd,
+            'edu':edu,
+            'ex':ex,
+            'pro':proj
+        }
         return render(request,'Resume_form.html')
     

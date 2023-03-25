@@ -254,19 +254,28 @@
                   <div id="d1">
                     <div class="row">
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Project Title : Portfolio Maker
+                            Project Title : {{i.Title}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Currently working : yes
+                        {% if i.Current %}
+                            Currently working : Yes
+                        {% else %}
+                        {% endif %}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Start Year : 2022
+                            Start Year : {{i.End_year}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
+                        {% if i.Current %}
+                        {% else %}
                             End Year : 2023
+                        {% endif %}
+                        </div>
+                        <div class="col-lg-6" style="padding-left:20px;">
+                            Description : {{i.Description}}
                         </div>
                     </div>
-                </div>
+                </div><br>
                 {% endfor %}
                 <br>
                   <h1 class="title fs-2">Project</h1>
@@ -331,10 +340,7 @@
                         </div>
                         <div class="col-lg-4" style="padding-left:20px;">
                             Skill level : Expert
-                        </div>   
-                        <div class="col-lg-4">
-                            <button class="btn=sm" id="button1">delete</button>
-                        </div>                       
+                        </div>                   
                     </div>
                 </div>
                 <br>
