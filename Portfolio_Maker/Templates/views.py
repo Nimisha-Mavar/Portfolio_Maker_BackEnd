@@ -99,10 +99,12 @@ def edit(request):
     pid=request.POST['port_id']
     edu=Education.objects.filter(Portfolio_id=pid)
     ex=Experience.objects.filter(Portfolio_id=pid)
+    proj=Project.objects.filter(Portfolio_id=pid)
     contaxt={
          'portid':pid,
          'edu':edu,
-         'ex':ex
+         'ex':ex,
+         'pro':proj
     }
     if cat=="Portfolio":
         return render(request,'Portfolio_form.html',contaxt)

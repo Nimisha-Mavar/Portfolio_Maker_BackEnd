@@ -47,7 +47,7 @@ class Education(models.Model):
     Institute=models.CharField(max_length=50)
     Degree=models.CharField(max_length=50)
     Start_year=models.CharField(max_length=10)
-    End_year=models.CharField(max_length=10,default='no')
+    End_year=models.CharField(max_length=10,null=True)
     Current=models.BooleanField(default=False)
 
 #Experience model
@@ -58,20 +58,20 @@ class Experience(models.Model):
     Company=models.CharField(max_length=50)
     Role=models.CharField(max_length=30)
     Start_year=models.CharField(max_length=10)
-    End_year=models.CharField(max_length=10,default='no')
+    End_year=models.CharField(max_length=10,null=True)
     Current=models.BooleanField(default=False)
-    Description=models.TextField(default="NO")
+    Description=models.TextField(null=True)
 
 #Project model
 class Project(models.Model):
     Project_id=models.IntegerField(primary_key=True)
-    Resume=models.ForeignKey(Resume,default=0,on_delete=models.CASCADE)
-    Portfolio=models.ForeignKey(Portfolio,default=0,on_delete=models.CASCADE)
+    Resume=models.ForeignKey(Resume,null=True,on_delete=models.CASCADE)
+    Portfolio=models.ForeignKey(Portfolio,null=True,on_delete=models.CASCADE)
     Title=models.CharField(max_length=50)
     Start_year=models.CharField(max_length=10)
-    End_year=models.CharField(max_length=10,default='no')
+    End_year=models.CharField(max_length=10,null=True)
     Current=models.BooleanField(default=False)
-    Description=models.TextField(default="NO")
+    Description=models.TextField(null=True)
 
 #Skill model
 class Skill(models.Model):
@@ -88,7 +88,7 @@ class Award(models.Model):
     Title=models.CharField(max_length=50)
     Institute=models.CharField(max_length=50)
     Year=models.CharField(max_length=10)
-    Descriotion=models.TextField(default="NO")
+    Descriotion=models.TextField(null=True)
 
 class Social_Media(models.Model):
     Social_id=models.IntegerField(primary_key=True)

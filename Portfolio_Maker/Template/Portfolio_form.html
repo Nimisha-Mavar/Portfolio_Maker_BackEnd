@@ -127,7 +127,6 @@
                             {% csrf_token %}
                             <input type="hidden" value="Portfolio" id="tcat">
                             <input type="hidden" value="{{i.Education_id}}" id="euid">
-                            <button class="btn=sm" id="button1" type="submit">delete</button>
                         </div>
                     </div>
                   </div>
@@ -199,9 +198,6 @@
                         <div class="col-lg-6" style="padding-left:20px;">
                             Discription : {{i.Description}}
                         </div>
-                        <div class="col-lg-6">
-                          <button class="btn=sm" id="button1">delete{{i.Experience_id}}</button>
-                        </div>
                     </div>
                 </div>
                 {% endfor %}
@@ -222,11 +218,11 @@
                           <br>
                         </div>
                         <div class="col form-floating mb-3">
-                          <input type="text" class="form-control" placeholder="Start year" id="syear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
+                          <input type="text" class="form-control" placeholder="Start year" id="styear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
                           <label for="iname">Start Year</label>
                         </div>
                         <div class="col form-floating">
-                          <input type="text" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
+                          <input type="text" class="form-control" placeholder="End year" id="enyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
                           <label for="degree">End Year</label>
                         </div>  
                         <div class="form-floating mb-3 mt-3">
@@ -235,7 +231,7 @@
                         </div>
                         <div class="row">
                           <div class="col-lg-6">
-                            <button id="button1" class="float-start">Add</button>
+                            <input id="button1" class="float-start" value="Clear" type="button" onclick="Exp_reset()">
                           </div>  
                           <div class="col-lg-6">
                             <input id="button1" value="save" type="submit">
@@ -254,6 +250,7 @@
             <div class="row justify-content-center">
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                {% for i in pro %}
                   <div id="d1">
                     <div class="row">
                         <div class="col-lg-6" style="padding-left:20px;">
@@ -268,65 +265,50 @@
                         <div class="col-lg-6" style="padding-left:20px;">
                             End Year : 2023
                         </div>
-                        <div class="col-lg-6" style="padding-left:20px;">
-                            Start month : 6
-                        </div>
-                        <div class="col-lg-6" style="padding-left:20px;">
-                            End month : 2
-                        </div>
-                        <div class="col-lg-6" style="padding-left:20px;">
-                            Discription : Project is about to making portfolio and resumes easily
-                        </div>
-                        <div class="col-lg-6">
-                            <button class="btn=sm" id="button1">delete</button>
-                         </div>
                     </div>
                 </div>
+                {% endfor %}
                 <br>
                   <h1 class="title fs-2">Project</h1>
+                  <h2 id="msg4" class="bg-warning"></h2>
                   <hr> 
-                    <form>
+                    <form id="Project">
                       {% csrf_token %}               
                       <div class="row">
                         <div class="form-floating mb-3 mt-3">
+                        <input type="hidden" value="{{portid}}" id="pid">
+                        <input type="hidden" value="Portfolio" id="catt">
                           <input type="text" class="form-control" id="ptitle" placeholder="Project title" name="ptitle" required> 
                           <label for="ptitle">Project Title</label>
                         </div>
                         <div class="form-floating mb-3 mt-3">
+                          <label for="ptitle">Currently working?</label><br>
                           <select name="working" id="work" class="form-control">
-                            <option value="">Currently working?</option>
+                            <option value="">Select</option>
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
                           </select>                                         
                           <br>
                         </div>
                         <div class="col form-floating mb-3">
-                          <input type="number" class="form-control" placeholder="Start year" id="syear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
+                          <input type="text" class="form-control" placeholder="Start year" id="stryear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
                           <label for="iname">Start Year</label>
                         </div>
                         <div class="col form-floating">
-                          <input type="number" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
+                          <input type="text" class="form-control" placeholder="End year" id="endyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030">
                           <label for="degree">End Year</label>
                           <br>
                         </div> 
-                        <div class="col form-floating mb-3">
-                          <input type="number" class="form-control" placeholder="Start month" id="smonth" name="smonth" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
-                          <label for="smonth">Start Month</label>
-                        </div>
-                        <div class="col form-floating">
-                          <input type="number" class="form-control" placeholder="End month" id="emonth" name="emonth" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
-                          <label for="smonth">End Month</label>
-                        </div>
                         <div class="form-floating mb-3 mt-3">
-                          <input type="text" class="form-control" id="des" placeholder="description" name="des" required> 
+                          <input type="text" class="form-control" id="pdes" placeholder="description" name="des" required> 
                           <label for="des">Description</label>
                         </div>  
                         <div class="row">
                           <div class="col-lg-6">
-                            <button id="button1" class="float-start">Add</button>
+                            <input id="button1" class="float-start" value="Clear" type="button" onclick="Pro_reset()">
                           </div>  
                           <div class="col-lg-6">
-                            <button id="button1">Save</button>
+                            <input id="button1" type="submit" value="Save">
                           </div>
                         </div>                
                       </div>
@@ -521,6 +503,12 @@
     function Educat_reset() {
     document.getElementById("Education").reset();
     }
+    function Exp_reset() {
+    document.getElementById("Experience").reset();
+    }
+    function Pro_reset() {
+    document.getElementById("Project").reset();
+    }
     //for Persnol info
     $(document).on('submit','#Personal_info',function(e){
         e.preventDefault();
@@ -606,8 +594,8 @@
                 catt:$('#catt').val(),
                 cname:$('#cname').val(),
                 rname:$('#rname').val(),
-                syear:$('#syear').val(),
-                eyear:$('#eyear').val(),
+                syear:$('#styear').val(),
+                eyear:$('#enyear').val(),
                 des:$('#des').val(),
                 csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
                 
@@ -616,6 +604,32 @@
             success: function (data) {
                 // alert the error if any error occured
                 $("#msg3").html(data)
+                
+            }
+        })
+    })
+
+     //For Project 
+    $(document).on('submit','#Project',function(e){
+        e.preventDefault();
+        $.ajax({
+            type:'POST',
+            url:"{% url 'Project_data' %}",
+            data:{
+                port_id:$('#pid').val(),
+                catt:$('#catt').val(),
+                title:$('#ptitle').val(),
+                syear:$('#stryear').val(),
+                eyear:$('#endyear').val(),
+                curnt:$('#work').val(),
+                des:$('#pdes').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                
+            },
+           
+            success: function (data) {
+                // alert the error if any error occured
+                $("#msg4").html(data)
                 
             }
         })

@@ -1,5 +1,5 @@
 from django.shortcuts import render,HttpResponse
-from .models import Personal_info,Education,Experience
+from .models import Personal_info,Education,Experience,Project
 
 # Create your views here.
 # Personal info function
@@ -112,3 +112,37 @@ def Experience_data(request):
             return HttpResponse("Data stored successfully...")
     else:
         return HttpResponse("Error")
+
+#for Project
+def Project_data(request):
+    if request.method == 'POST': 
+        port_id=request.POST['port_id']
+        cat=request.POST['catt']
+        title=request.POST['title']
+        curnt=request.POST['curnt']
+        syear=request.POST['syear']
+        eyear=request.POST['eyear']
+        des=request.POST['des']
+        print(curnt)
+        if cat=="Portfolio":
+            if Project.objects.filter(Portfolio_id=port_id,Title=title).exists():
+               return HttpResponse("Record Exist...")
+            else:
+                pid=Project.objects.only('Project_id').count()
+                pid=pid+1
+                if curnt=="yes":
+                    curnt=True
+                else:
+                    curnt=False
+                obj=Project(Project_id=pid,Portfolio_id=port_id,Title=title,Start_year=syear,End_year=eyear,Description=des,Current=curnt)
+                obj.save()
+                return HttpResponse("Data stored successfully...")
+        else:
+            res_id=request.POST['res_id']
+            pid=Project.objects.only('Project_id').count()
+            pid=pid+1
+            obj=Project(Project_id=pid,Resume_id=res_id,Title=title,Start_year=syear,End_year=eyear,Description=des,Current=curnt)
+            obj.save()
+            return HttpResponse("Data stored successfully...")
+    else:
+        return HttpResponse("GET method called...")
