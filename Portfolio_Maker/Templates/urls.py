@@ -12,4 +12,3 @@ urlpatterns = [
    path('Edit',views.edit,name="Edit"),
 ]
 
-
