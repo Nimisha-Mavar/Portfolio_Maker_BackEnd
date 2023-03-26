@@ -1,63 +1,104 @@
 {% extends 'Master.html' %}
 {% block content %}
 {% load static %}
-<style>
-  body
-  {
-    background-color: hsl(204, 50%, 96%)
-  }
-</style>
- <!-- ======= Services Section ======= -->
-     <!-- ======= Services Section ======= -->
-     <form>
-      <section id="services" class="services">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <style>
+        body
+        {
+          background-color: hsl(204, 50%, 96%)
+        }
+        .services .icon-box:hover::before {
+                  background: #fff;
+                  right: 0;
+                  top: 0;
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 0px;
+                }
+
+                .services .icon-box:hover .title a,
+                .services .icon-box:hover .description {
+                  color:black;
+                }
+                label
+                {
+                  margin-left: 10px;
+                }
+                hr
+                {
+                  background-color: skyblue;
+                  height: 5px;
+                }
+    </style>
+
+    <!-- =======================================================
+  * Template Name: Vesperr - v4.9.1
+  * Template URL: https://bootstrapmade.com/vesperr-free-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+         <!-- ======= Services Section ======= -->
+<section id="services" class="services">
           <div class="container">
     
-            <div class="section-title" data-aos="fade-up">
-              <h2>Portfolio Form</h2>
+            <div class="section-title">
+              <h2>Portfolio Form {{portid}}</h2>
             </div>
             
             <!--==>Personal info form<==-->
             <div class="row justify-content-center">
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                  <h1 class="title fs-2">Personal Infomation</h1>
-                  <hr>
-                  
-                    <div class="row">
-                      <div class="col form-floating mb-3">
-                        <input type="text" class="form-control" placeholder="First name" id="fname" name="fname" required>
-                        <label for="fname">First name</label>
-                      </div>
-                      <div class="col form-floating">
-                        <input type="text" class="form-control" placeholder="Last name" id="lname" name="lname" required>
-                        <label for="lname">Last name</label>
-                      </div>
-                      <div class="form-floating mb-3 mt-3">
-                        <textarea type="text" class="form-control" id="address" placeholder="Enter address" name="address" required></textarea> 
-                        <label for="address">Address</label>
-                        <br>
-                      </div>
-                      <div class="col form-floating mb-3">
-                        <input type="number" class="form-control" id="phone" placeholder="Phone"
-                        name="phone"
-                        maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
-                        <label for="phone">Phone number</label>
-                      </div>
-                      <div class="col form-floating">
-                        <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
-                        <label for="email">Email</label>
-                      </div>
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="date" class="form-control" id="dob" placeholder="Date of birth" name="dob" required> 
-                        <label for="dob">Date of Birth</label>
-                      </div>
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="philo" placeholder=" philosophy statement" name="philo" required> 
-                        <label for="philo">Philosophy Statement</label>
-                      </div>
-                      </div>
-                    </div>
+                    <h1 class="title fs-2">Personal Infomation</h1>
+                    <h2 id="msg1" class="bg-warning"></h2>
+                    <hr>
+                    <form id="Personal_info">
+                        {% csrf_token %}
+                        <div class="row">
+                          <input type="hidden" value="{{portid}}" id="pid">
+                          <input type="hidden" value="Portfolio" id="catt">
+                          <div class="col form-floating mb-3">
+                            <input type="text" class="form-control" placeholder="First name" id="fname" name="fname" required>
+                            <label for="fname">First name</label>
+                          </div>
+                          <div class="col form-floating">
+                            <input type="text" class="form-control" placeholder="Last name" id="lname" name="lname" required>
+                            <label for="lname">Last name</label>
+                          </div>
+                          <div class="form-floating mb-3 mt-3">
+                            <textarea type="text" class="form-control" id="address" placeholder="Enter address" name="address" required></textarea> 
+                            <label for="address">Address</label>
+                            <br>
+                          </div>
+                          <div class="col form-floating mb-3">
+                            <input type="number" class="form-control" id="phone" placeholder="Phone"
+                            name="phone"
+                            maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
+                            <label for="phone">Phone number</label>
+                          </div>
+                          <div class="col form-floating">
+                            <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
+                            <label for="email">Email</label>
+                          </div>
+                          <div class="form-floating mb-3 mt-3">
+                            <input type="date" class="form-control" id="dob" placeholder="Date of birth" name="dob" required> 
+                            <label for="dob">Date of Birth</label>
+                          </div>
+                          <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="philo" placeholder=" philosophy statement" name="philo" required> 
+                            <label for="philo">Philosophy Statement</label>
+                          </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12 float-end">
+                              <input id="button1" value="save" type="submit">
+                            </div>
+                          </div> 
+                        </div>
+                    </form>
                 </div>
               </div>
             </div>
@@ -65,335 +106,607 @@
             <br><br><br>
             
             <!--==>Education form<==-->
-            <div class="container">
             <div class="row justify-content-center">
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                <form id="Edu_delete">
+                  {% for i in edu %}
                   <div id="d1">
                     <div class="row">
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Institute Name : LJ College
+                            Institute Name : {{i.Institute}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Degree : BCA
+                            Degree : {{i.Degree}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Start Year : 2019
+                            Start Year : {{i.Start_year}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Start Year : 2022
+                            End Year : {{i.End_year}}
                         </div>
                     </div>
-                </div>
+                  </div>
+                  <br>
+                  {% endfor %}
+                  </form>
                 <br>
                   <h1 class="title fs-2">Education</h1>
+                  <h2 id="msg2" class="bg-warning"></h2>
                   <hr>
-                  
+                  <form id="Education">
+                    {% csrf_token %}
                     <div class="row">
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="iname" placeholder="Institute name" name="iname" required> 
-                        <label for="iname">Institute Name</label>
+                        <input type="hidden" value="{{portid}}" id="pid">
+                        <input type="hidden" value="Portfolio" id="catt">
+                        <div class="form-floating mb-3 mt-3">
+                          <input type="text" class="form-control" id="iname" placeholder="Institute name" name="iname" required> 
+                          <label for="iname">Institute Name</label>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                          <input type="text" class="form-control" id="degree" placeholder=" philosophy statement" name="degree" required> 
+                          <label for="philo">Degree</label>
+                          <br>
+                        </div>
+                        <div class="col form-floating mb-3">
+                          <input type="taxt" class="form-control" placeholder="Start year" id="syear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
+                          <label for="iname">Start Year</label>
+                        </div>
+                        <div class="col form-floating">
+                          <input type="taxt" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030">
+                          <label for="degree">End Year</label>
+                        </div> 
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <input id="button1" class="float-start" value="Clear" type="button" onclick="Educat_reset()">
+                          </div>  
+                          <div class="col-lg-6">
+                            <input id="button1" value="save" type="submit">
+                          </div>
+                        </div>                  
                       </div>
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="degree" placeholder=" philosophy statement" name="degree" required> 
-                        <label for="philo">Degree</label>
-                        <br>
-                      </div>
-                      <div class="col form-floating mb-3">
-                        <input type="number" class="form-control" placeholder="Start year" id="syear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
-                        <label for="iname">Start Year</label>
-                      </div>
-                      <div class="col form-floating">
-                        <input type="number" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
-                        <label for="degree">End Year</label>
-                      </div> 
-                      <div>
-                        <button id="button1">Add</button>
-                      </div>                  
-                      </div>
-                    </div>
+                  </form>
+                  </div>
                 </div>
               </div>
             </div>
             <!--==>Education ended<==-->
             <br><br><br>
+
             <!--==>Experience form<==-->
-            <div class="container">
             <div class="row justify-content-center">
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                {% for i in ex %}
                   <div id="d1">
                     <div class="row">
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Company Name : Google
+                            Company Name : {{i.Company}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Role Name : Web Developer
+                            Role Name : {{i.Role}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Start Year : 2019
+                            Start Year : {{i.Start_year}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Start Year : 2022
+                            End Year : {{i.End_year}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Discription : Creating website layout/user interfaces by using standard HTML/CSS practices
+                            Discription : {{i.Description}}
                         </div>
                     </div>
                 </div>
+                {% endfor %}
                 <br>
                   <h1 class="title fs-2">Experience</h1>
-                  <hr>               
-                    <div class="row">
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="cname" placeholder="company name" name="cname" required> 
-                        <label for="cname">Company Name</label>
+                  <h2 id="msg3" class="bg-warning"></h2>
+                  <hr> 
+                    <form id="Experience">  
+                      {% csrf_token %}            
+                      <div class="row">
+                        <div class="form-floating mb-3 mt-3">
+                          <input type="text" class="form-control" id="cname" placeholder="company name" name="cname" required> 
+                          <label for="cname">Company Name</label>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                          <input type="text" class="form-control" id="rname" placeholder="Role name" name="rname" required> 
+                          <label for="rname">Role Name</label>
+                          <br>
+                        </div>
+                        <div class="col form-floating mb-3">
+                          <input type="text" class="form-control" placeholder="Start year" id="styear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
+                          <label for="iname">Start Year</label>
+                        </div>
+                        <div class="col form-floating">
+                          <input type="text" class="form-control" placeholder="End year" id="enyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
+                          <label for="degree">End Year</label>
+                        </div>  
+                        <div class="form-floating mb-3 mt-3">
+                          <input type="text" class="form-control" id="des" placeholder="description" name="des" required> 
+                          <label for="des">Description</label>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <input id="button1" class="float-start" value="Clear" type="button" onclick="Exp_reset()">
+                          </div>  
+                          <div class="col-lg-6">
+                            <input id="button1" value="save" type="submit">
+                          </div>
+                        </div>                 
                       </div>
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="rname" placeholder="Role name" name="rname" required> 
-                        <label for="rname">Role Name</label>
-                        <br>
-                      </div>
-                      <div class="col form-floating mb-3">
-                        <input type="number" class="form-control" placeholder="Start year" id="syear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
-                        <label for="iname">Start Year</label>
-                      </div>
-                      <div class="col form-floating">
-                        <input type="number" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
-                        <label for="degree">End Year</label>
-                      </div>  
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="des" placeholder="description" name="des" required> 
-                        <label for="des">Description</label>
-                      </div>
-                      <div>
-                        <button id="button1">Add</button>
-                      </div>                 
-                      </div>
-                    </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
             <!--==>Experience ended<==-->
             <br><br><br>
+
             <!--==>Project form<==-->
-            <div class="container">
             <div class="row justify-content-center">
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                {% for i in pro %}
                   <div id="d1">
                     <div class="row">
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Project Title : Portfolio Maker
+                            Project Title : {{i.Title}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Currently working : yes
+                        {% if i.Current %}
+                            Currently working : Yes
+                        {% else %}
+                        {% endif %}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Start Year : 2022
+                            Start Year : {{i.End_year}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
+                        {% if i.Current %}
+                        {% else %}
                             End Year : 2023
+                        {% endif %}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Start month : 6
-                        </div>
-                        <div class="col-lg-6" style="padding-left:20px;">
-                            End month : 2
-                        </div>
-                        <div class="col-lg-6" style="padding-left:20px;">
-                            Discription : Project is about to making portfolio and resumes easily
+                            Description : {{i.Description}}
                         </div>
                     </div>
-                </div>
+                </div><br>
+                {% endfor %}
                 <br>
                   <h1 class="title fs-2">Project</h1>
-                  <hr>                
-                    <div class="row">
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="ptitle" placeholder="Project title" name="ptitle" required> 
-                        <label for="ptitle">Project Title</label>
+                  <h2 id="msg4" class="bg-warning"></h2>
+                  <hr> 
+                    <form id="Project">
+                      {% csrf_token %}               
+                      <div class="row">
+                        <div class="form-floating mb-3 mt-3">
+                        <input type="hidden" value="{{portid}}" id="pid">
+                        <input type="hidden" value="Portfolio" id="catt">
+                          <input type="text" class="form-control" id="ptitle" placeholder="Project title" name="ptitle" required> 
+                          <label for="ptitle">Project Title</label>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                          <label for="ptitle">Currently working?</label><br>
+                          <select name="working" id="work" class="form-control">
+                            <option value="">Select</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                          </select>                                         
+                          <br>
+                        </div>
+                        <div class="col form-floating mb-3">
+                          <input type="text" class="form-control" placeholder="Start year" id="stryear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
+                          <label for="iname">Start Year</label>
+                        </div>
+                        <div class="col form-floating">
+                          <input type="text" class="form-control" placeholder="End year" id="endyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030">
+                          <label for="degree">End Year</label>
+                          <br>
+                        </div> 
+                        <div class="form-floating mb-3 mt-3">
+                          <input type="text" class="form-control" id="pdes" placeholder="description" name="des" required> 
+                          <label for="des">Description</label>
+                        </div>  
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <input id="button1" class="float-start" value="Clear" type="button" onclick="Pro_reset()">
+                          </div>  
+                          <div class="col-lg-6">
+                            <input id="button1" type="submit" value="Save">
+                          </div>
+                        </div>                
                       </div>
-                      <div class="form-floating mb-3 mt-3">
-                        <select name="working" id="work" class="form-control">
-                          <option value="">Currently working?</option>
-                          <option value="yes">Yes</option>
-                          <option value="no">No</option>
-                        </select>                                         
-                        <br>
-                      </div>
-                      <div class="col form-floating mb-3">
-                        <input type="number" class="form-control" placeholder="Start year" id="syear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
-                        <label for="iname">Start Year</label>
-                      </div>
-                      <div class="col form-floating">
-                        <input type="number" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
-                        <label for="degree">End Year</label>
-                        <br>
-                      </div> 
-                      <div class="col form-floating mb-3">
-                        <input type="number" class="form-control" placeholder="Start month" id="smonth" name="smonth" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
-                        <label for="smonth">Start Month</label>
-                      </div>
-                      <div class="col form-floating">
-                        <input type="number" class="form-control" placeholder="End month" id="emonth" name="emonth" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
-                        <label for="smonth">End Month</label>
-                      </div>
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="des" placeholder="description" name="des" required> 
-                        <label for="des">Description</label>
-                      </div>  
-                      <div>
-                        <button id="button1">Add</button>
-                      </div>               
-                      </div>
-                    </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
             <!--==>project ended<==-->
             <br><br><br>
+
             <!--==>skill form<==-->
-            <div class="container">
             <div class="row justify-content-center">
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                  {% for i in sk %}
                   <div id="d1">
                     <div class="row">
-                        <div class="col-lg-6" style="padding-left:20px;">
-                            Skill Name : HTML
+                        <div class="col-lg-4" style="padding-left:20px;">
+                            Skill Name : {{i.Name}}
                         </div>
-                        <div class="col-lg-6" style="padding-left:20px;">
-                            Skill level : Expert
-                        </div>                          
+                        <div class="col-lg-4" style="padding-left:20px;">
+                            Skill level : {{i.Level}}
+                        </div>                   
                     </div>
-                </div>
+                </div><br>
+                  {% endfor %}
                 <br>
                   <h1 class="title fs-2">Skill</h1>
-                  <hr>                
-                    <div class="row">
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="sname" placeholder="Skill name" name="sname" required> 
-                        <label for="sname">Skill Name</label>
+                  <h2 id="msg5" class="bg-warning"></h2>
+                  <hr>    
+                    <form id="Skill">
+                      {% csrf_token %}            
+                      <div class="row">
+                        <div class="form-floating mb-3 mt-3">
+                          <input type="hidden" value="{{portid}}" id="pid">
+                          <input type="hidden" value="Portfolio" id="catt">
+                          <input type="text" class="form-control" id="sname" placeholder="Skill name" name="sname" required> 
+                          <label for="sname">Skill Name</label>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                          <select name="working" id="level" class="form-control" required>
+                            <option>Skill level</option>
+                            <option value="Average">Average</option>
+                            <option value="Good">Good</option>
+                            <option value="Very Good">Very Good</option>
+                            <option value="Better">Better</option>
+                            <option value="Expert">Expert</option>
+                          </select>                                                           
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <input id="button1" class="float-start" value="Clear" type="button" onclick="Skill_reset()">
+                          </div>  
+                          <div class="col-lg-6">
+                            <input id="button1" type="submit" value="Save">
+                          </div>
+                        </div>                 
                       </div>
-                      <div class="form-floating mb-3 mt-3">
-                        <select name="working" id="work" class="form-control">
-                          <option value="">Skill level</option>
-                          <option value="yes">Average</option>
-                          <option value="no">Good</option>
-                          <option value="no">Very Good</option>
-                          <option value="no">Better</option>
-                          <option value="no">Expert</option>
-                        </select>                                                           
-                      </div>
-                      <div>
-                        <button id="button1">Add</button>
-                      </div>                 
-                      </div>
-                    </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
             <!--==>skill ended<==-->
             <br><br><br>
+
             <!--==>award form<==-->
-            <div class="container">
             <div class="row justify-content-center">
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                {% for i in awd %}
                   <div id="d1">
                     <div class="row">
                         <div class="col-lg-6" style="padding-left:20px;">
-                            AWard Name : Best Programmer
+                            AWard Name : {{i.Title}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Institute Name : Amazon
+                            Institute Name : {{i.Institute}}
                         </div> 
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Year : 2020
+                            Year : {{i.Year}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Description : won the best programmer award in 2020 at amazon
+                            Description : {{i.Description}}
+                        </div>
+                        <div class="col-lg-6">
                         </div>
                     </div>
-                </div>
+                </div><br>
+                {% endfor %}
                 <br>
                   <h1 class="title fs-2">Award</h1>
-                  <hr>                
-                    <div class="row">
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="atitle" placeholder="Award title" name="atitle" required> 
-                        <label for="atitle">Award Title</label>
-                      </div>
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="inname" placeholder="Institute Name" name="inname" required> 
-                        <label for="inname">Institute Name</label>
-                      </div> 
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="number" class="form-control" id="year" placeholder="year" name="year" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required> 
-                        <label for="year">Year</label>
-                      </div>    
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="des" placeholder="description" name="des" required> 
-                        <label for="des">Description</label>
-                      </div>  
-                      <div>
-                        <button id="button1">Add</button>
-                      </div>     
-                      </div>
-                    </div>
+                  <h2 id="msg6" class="bg-warning"></h2>
+                  <hr> 
+                    <form id="Award">
+                      {% csrf_token %}               
+                      <div class="row">
+                        <div class="form-floating mb-3 mt-3">
+                          <input type="text" class="form-control" id="Atitle" placeholder="Award title" name="atitle" required> 
+                          <label for="atitle">Award Title</label>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                          <input type="text" class="form-control" id="intname" placeholder="Institute Name" name="inname" required> 
+                          <label for="inname">Institute Name</label>
+                        </div> 
+                        <div class="form-floating mb-3 mt-3">
+                          <input type="number" class="form-control" id="Ayear" placeholder="year" name="year" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required> 
+                          <label for="year">Year</label>
+                        </div>    
+                        <div class="form-floating mb-3 mt-3">
+                          <input type="text" class="form-control" id="Ades" placeholder="description" name="des" required> 
+                          <label for="des">Description</label>
+                        </div>  
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <input id="button1" class="float-start" value="Clear" type="button" onclick="Award_reset()">
+                          </div>  
+                          <div class="col-lg-6">
+                            <input id="button1" type="submit" value="Save">
+                          </div>
+                        </div>   
+                        </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
             <!--==>award ended<==-->
             <br><br><br>
+            
             <!--==>Social media form<==-->
-            <div class="container">
             <div class="row justify-content-center">
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                {% for i in scl %}
                   <div id="d1">
                     <div class="row">
-                        <div class="col-lg-6" style="padding-left:20px;">
-                            Account Name : Linkedin
+                        <div class="col-lg-12" style="padding-left:20px;">
+                            Account Name : {{i.Name}}
                         </div>
-                        <div class="col-lg-6" style="padding-left:20px;">
-                            URL : https://www.linkedin.com/in/krishna-mavar-04a000250/
+                        <div class="col-lg-12" style="padding-left:20px;">
+                            URL : {{i.Url}}
                         </div> 
                     </div>
-                </div>
+                </div><br>
+                {% endfor %}
                 <br>
                   <h1 class="title fs-2">Social Media Accounts</h1>
-                  <hr>                
-                    <div class="row">
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="aname" placeholder="account name" name="aname" required> 
-                        <label for="ptitle">Account Name</label>
+                  <h2 id="msg7" class="bg-warning"></h2>
+                  <hr>    
+                    <form id="Social_Media">
+                      {% csrf_token %}            
+                      <div class="row">
+                        <div class="form-floating mb-3 mt-3">
+                          <select name="working" id="snm" class="form-control" required>
+                            <option>Accounts</option>
+                            <option value="Twiter">Twiter</option>
+                            <option value="Facebook">Facebook</option>
+                            <option value="Instagram">Instagram</option>
+                            <option value="Linkedin">Linkedin</option>
+                            <option value="Github">Github</option>
+                          </select>                                                           
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                          <input type="text" class="form-control" id="url" placeholder="URL" name="des" name="url" required> 
+                          <label for="url">URL</label>
+                        </div>  
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <input id="button1" class="float-start" value="Clear" type="button" onclick="Social_reset()">
+                          </div>  
+                          <div class="col-lg-6">
+                            <input id="button1" type="submit" value="Save">
+                          </div>
+                        </div>               
                       </div>
-                      <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="url" placeholder="URL" name="des" name="url" required> 
-                        <label for="url">URL</label>
-                      </div>  
-                      <div>
-                        <button id="button1">Add</button>
-                      </div>               
-                      </div>
-                    </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
             <!--==>social media ended<==-->
           </div>
 </section>
-
-        <input type="submit" name="">
-        </form>
+      
          <!-- Vendor JS Files -->
-      <div class="row justify-content-end">
-        <div class="form-group col-lg-4 col-md-3 p-1">
-          <a href="Document.html" class="">
-            <button type="" class="btn btn-lg">Save and Next</button>
-          </a>
+      <form action="{% url 'Data_display' %}" method="POST">
+      {% csrf_token %}
+        <input type="hidden" value="{{portid}}" name="id">
+        <input type="hidden" value="Portfolio" name="Ccat">
+        <div class="row text-right">
+          <div class="col-lg-11" data-aos="fade-up" data-aos-delay="50">
+              <button id="button1" type="submit" value="Check Details">Check Details&nbsp;<i class='bx bxs-chevrons-right fs-5'></i></button>
+          </div>
         </div>
-      </div>
+      </form>
+      <br><br>
+    
+    <script>
+
+    function Educat_reset() {
+      document.getElementById("Education").reset();
+    }
+    function Exp_reset() {
+      document.getElementById("Experience").reset();
+    }
+    function Pro_reset() {
+      document.getElementById("Project").reset();
+    }
+    function Skill_reset()
+    {
+      document.getElementById("Skill").reset();
+    }
+    function Award_reset()
+    {
+      document.getElementById("Award").reset();
+    }
+    function Social_reset()
+    {
+      document.getElementById("Social_Media").reset();
+    }
+    //for Persnol info
+    $(document).on('submit','#Personal_info',function(e){
+        e.preventDefault();
+        $.ajax({
+            type:'POST',
+            url:"{% url 'Personal_data' %}",
+            data:{
+                port_id:$('#pid').val(),
+                catt:$('#catt').val(),
+                curnt:$('#curnt').val(),
+                fnm:$('#fname').val(),
+                lnm:$('#lname').val(),
+                adr:$('#address').val(),
+                phn:$('#phone').val(),
+                eml:$('#email').val(),
+                dob:$('#dob').val(),
+                philo:$('#philo').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                
+            },
+           
+            success: function (data) {
+                // alert the error if any error occured
+                $("#msg1").html(data)
+                
+            }
+        })
+    })
+
+     //for Education
+    $(document).on('submit','#Education',function(e){
+        e.preventDefault();
+        $.ajax({
+            type:'POST',
+            url:"{% url 'Education_data' %}",
+            data:{
+                port_id:$('#pid').val(),
+                catt:$('#catt').val(),
+                iname:$('#iname').val(),
+                degree:$('#degree').val(),
+                syear:$('#syear').val(),
+                eyear:$('#eyear').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                
+            },
+           
+            success: function (data) {
+                // alert the error if any error occured
+                $("#msg2").html(data)
+                
+            }
+        })
+    })
+  
+
+     //for Exeperience
+    $(document).on('submit','#Experience',function(e){
+        e.preventDefault();
+        $.ajax({
+            type:'POST',
+            url:"{% url 'Experience_data' %}",
+            data:{
+                port_id:$('#pid').val(),
+                catt:$('#catt').val(),
+                cname:$('#cname').val(),
+                rname:$('#rname').val(),
+                syear:$('#styear').val(),
+                eyear:$('#enyear').val(),
+                des:$('#des').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                
+            },
+           
+            success: function (data) {
+                // alert the error if any error occured
+                $("#msg3").html(data)
+                
+            }
+        })
+    })
+
+     //For Project 
+    $(document).on('submit','#Project',function(e){
+        e.preventDefault();
+        $.ajax({
+            type:'POST',
+            url:"{% url 'Project_data' %}",
+            data:{
+                port_id:$('#pid').val(),
+                catt:$('#catt').val(),
+                title:$('#ptitle').val(),
+                syear:$('#stryear').val(),
+                eyear:$('#endyear').val(),
+                curnt:$('#work').val(),
+                des:$('#pdes').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                
+            },
+           
+            success: function (data) {
+                // alert the error if any error occured
+                $("#msg4").html(data)
+                
+            }
+        })
+    })
+
+     //For Skill
+    $(document).on('submit','#Skill',function(e){
+        e.preventDefault();
+        $.ajax({
+            type:'POST',
+            url:"{% url 'Skill_data' %}",
+            data:{
+                port_id:$('#pid').val(),
+                catt:$('#catt').val(),
+                sk_nm:$('#sname').val(),
+                lvl:$('#level').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success: function (data) {
+                // alert the error if any error occured
+                $("#msg5").html(data)
+                
+            }
+        })
+    })
+
+    //for Award
+    $(document).on('submit','#Award',function(e){
+        e.preventDefault();
+        $.ajax({
+            type:'POST',
+            url:"{% url 'Award_data' %}",
+            data:{
+                port_id:$('#pid').val(),
+                ttl:$('#Atitle').val(),
+                ints:$('#intname').val(),
+                year:$('#Ayear').val(),
+                des:$('#Ades').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success: function (data) {
+                // alert the error if any error occured
+                $("#msg6").html(data)
+                
+            }
+        })
+    })
+
+    //For Social Media
+    $(document).on('submit','#Social_Media',function(e){
+        e.preventDefault();
+        $.ajax({
+            type:'POST',
+            url:"{% url 'Social_data' %}",
+            data:{
+                port_id:$('#pid').val(),
+                snm:$('#snm').val(),
+                url:$('#url').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success: function (data) {
+                // alert the error if any error occured
+                $("#msg7").html(data)
+                
+            }
+        })
+    })
+  </script>
+
+    
 {% endblock %}

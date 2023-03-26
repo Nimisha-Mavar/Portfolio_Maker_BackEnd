@@ -1,0 +1,367 @@
+{% extends 'Master.html' %}
+{% block content %}
+{% load static %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <style>
+        body
+        {
+          background-color: hsl(204, 50%, 96%)
+        }
+        .services .icon-box:hover::before {
+                  background: #fff;
+                  right: 0;
+                  top: 0;
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 0px;
+                }
+
+                .services .icon-box:hover .title a,
+                .services .icon-box:hover .description {
+                  color:black;
+                }
+                label
+                {
+                  margin-left: 10px;
+                }
+                hr
+                {
+                  background-color: skyblue;
+                  height: 5px;
+                }
+    </style>
+
+    <!-- =======================================================
+  * Template Name: Vesperr - v4.9.1
+  * Template URL: https://bootstrapmade.com/vesperr-free-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+         <!-- ======= Services Section ======= -->
+<section id="services" class="services">
+          <div class="container">
+    
+            <div class="section-title">
+              <h2>Portfolio Form {{portid}}</h2>
+            </div>
+            
+            <!--==>Personal info form<==-->
+            <div class="row justify-content-center">
+              <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
+                <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                    <h1 class="title fs-2">Personal Infomation</h1>
+                    <hr>
+                      {% for i in prs %}
+                       <h5>{{ forloop.counter }}.<h5>
+                      <div id="d1">
+                        <div class="row">
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                First Name : {{i.First_name}}
+                            </div>
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                Last Name : {{i.Last_name}}
+                            </div>
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                Address : {{i.Address}}
+                            </div>
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                Phone NO : {{i.Phone}}
+                            </div>
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                Email : {{i.Email}}
+                            </div>
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                Dob : {{i.Dob}}
+                            </div>
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                Philosophy : {{i.Philosophy}}
+                            </div>
+                        </div>
+                      </div>
+                      <br>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+            <!--==>Personal info form ended<==-->
+            <br><br><br>
+            
+            <!--==>Education form<==-->
+            <div class="row justify-content-center">
+              <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
+                <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                <h1 class="title fs-2">Education</h1>
+                <hr>
+                  {% for i in edu %}
+                  <form id="Education_delete">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <h5>{{ forloop.counter }}.<h5>
+                    </div>
+                    <div class="col-lg-6">
+                     
+                    </div>
+                  </div>
+                  <div id="d1">
+                    <div class="row">
+                        <div class="col-lg-6" style="padding-left:20px;">
+                            Institute Name : {{i.Institute}}
+                        </div>
+                        <div class="col-lg-6" style="padding-left:20px;">
+                            Degree : {{i.Degree}}
+                        </div>
+                        <div class="col-lg-6" style="padding-left:20px;">
+                            Start Year : {{i.Start_year}}
+                        </div>
+                        <div class="col-lg-6" style="padding-left:20px;">
+                            End Year : {{i.End_year}}
+                        </div>
+                    </div>
+                  </div>
+                  </form>
+                  <br>
+                  {% endfor %}
+                  </form>
+                  </div>
+                </div>
+              </div>
+            <!--==>Education ended<==-->
+            <br><br><br>
+
+            <!--==>Experience form<==-->
+            <div class="row justify-content-center">
+              <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
+                <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                <h1 class="title fs-2">Experience</h1>
+                <hr>
+                {% for i in ex %}
+                <div class="row">
+                    <div class="col-lg-6">
+                      <h5>{{ forloop.counter }}.<h5>
+                    </div>
+                    <div class="col-lg-6">
+                       <!--<form id="Experience_delete">
+                          {% csrf_token %}
+                          <input type="hidden" value="{{i.Experience_id}}" id="exid">
+                          <input type="submit" value="Delete" class="btn btn-sm text-light float-end" style="background-color:#3498db;">
+                        </form>-->
+                    </div>
+                  </div>
+                  <div id="d1">
+                    <div class="row">
+                        <div class="col-lg-6" style="padding-left:20px;">
+                            Company Name : {{i.Company}}
+                        </div>
+                        <div class="col-lg-6" style="padding-left:20px;">
+                            Role Name : {{i.Role}}
+                        </div>
+                        <div class="col-lg-6" style="padding-left:20px;">
+                            Start Year : {{i.Start_year}}
+                        </div>
+                        <div class="col-lg-6" style="padding-left:20px;">
+                            End Year : {{i.End_year}}
+                        </div>
+                        <div class="col-lg-6" style="padding-left:20px;">
+                            Discription : {{i.Description}}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                </div>
+              </div>
+            </div>
+            <!--==>Experience ended<==-->
+            <br><br><br>
+
+            <!--==>Project form<==-->
+            <div class="row justify-content-center">
+              <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
+                <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                <h1 class="title fs-2">Project</h1>
+                <hr>
+                {% for i in pro %}
+                <div class="row">
+                    <div class="col-lg-6">
+                      <h5>{{ forloop.counter }}.<h5>
+                    </div>
+                    <div class="col-lg-6">
+                       <!--<form id="Project_delete">
+                          {% csrf_token %}
+                          <input type="hidden" value="{{i.Project_id}}" id="prid">
+                          <input type="submit" value="Delete" class="btn btn-sm text-light float-end" style="background-color:#3498db;">
+                        </form>-->
+                    </div>
+                  </div>
+                  <div id="d1">
+                    <div class="row">
+                        <div class="col-lg-6" style="padding-left:20px;">
+                            Project Title : {{i.Title}}
+                        </div>
+                        <div class="col-lg-6" style="padding-left:20px;">
+                        {% if i.Current %}
+                            Currently working : Yes
+                        {% else %}
+                        {% endif %}
+                        </div>
+                        <div class="col-lg-6" style="padding-left:20px;">
+                            Start Year : {{i.End_year}}
+                        </div>
+                        <div class="col-lg-6" style="padding-left:20px;">
+                        {% if i.Current %}
+                        {% else %}
+                            End Year : 2023
+                        {% endif %}
+                        </div>
+                        <div class="col-lg-6" style="padding-left:20px;">
+                            Description : {{i.Description}}
+                        </div>
+                    </div>
+                </div><br>
+                {% endfor %}
+                </div>
+              </div>
+            </div>
+            <!--==>project ended<==-->
+            <br><br><br>
+
+            <!--==>skill form<==-->
+            <div class="row justify-content-center">
+              <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
+                <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                <h1 class="title fs-2">Skill</h1>
+                <hr>
+                  {% for i in sk %}
+                  <h5>{{ forloop.counter }}.<h5>
+                  <div id="d1">
+                    <div class="row">
+                        <div class="col-lg-4" style="padding-left:20px;">
+                            Skill Name : {{i.Name}}
+                        </div>
+                        <div class="col-lg-4" style="padding-left:20px;">
+                            Skill level : {{i.Level}}
+                        </div>                   
+                    </div>
+                </div><br>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+            <!--==>skill ended<==-->
+            <br><br><br>
+
+            <!--==>award form<==-->
+            <div class="row justify-content-center">
+              <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
+                <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                <h1 class="title fs-2">Award</h1>
+                <hr>
+                {% for i in awd %}
+                <h5>{{ forloop.counter }}.<h5>
+                  <div id="d1">
+                    <div class="row">
+                        <div class="col-lg-6" style="padding-left:20px;">
+                            AWard Name : {{i.Title}}
+                        </div>
+                        <div class="col-lg-6" style="padding-left:20px;">
+                            Institute Name : {{i.Institute}}
+                        </div> 
+                        <div class="col-lg-6" style="padding-left:20px;">
+                            Year : {{i.Year}}
+                        </div>
+                        <div class="col-lg-6" style="padding-left:20px;">
+                            Description : {{i.Description}}
+                        </div>
+                        <div class="col-lg-6">
+                        </div>
+                    </div>
+                </div><br>
+                {% endfor %}
+                </div>
+              </div>
+            </div>
+            <!--==>award ended<==-->
+            <br><br><br>
+            
+            <!--==>Social media form<==-->
+            <div class="row justify-content-center">
+              <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
+                <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                <h1 class="title fs-2">Social Media Accounts</h1>
+                <hr>
+                {% for i in scl %}
+                <h5>{{ forloop.counter }}.<h5>
+                  <div id="d1">
+                    <div class="row">
+                        <div class="col-lg-12" style="padding-left:20px;">
+                            Account Name : {{i.Name}}
+                        </div>
+                        <div class="col-lg-12" style="padding-left:20px;">
+                            URL : {{i.Url}}
+                        </div> 
+                    </div>
+                </div><br>
+                {% endfor %}
+                </div>
+              </div>
+            </div>
+            <!--==>social media ended<==-->
+          </div>
+</section>
+      <form action="{% url 'Ready' %}" method="POST">
+      {% csrf_token %}
+        <input type="hidden" value="{{portid}}" name="id">
+        <div class="row text-right">
+          <div class="col-lg-11" data-aos="fade-up" data-aos-delay="50">
+              <button id="button1" type="submit" >Next&nbsp;<i class='bx bxs-chevrons-right fs-5'></i></button>
+          </div>
+        </div>
+      </form>
+
+<script>
+//refresh function
+function refreshPage(){
+    window.location.reload();
+} 
+
+
+ // Experience delete
+    $(document).on('submit','#Experience_delete',function(e){
+        e.preventDefault();
+        $.ajax({
+            type:'POST',
+            url:"{% url 'Experience_del' %}",
+            data:{
+                id:$('#exid').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                
+            },
+           
+            success: function (data) {
+              refreshPage();
+            }
+        })
+    })
+
+// Project delete
+    $(document).on('submit','#Project_delete',function(e){
+        e.preventDefault();
+        $.ajax({
+            type:'POST',
+            url:"{% url 'Project_del' %}",
+            data:{
+                id:$('#prid').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                
+            },
+           
+            success: function (data) {
+              refreshPage();
+            }
+        })
+    })
+</script>
+<br><br>
+{% endblock %}   

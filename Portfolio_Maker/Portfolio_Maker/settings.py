@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'Account',
     'Template_Preview',
     'Services',
-    'Dashboard'
+    'Dashboard',
+    
 ]
 
 MIDDLEWARE = [

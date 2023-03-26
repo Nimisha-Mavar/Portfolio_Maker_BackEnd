@@ -19,6 +19,7 @@
   <div class="container">
       <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="400">
       {% for temp in Temps %}
+      {% if temp.Temp_active %}
       <h1>{{temp.Temp_cat}}</h1>
         <div class="col-lg-6 col-md-6 portfolio-item filter-app">
           <div class="portfolio-wrap">
@@ -27,12 +28,16 @@
               <h4>{{temp.Temp_cat}}</h4>
               <p>{{temp.Temp_type}}</p>
               <div class="portfolio-links">
-                <a href="{% url temp.Temp_name %}" target="_blank"><i class="bx bx-plus"></i></a>
+              <form action="{% url temp.Temp_name %}" method="post">
+                {% csrf_token %}
+                <a><button type="submit"><i class="bx bx-plus"></i></button></a>
+              </form>
                 <a href="{{temp.id}}" title="More Details"><i class="bx bx-link"></i></a>
               </div>
             </div>
           </div>
         </div>
+        {% endif %}
       {% endfor %}
 <!--  
         <div class="col-lg-6 col-md-6 portfolio-item filter-web">

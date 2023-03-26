@@ -1,6 +1,30 @@
 {% extends 'Master.html' %}
 {% block content %}
 {% load static %}
+    <style>
+      .services .icon-box:hover::before {
+                  background: #fff;
+                  right: 0;
+                  top: 0;
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 0px;
+                }
+
+                .services .icon-box:hover .title a,
+                .services .icon-box:hover .description {
+                  color:black;
+                }
+                label
+                {
+                  margin-left: 10px;
+                }
+                hr
+                {
+                  background-color: skyblue;
+                  height: 5px;
+                }
+    </style>
     <!-- ======= Services Section ======= -->
     <section id="" class="services">
         <div class="container">

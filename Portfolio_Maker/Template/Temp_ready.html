@@ -1,0 +1,66 @@
+{% extends 'Master.html' %}
+{% block content %}
+{% load static %}
+<style>
+        .services .icon-box:hover::before {
+            background: #fff;
+            right: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 0px;
+          }
+          
+          .services .icon-box:hover .title a,
+          .services .icon-box:hover .description {
+            color:black;
+          }
+          body
+          {
+            background-repeat:no-repeat;
+            background-size:100%
+          }
+    </style>
+    <body>
+     <section id="" class="services">
+        <div class="container">
+  
+          <div class="section-title" data-aos="fade-up">
+            <h2>Portfolio Ready</h2>
+          </div>
+  
+          <div class="row justify-content-center section-title">
+
+            <div id="key" class="col-md-12 col-lg-6 align-items-stretch mb-5 mb-lg-0">
+              <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                <h4 class="">Your Portfolio is now ready!</h4>
+                <!--<a href=""><button class="btn">Next</button></a>-->
+                  <br><br>
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-3">
+                    <form action="{% url tname %}" method="Get">
+                       <input name="pid" type="hidden" value="{{pid}}">
+                      <button type="submit" class="btn btn-lg mb-4 rounded" style="background-color:#3498db;color:#fff;">Preview
+                      </button>
+                    </form>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-3">
+                       <form action="{% url 'Get_url' %}" method="Post">
+                       {% csrf_token %}
+                       <input name="pid" type="hidden" value="{{pid}}">
+                      <button type="submit" class="btn btn-lg mb-4 rounded" style="background-color:#3498db;color:#fff;">Get Document
+                      </button>
+                    </form>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            
+          </div>
+  
+        </div>
+      </section><!-- End Services Section -->
+      <script>
+      </script>
+    </body>
+{% endblock %}

@@ -7,7 +7,7 @@ urlpatterns = [
    path('RightFolio',views.Basic_pf_2,name="RightFolio"),
    path('Persnal',views.Premium_pf_1,name="Persnal"),
    path('Laura',views.Premium_pf_2,name="Laura"),
-   path('iportfolio',views.Premium_pf_3,name="iportfolio"),
+   path('iportfolio',views.iportfolio,name="iportfolio"),
 # Resume Templates
    path('YellowResume',views.Basic_Rm_1,name="YelloResume"),
    path('GreyResume',views.Basic_Rm_2,name="GreyResume"),

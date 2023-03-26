@@ -1,0 +1,216 @@
+{% extends 'Master.html '%}
+{% block content %}
+{% load static %}
+<!--Style for all-->
+<style type="text/css">
+body{margin-top:20px;}
+.section_padding_130 {
+    padding-top: 130px;
+    padding-bottom: 130px;
+}
+.faq_area {
+    position: relative;
+    z-index: 1;
+    background-color: hsl(204, 50%, 96%);
+}
+
+.faq-accordian {
+    position: relative;
+    z-index: 1;
+}
+.faq-accordian .card {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1.5rem;
+}
+.faq-accordian .card:last-child {
+    margin-bottom: 0;
+}
+.faq-accordian .card .card-header {
+    background-color: #ffffff;
+    padding: 0;
+    border-bottom-color: #ebebeb;
+}
+.faq-accordian .card .card-header h6 {
+    cursor: pointer;
+    padding: 1.75rem 2rem;
+    color: #3f43fd;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -ms-grid-row-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.faq-accordian .card .card-header h6 span {
+    font-size: 1.5rem;
+}
+.faq-accordian .card .card-header h6.collapsed {
+    color: #070a57;
+}
+.faq-accordian .card .card-header h6.collapsed span {
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+}
+.faq-accordian .card .card-body {
+    padding: 1.75rem 2rem;
+}
+.faq-accordian .card .card-body p:last-child {
+    margin-bottom: 0;
+}
+
+@media only screen and (max-width: 575px) {
+    .support-button p {
+        font-size: 14px;
+    }
+}
+
+.support-button i {
+    color: #3f43fd;
+    font-size: 1.25rem;
+}
+@media only screen and (max-width: 575px) {
+    .support-button i {
+        font-size: 1rem;
+    }
+}
+
+.support-button a {
+    text-transform: capitalize;
+    color: #2ecc71;
+}
+@media only screen and (max-width: 575px) {
+    .support-button a {
+        font-size: 13px;
+    }
+}
+
+</style>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!--Portfolio Faqs-->
+<div class="faq_area section_padding_130" id="faq">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-8 col-lg-6">
+                <!-- Section Heading-->
+                <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <div class="section-title" data-aos="">
+                        <h2>Sections</h2>
+                    </div>
+                   
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <!-- FAQ Area-->
+            <div class="col-12 col-sm-10 col-lg-8">
+                <div class="accordion faq-accordian" id="faqAccordion">
+                    <div class="card border-0 wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                        <div class="card-header" id="headingOne">
+                            <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Personal Information<span class="lni-chevron-up"></span></h6>
+                        </div>
+                        <div class="collapse" id="collapseOne" aria-labelledby="headingOne" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                <p>A portfolio showcases your talents and skills. Typically, a portfolio includes items such as certificates, transcripts, samples of past work.</p>
+                                <p>As the name suggests, portfolio is more detailed and descriptive document.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border-0 wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                        <div class="card-header" id="headingTwo">
+                            <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">Education<span class="lni-chevron-up"></span></h6>
+                        </div>
+                        <div class="collapse" id="collapseTwo" aria-labelledby="headingTwo" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                <p>Finding the answer to “What is a career portfolio?” can help you supplement your resume with evidence of your work and skills.</p>
+                                <p> A career portfolio is a collection of examples and materials that highlight the professional background of candidates. A professional portfolio may include work samples, resume, 
+                                    certifications and other materials that show your knowledge and achievements. Candidates can present their career portfolios to employers during the application or interview process.
+                                    A professional career portfolio can reflect the work experience and qualifications of candidates. Many professionals personalise their portfolios and add specific work examples. 
+                                    For example, a content writer can add sample articles and blogs to their career portfolio. There are many job roles that may require candidates to have a career portfolio. 
+                                    Some common examples of such job roles can be instructors, makeup artists, photographers, designers, hair stylists and cake decorators.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border-0 wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                        <div class="card-header" id="headingThree">
+                            <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Experience<span class="lni-chevron-up"></span></h6>
+                        </div>
+                        <div class="collapse" id="collapseThree" aria-labelledby="headingThree" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                <p>Step 1 : Select the appropriate portfolio template</p>
+                                <p>Step 2 : Fill the form</p>
+                                <p>Step 3 : Make payment if you select premium template</p>
+                                <p>Step 4 : Get document URL</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border-0 wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                        <div class="card-header" id="headingThree">
+                            <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapsefour" aria-expanded="true" aria-controls="collapseThree">Project<span class="lni-chevron-up"></span></h6>
+                        </div>
+                        <div class="collapse" id="collapsefour" aria-labelledby="headingThree" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                <a target="_blank" href="https://bloggingwizard.com/online-portfolio-hosting-sites/"><p>
+                                    <p>Best Free Online Portfolio Hosting Sites</p></p></a>
+                                <a target="_blank" href="https://www.google.com/search?q=website+hosting+websites&rlz=1C1CHBF_enIN992IN992&sxsrf=ALiCzsaebUJzFRdkN76s9Ku_MPp6Oy8_0g%3A1670507402311&ei=iuuRY_XBEu6y3LUPr9uVgAY&oq=wesite+hosting+website&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAxgAMgcIABCABBANMggIABAFEB4QDTIICAAQCBAeEA0yCAgAEAgQHhANMggIABAIEB4QDTIFCAAQhgMyBQgAEIYDMgUIABCGAzIFCAAQhgM6CggAEEcQ1gQQsAM6BwgjELACECc6CAgAEAgQBxAeOgcIABCxAxBDOgUIABCRAjoFCAAQgAQ6CggAEIAEELEDEA06BggAEAcQHjoGCAAQHhANSgQIQRgASgQIRhgAUPEQWKU5YKxdaAJwAXgAgAGsAogB-h6SAQgwLjIuMTQuMZgBAKABAcgBCMABAQ&sclient=gws-wiz-serp"><p>
+                                    <p>Paid Online Portfolio Hosting Sites</p></p></a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="card border-0 wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                        <div class="card-header" id="headingThree">
+                            <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapsefour1" aria-expanded="true" aria-controls="collapseThree">Skill<span class="lni-chevron-up"></span></h6>
+                        </div>
+                        <div class="collapse" id="collapsefour1" aria-labelledby="headingThree" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                <a target="_blank" href="https://bloggingwizard.com/online-portfolio-hosting-sites/"><p>
+                                    <p>Best Free Online Portfolio Hosting Sites</p></p></a>
+                                <a target="_blank" href="https://www.google.com/search?q=website+hosting+websites&rlz=1C1CHBF_enIN992IN992&sxsrf=ALiCzsaebUJzFRdkN76s9Ku_MPp6Oy8_0g%3A1670507402311&ei=iuuRY_XBEu6y3LUPr9uVgAY&oq=wesite+hosting+website&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAxgAMgcIABCABBANMggIABAFEB4QDTIICAAQCBAeEA0yCAgAEAgQHhANMggIABAIEB4QDTIFCAAQhgMyBQgAEIYDMgUIABCGAzIFCAAQhgM6CggAEEcQ1gQQsAM6BwgjELACECc6CAgAEAgQBxAeOgcIABCxAxBDOgUIABCRAjoFCAAQgAQ6CggAEIAEELEDEA06BggAEAcQHjoGCAAQHhANSgQIQRgASgQIRhgAUPEQWKU5YKxdaAJwAXgAgAGsAogB-h6SAQgwLjIuMTQuMZgBAKABAcgBCMABAQ&sclient=gws-wiz-serp"><p>
+                                    <p>Paid Online Portfolio Hosting Sites</p></p></a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="card border-0 wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                        <div class="card-header" id="headingThree">
+                            <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapsefour2" aria-expanded="true" aria-controls="collapseThree">Award<span class="lni-chevron-up"></span></h6>
+                        </div>
+                        <div class="collapse" id="collapsefour2" aria-labelledby="headingThree" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                <a target="_blank" href="https://bloggingwizard.com/online-portfolio-hosting-sites/"><p>
+                                    <p>Best Free Online Portfolio Hosting Sites</p></p></a>
+                                <a target="_blank" href="https://www.google.com/search?q=website+hosting+websites&rlz=1C1CHBF_enIN992IN992&sxsrf=ALiCzsaebUJzFRdkN76s9Ku_MPp6Oy8_0g%3A1670507402311&ei=iuuRY_XBEu6y3LUPr9uVgAY&oq=wesite+hosting+website&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAxgAMgcIABCABBANMggIABAFEB4QDTIICAAQCBAeEA0yCAgAEAgQHhANMggIABAIEB4QDTIFCAAQhgMyBQgAEIYDMgUIABCGAzIFCAAQhgM6CggAEEcQ1gQQsAM6BwgjELACECc6CAgAEAgQBxAeOgcIABCxAxBDOgUIABCRAjoFCAAQgAQ6CggAEIAEELEDEA06BggAEAcQHjoGCAAQHhANSgQIQRgASgQIRhgAUPEQWKU5YKxdaAJwAXgAgAGsAogB-h6SAQgwLjIuMTQuMZgBAKABAcgBCMABAQ&sclient=gws-wiz-serp"><p>
+                                    <p>Paid Online Portfolio Hosting Sites</p></p></a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="card border-0 wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                        <div class="card-header" id="headingThree">
+                            <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapsefour3" aria-expanded="true" aria-controls="collapseThree">Social Media Accounts<span class="lni-chevron-up"></span></h6>
+                        </div>
+                        <div class="collapse" id="collapsefour3" aria-labelledby="headingThree" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                <a target="_blank" href="https://bloggingwizard.com/online-portfolio-hosting-sites/"><p>
+                                    <p>Best Free Online Portfolio Hosting Sites</p></p></a>
+                                <a target="_blank" href="https://www.google.com/search?q=website+hosting+websites&rlz=1C1CHBF_enIN992IN992&sxsrf=ALiCzsaebUJzFRdkN76s9Ku_MPp6Oy8_0g%3A1670507402311&ei=iuuRY_XBEu6y3LUPr9uVgAY&oq=wesite+hosting+website&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAxgAMgcIABCABBANMggIABAFEB4QDTIICAAQCBAeEA0yCAgAEAgQHhANMggIABAIEB4QDTIFCAAQhgMyBQgAEIYDMgUIABCGAzIFCAAQhgM6CggAEEcQ1gQQsAM6BwgjELACECc6CAgAEAgQBxAeOgcIABCxAxBDOgUIABCRAjoFCAAQgAQ6CggAEIAEELEDEA06BggAEAcQHjoGCAAQHhANSgQIQRgASgQIRhgAUPEQWKU5YKxdaAJwAXgAgAGsAogB-h6SAQgwLjIuMTQuMZgBAKABAcgBCMABAQ&sclient=gws-wiz-serp"><p>
+                                    <p>Paid Online Portfolio Hosting Sites</p></p></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+

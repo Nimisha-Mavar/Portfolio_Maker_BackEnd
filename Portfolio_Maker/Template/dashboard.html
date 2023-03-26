@@ -178,9 +178,9 @@
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
-          <li><a href="#home" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Documet</span></a></li>
+          <li><a href="/" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="#home" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Document</span></a></li>
           <li><a href="#pytm" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Pyment</span></a></li>
-          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Feedback</span></a></li>
           <li><a href="#pass" class="nav-link scrollto"><i class='bx bx-cog' ></i> <span>Change Password</span></a></li>
           <li><a href="#log" class="nav-link scrollto"><i class='bx bx-log-out'></i> <span>Logout</span></a></li>
         </ul>
@@ -200,19 +200,34 @@
         </div>
         <br>
         <div class="row justify-content-center">
-
+          {% for port in Port %}
           <div class="col-md-12 col-lg-5 mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-              <div class=""><a href=""><img src="https://tradebrains.in/wp-content/uploads/2017/03/Stock-Portfolio-for-Beginners-How-to-Create-Your-Stock-Portfolio.jpg" class="img-fluid"></a></div>
-              <h1 class="title fs-2"><a href="Scan_Keyword.html" style="color:#222222;">Portfolio</a></h1>
-              <p class="description">Find keywords from job description</p>
+              <div class=""><a href=""><img src="{{port.temp_img.url}}" class="img-fluid"></a></div>
+              <h1 class="title fs-2"><a href="Scan_Keyword.html" style="color:#222222;">{{port.temp_nm}}</a></h1>
+              <p class="description">{{port.temp_cat}}</p>
               <div class="row">
-                <div class="col-lg-6 col-md-6 col-3">
-                  <button type="submit" class="btn mb-4 rounded" style="background-color:#3498db;color:#fff;">
-                    <a class="" href="Login.html" style="color: #fff;">Edit</a>
-                  </button>
+                <div class="col-lg-4 col-md-6 col-3">
+                  <form action="{% url 'select_delete' %}" method="post">
+                    {% csrf_token %}
+                      <input type="hidden" name="t_cat" value={{port.temp_cat}}>
+                      <input type="hidden" name="t_id" value={{port.Template_id}}>
+                      <button type="submit" class="btn mb-4 rounded" style="background-color:#3498db;color:#fff;">
+                        <a style="color: #fff;">Remove</a>
+                      </button>
+                    </form>
                 </div>
-                <div class="col-lg-6 col-md-6 col-3">
+                <div class="col-lg-4 col-md-6 col-3">
+                <form action="{% url 'Edit' %}" method="POST">
+                {% csrf_token %}
+                  <input type="hidden" value="{{port.temp_cat}}" name="Ccat">
+                  <input type="hidden" value="{{port.Portfolio_id}}" name="id">
+                  <button type="submit" class="btn mb-4 rounded float-end" style="background-color:#3498db;color:#fff;">
+                    <a class="" style="color: #fff;">Edit</a>
+                  </button>
+                </form>
+                </div>
+                <div class="col-lg-4 col-md-6 col-3">
                   <button type="submit" class="btn mb-4 rounded float-end" style="background-color:#3498db;color:#fff;">
                     <a class="" href="Login.html" style="color: #fff;">View</a>
                   </button>
@@ -220,19 +235,35 @@
               </div>
             </div>
           </div>
-
+          {% endfor %}
+          {% for res in Res %}
           <div class="col-md-12 col-lg-5 align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-              <div class=""><a href=""><img src="https://tradebrains.in/wp-content/uploads/2017/03/Stock-Portfolio-for-Beginners-How-to-Create-Your-Stock-Portfolio.jpg" class="img-fluid"></a></div>
-              <h1 class="title fs-2"><a href="Scan_Keyword.html" style="color:#222222;">Resume</a></h1>
-              <p class="description">Find keywords from job description</p>
+              <div class=""><a href=""><img src="{{res.temp_img.url}}" class="img-fluid"></a></div>
+              <h1 class="title fs-2"><a href="Scan_Keyword.html" style="color:#222222;">{{res.temp_nm}}</a></h1>
+              <p class="description">{{res.temp_cat}}</p>
               <div class="row">
-                <div class="col-lg-6 col-md-6 col-3">
-                  <button type="submit" class="btn mb-4 rounded" style="background-color:#3498db;color:#fff;">
-                    <a class="" href="Login.html" style="color: #fff;">Edit</a>
-                  </button>
+                <div class="col-lg-4 col-md-6 col-3">
+                    <form action="{% url 'select_delete' %}" method="post">
+                    {% csrf_token %}
+                      <input type="hidden" name="t_cat" value={{res.temp_cat}}>
+                      <input type="hidden" name="t_id" value={{res.Template_id}}>
+                      <button type="submit" class="btn mb-4 rounded" style="background-color:#3498db;color:#fff;">
+                        <a style="color: #fff;">Remove</a>
+                      </button>
+                    </form>
                 </div>
-                <div class="col-lg-6 col-md-6 col-3">
+                <div class="col-lg-4 col-md-6 col-3">
+                   <form action="{% url 'Edit' %}" method="POST">
+                      {% csrf_token %}
+                        <input type="hidden" value="{{res.temp_cat}}" name="Ccat">
+                        <input type="hidden" value="{{res.Resume_id}}" name="id">
+                        <button type="submit" class="btn mb-4 rounded float-end" style="background-color:#3498db;color:#fff;">
+                          <a class="" style="color: #fff;">Edit</a>
+                        </button>
+                    </form>
+                </div>
+                <div class="col-lg-4 col-md-6 col-3">
                   <button type="submit" class="btn mb-4 rounded float-end" style="background-color:#3498db;color:#fff;">
                     <a class="" href="Login.html" style="color: #fff;">View</a>
                   </button>
@@ -240,7 +271,7 @@
               </div>
             </div>
           </div>
-
+          {% endfor %}
         </div>
 
       </div>
@@ -317,20 +348,25 @@
         <div class="text-center section-title" data-aos="fade-up">
           <h2>Change Password</h2>
         </div>
-        <br>
         <div class="row justify-content-center" data-aos="fade-up">
           <div class="card text-center" style="width: 500px;">
             <br>
-            <div class="card-header h5 text-white"><h3 style="color: black;font-family: "Open Sans", sans-serif;">Password Reset</h3></div>
             <div class="card-body px-5">
-                <p class="card-text py-2">
-                    Enter your email address and we'll send you an email with instructions to reset your password.
-                </p>
-                <div class="form-floating mb-3 mt-3">
-                  <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
-                  <label for="email">Email</label>
-                </div>
-                <a href="#" class="btn w-100" style="background-color: #3498db;color:#fff">Reset password</a>
+                    <div class="bg-warning">{{msg}}</div><br>
+                    <form action="{% url 'change_pass' %}" method="post">
+                      {% csrf_token %}
+                      <div class="mb-3">
+                          <label for="formFileMultiple" class="description form-label">Current Password</label>
+                          <input class="form-control" type="password" id="formFileMultiple" name="cpass">
+                      </div>
+                      <div class="mb-3">
+                          <label for="exampleFormControlTextarea1" class="description form-label">New Password</label>
+                          <input class="form-control" type="password" id="formFileMultiple1" name="npass">
+                      </div>
+                      <button type="submit" class="btn mb-4 rounded float-end" style="background-color:#3498db;color:#fff;">
+                         <a class="" style="color: #fff;">Set Password</a>
+                     </button>
+                  </form>
             </div>
           </div>
         </div>

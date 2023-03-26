@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
-
+from django.contrib.auth.hashers import check_password
 # Create your views here.
 
 def Register(request):
@@ -41,7 +41,7 @@ def login(request):
             return redirect('/')
 
         else:
-            return redirect('login')
+            return redirect('Login')
 
     else:
      return render(request,'login.html')
@@ -49,3 +49,42 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
+def forgot_password(request):
+    if request.method == 'POST':
+        uname=request.POST['usernm']
+        if User.objects.filter(username=uname).exists():
+            return render(request, 'forgot_pass1.html',{'uname':uname})
+        else:
+            return render(request, 'forgot_password.html')
+    else:
+        return render(request, 'forgot_password.html')
+
+#logic of forgot password
+def set_pass(request):
+    npass=request.POST['newpass']
+    cpass=request.POST['cpass']
+    unm=request.POST['uname']
+    if npass==cpass:
+        u = User.objects.get(username=unm)
+        u.set_password(npass)
+        u.save()
+        return redirect('Login')
+    else:
+        return render(request, 'forgot_pass1.html')
+
+#logic for change password
+def cng_pass(request):
+    npass=request.POST['npass']
+    cpass=request.POST['cpass']
+    u_id=request.user
+    u = User.objects.get(id=u_id.id)
+    print(u.username)
+    print(u.password)
+    if check_password(cpass,u.password):
+        u.set_password(npass)
+        u.save()
+        logout(request)
+        return redirect('Login')
+    else:
+        return render(request,'dashboard.html',{'msg':"Password does not match.."})
