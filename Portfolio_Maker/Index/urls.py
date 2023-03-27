@@ -6,7 +6,8 @@ urlpatterns = [
     path('',views.home),
     path('faq',views.faq, name="faq"),
     path('contact1',views.contact1, name='contact1'),
-    path('feedback',views.feed, name='feedback')
+    path('feedback/<int:id>',views.feed_page, name='feed'),
+    path('feedback',views.feed, name='feedback'),
     path('',views.home,name="/"),
     path('faq',views.faq,name="faq"),
     path('contact1',views.contact1,name='contact1')

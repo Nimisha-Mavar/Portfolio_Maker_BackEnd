@@ -282,12 +282,14 @@ def Ready_page(request):
 def Get_url(request):
     pid=request.POST['pid']
     pdata=Portfolio.objects.get(Portfolio_id=pid)
+    tid=pdata.Template_id
     tname=pdata.temp_nm()
     tcat=pdata.temp_cat()
     ttype=pdata.temp_type()
     prc=pdata.temp_prc()
     url="http://127.0.0.1:8000/Livedemo/iportfolio?pid="+pid
     Data={
+        'tid':tid,
         'tname':tname,
         'tcat':tcat,
         'type':ttype,
