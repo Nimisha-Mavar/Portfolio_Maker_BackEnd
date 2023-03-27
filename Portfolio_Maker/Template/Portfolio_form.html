@@ -124,9 +124,6 @@
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
                             End Year : {{i.End_year}}
-                            {% csrf_token %}
-                            <input type="hidden" value="Portfolio" id="tcat">
-                            <input type="hidden" value="{{i.Education_id}}" id="euid">
                         </div>
                     </div>
                   </div>
@@ -505,13 +502,16 @@
 </section>
       
          <!-- Vendor JS Files -->
-      <div class="row justify-content-center">
-        <div class="form-group col-lg-4 col-md-3 p-1">
-          <a href="Document.html" class="">
-            <button id="button1" class="btn btn-lg">Next</button>
-          </a>
+      <form action="{% url 'Data_display' %}" method="POST">
+      {% csrf_token %}
+        <input type="hidden" value="{{portid}}" name="id">
+        <input type="hidden" value="Portfolio" name="Ccat">
+        <div class="row text-right">
+          <div class="col-lg-11" data-aos="fade-up" data-aos-delay="50">
+              <button id="button1" type="submit" value="Check Details">Check Details&nbsp;<i class='bx bxs-chevrons-right fs-5'></i></button>
+          </div>
         </div>
-      </div>
+      </form>
       <br><br>
     
     <script>
@@ -590,26 +590,7 @@
             }
         })
     })
-  // Education delete
-    $(document).on('submit','#Edu_delete',function(e){
-        e.preventDefault();
-        $.ajax({
-            type:'POST',
-            url:"{% url 'Education_del' %}",
-            data:{
-                Euid:$('#euid').val(),
-                cat:$('#tcat').val(),
-                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
-                
-            },
-           
-            success: function (data) {
-                // alert the error if any error occured
-                $("#msg2").html(data)
-                
-            }
-        })
-    })
+  
 
      //for Exeperience
     $(document).on('submit','#Experience',function(e){

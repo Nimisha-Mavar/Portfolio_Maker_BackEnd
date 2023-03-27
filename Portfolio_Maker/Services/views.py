@@ -1,5 +1,6 @@
-from django.shortcuts import render,HttpResponse
-from .models import Personal_info,Education,Experience,Project,Skill,Award,Social_Media
+from django.shortcuts import render,HttpResponse,redirect
+from .models import *
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 # Personal info function
@@ -71,18 +72,10 @@ def Education_data(request):
     else:
         return HttpResponse("Error")
 
-def Education_del(request):
-    if request.method == "POST":
-        cat=request.POST['cat']
-        Eu_id=request.POST['Euid']
-        if cat=="Portfolio":
-            obj=Education.objects.get(Education_id=Eu_id)
-            obj.delete()
-            return HttpResponse("Record deleted successfully")
-        else:
-            obj=Education.objects.get(Education_id=Eu_id)
-            obj.delete()
-            return HttpResponse("Record deleted successfully")
+def Education_del(request,id):
+    obj=Education.objects.get(Education_id=id)
+    obj.delete()
+    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
 #foe experience
 def Experience_data(request):
@@ -112,6 +105,12 @@ def Experience_data(request):
             return HttpResponse("Data stored successfully...")
     else:
         return HttpResponse("Error")
+
+def Experience_del(request):
+        eid=request.POST['id']
+        obj=Experience.objects.get(Experience_id=eid)
+        obj.delete()
+        return HttpResponse("")
 
 #for Project
 def Project_data(request):
@@ -146,7 +145,14 @@ def Project_data(request):
             return HttpResponse("Data stored successfully...")
     else:
         return HttpResponse("GET method called...")
-    
+
+def Project_del(request):
+        eid=request.POST['id']
+        obj=Project.objects.get(Project_id=eid)
+        obj.delete()
+        return HttpResponse("")
+
+#for Skill  
 def Skill_data(request):
     if request.method == 'POST':
         cat=request.POST['catt']
@@ -167,6 +173,13 @@ def Skill_data(request):
     else:
        return HttpResponse("GET method called...")
 
+def Skill_del(request):
+        eid=request.POST['id']
+        obj=Skill.objects.get(Skill_id=eid)
+        obj.delete()
+        return HttpResponse("")
+
+#for Award
 def Award_data(request):
     if request.method == 'POST':
         port_id=request.POST['port_id']
@@ -185,6 +198,13 @@ def Award_data(request):
     else:
        return HttpResponse("GET method called...")  
     
+def Award_del(request):
+    eid=request.POST['id']
+    obj=Award.objects.get(Award_id=eid)
+    obj.delete()
+    return HttpResponse("")
+
+#for Social_Media   
 def Social_data(request):
     if request.method == 'POST':
         act=request.POST['snm']
@@ -200,3 +220,81 @@ def Social_data(request):
             return HttpResponse("Data stored successfully...")
     else:
        return HttpResponse("GET method called...")
+    
+def Social_del(request):
+    eid=request.POST['id']
+    obj=Social_Media.objects.get(Social_id=eid)
+    obj.delete()
+    return HttpResponse("")
+
+#for section display   
+def Data_display(request):
+    cat=request.POST['Ccat']
+    idd=request.POST['id']
+    if cat=="Portfolio":
+        prs=Personal_info.objects.filter(Portfolio_id=idd)
+        edu=Education.objects.filter(Portfolio_id=idd)
+        ex=Experience.objects.filter(Portfolio_id=idd)
+        proj=Project.objects.filter(Portfolio_id=idd)
+        skill=Skill.objects.filter(Portfolio_id=idd)
+        award=Award.objects.filter(Portfolio_id=idd)
+        social=Social_Media.objects.filter(Portfolio_id=idd)
+        contaxt={
+            'portid':idd,
+            'prs':prs,
+            'edu':edu,
+            'ex':ex,
+            'pro':proj,
+            'sk':skill,
+            'awd':award,
+            'scl':social
+        }
+        return render(request,'Section_Details.html',contaxt)
+    else:
+        prs=Personal_info.objects.filter(Resume_id=idd)
+        edu=Education.objects.filter(Resume_id=idd)
+        ex=Experience.objects.filter(Resume_id=idd)
+        proj=Project.objects.filter(Resume_id=idd)
+        skill=Skill.objects.filter(Portfolio_id=idd)
+        contaxt={
+            'resid':idd,
+            'prs':prs,
+            'edu':edu,
+            'ex':ex,
+            'pro':proj,
+            'sk':skill
+        }
+        return render(request,'Section_Details.html',contaxt)
+    
+#for Ready page
+def Ready_page(request):
+    pid=request.POST['id']
+    pdata=Portfolio.objects.get(Portfolio_id=pid)
+    tname=pdata.temp_nm()
+    print(tname)
+    Data={
+        'pid':pid,
+        'tname':tname
+    }
+    return render(request,'Temp_ready.html',Data)
+
+#for Url data get 
+def Get_data_url(request,id):
+    Pdata=Portfolio.objects.get(Portfolio_id=id)
+    tnm=Pdata.temp_nm()
+    edu=Education.objects.filter(Portfolio_id=id)
+    ex=Experience.objects.filter(Portfolio_id=id)
+    proj=Project.objects.filter(Portfolio_id=id)
+    skill=Skill.objects.filter(Portfolio_id=id)
+    award=Award.objects.filter(Portfolio_id=id)
+    social=Social_Media.objects.filter(Portfolio_id=id)
+    contaxt={
+            'edu':edu,
+            'ex':ex,
+            'pro':proj,
+            'sk':skill,
+            'awd':award,
+            'scl':social
+        }
+    return redirect(tnm)
+    

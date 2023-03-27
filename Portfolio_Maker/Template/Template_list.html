@@ -28,7 +28,10 @@
               <h4>{{temp.Temp_cat}}</h4>
               <p>{{temp.Temp_type}}</p>
               <div class="portfolio-links">
-                <a href="{% url temp.Temp_name %}" target="_blank"><i class="bx bx-plus"></i></a>
+              <form action="{% url temp.Temp_name %}" method="post">
+                {% csrf_token %}
+                <a><button type="submit"><i class="bx bx-plus"></i></button></a>
+              </form>
                 <a href="{{temp.id}}" title="More Details"><i class="bx bx-link"></i></a>
               </div>
             </div>
