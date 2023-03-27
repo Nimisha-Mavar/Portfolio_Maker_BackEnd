@@ -45,9 +45,12 @@
                     </form>
                     </div>
                     <div class="col-lg-6 col-md-6 col-3">
-                      <button class="btn btn-lg mb-4 rounded float" style="background-color:#3498db;color:#fff;">
-                        <a class="" href="" style="color: #fff;">Get Documrnt</a>
+                       <form action="{% url 'Get_url' %}" method="Post">
+                       {% csrf_token %}
+                       <input name="pid" type="hidden" value="{{pid}}">
+                      <button type="submit" class="btn btn-lg mb-4 rounded" style="background-color:#3498db;color:#fff;">Get Document
                       </button>
+                    </form>
                     </div>
                   </div>
               </div>
@@ -57,5 +60,7 @@
   
         </div>
       </section><!-- End Services Section -->
+      <script>
+      </script>
     </body>
 {% endblock %}

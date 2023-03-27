@@ -13,7 +13,10 @@ class Portfolio(models.Model):
         return self.Template.Temp_cat
     def temp_img(self):
         return self.Template.Temp_img1
-
+    def temp_type(self):
+        return self.Template.Temp_type
+    def temp_prc(self):
+        return self.Template.Temp_price
 #Resume model
 class Resume(models.Model):
     Resume_id=models.IntegerField(primary_key=True)

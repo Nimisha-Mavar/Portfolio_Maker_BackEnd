@@ -278,23 +278,20 @@ def Ready_page(request):
     }
     return render(request,'Temp_ready.html',Data)
 
-#for Url data get 
-def Get_data_url(request,id):
-    Pdata=Portfolio.objects.get(Portfolio_id=id)
-    tnm=Pdata.temp_nm()
-    edu=Education.objects.filter(Portfolio_id=id)
-    ex=Experience.objects.filter(Portfolio_id=id)
-    proj=Project.objects.filter(Portfolio_id=id)
-    skill=Skill.objects.filter(Portfolio_id=id)
-    award=Award.objects.filter(Portfolio_id=id)
-    social=Social_Media.objects.filter(Portfolio_id=id)
-    contaxt={
-            'edu':edu,
-            'ex':ex,
-            'pro':proj,
-            'sk':skill,
-            'awd':award,
-            'scl':social
-        }
-    return redirect(tnm)
-    
+#for Url 
+def Get_url(request):
+    pid=request.POST['pid']
+    pdata=Portfolio.objects.get(Portfolio_id=pid)
+    tname=pdata.temp_nm()
+    tcat=pdata.temp_cat()
+    ttype=pdata.temp_type()
+    prc=pdata.temp_prc()
+    url="http://127.0.0.1:8000/Livedemo/iportfolio?pid="+pid
+    Data={
+        'tname':tname,
+        'tcat':tcat,
+        'type':ttype,
+        'prc':prc,
+        'url':url
+    }
+    return render(request,'Document.html',Data) 

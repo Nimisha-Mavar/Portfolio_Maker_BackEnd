@@ -19,5 +19,6 @@ urlpatterns=[
     path('Social_del',views.Social_del,name="Social_del"),
     #for ready template
     path('Ready',views.Ready_page,name="Ready"),
-    path('Portfolio_Maker/<int:id>',views.Get_data_url,name="Portfolio_Maker"),
+    #for get portfolio url
+    path('Get_url',views.Get_url,name="Get_url"),
 ]

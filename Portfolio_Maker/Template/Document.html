@@ -1,0 +1,88 @@
+{% extends 'Master.html' %}
+{% block content %}
+{% load static %}
+<style>
+        .services .icon-box:hover::before {
+            background: #fff;
+            right: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 0px;
+          }
+          
+          .services .icon-box:hover .title a,
+          .services .icon-box:hover .description {
+            color:black;
+          }
+          body
+          {
+            background-repeat:no-repeat;
+            background-size:100%
+          }
+          
+    </style>
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+        <div class="container">
+  
+          <div class="section-title" data-aos="fade-up">
+            <h2>Download Document</h2>
+          </div>
+          <form>
+          <!--==>Personal info form<==-->
+          <div class="row justify-content-center">
+            <div id="key" class="col-md-12 col-lg-7 align-items-stretch mb-5 mb-lg-0">
+              <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                <h1 class="title fs-2"></h1>
+                <h3>Template Information</h3>
+                <hr>
+                
+                <div class="col-lg-6" style="background-color:rgb(255, 255, 255) ;">
+                    <div class="portfolio-info">
+                       <ul>
+                         <li><strong>Name</strong>: {{tname}}</li>
+                         <li><strong>Category</strong>: {{tcat}}</li>
+                         <li><strong>Type</strong>: {{type}}</li>
+                         <li><strong>Price</strong>: {{prc}}</li>
+                       </ul>
+                     </div>
+                     <br>
+                 </div>
+                  <div class="row">
+                        <div class="col-sm-12">
+                            <input type="text" value="{{url}}" id="myInput" readonly size="45">
+                             <!-- The button used to copy the text -->&nbsp;&nbsp;&nbsp;
+                            <p style="background-color:grey" class="btn rounded" onclick="myFunction()">Copy</p>
+                        </div>
+                  </div><br>
+                  <div class="row">
+                      <div class="col-lg-6">
+                         <a href="/"><p id="button1" class="float-start">Home</p></a>
+                      </div>  
+                      <div class="col-lg-6">
+                         <a href=""><p id="button1" class="float-end">Feedback</p></a>
+                      </div>
+                  </div>  
+              </div>
+            </div>
+          </div>
+          <!--==>Personal info form ended<==-->
+          
+        </div>
+      </section><!-- End Services Section -->
+      <script>
+        function myFunction() {
+        // Get the text field
+        var copyText = document.getElementById("myInput");
+
+        // Select the text field
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // For mobile devices
+
+        // Copy the text inside the text field
+        navigator.clipboard.writeText(copyText.value);
+      }
+      </script>
+    {% endblock %}
+  
