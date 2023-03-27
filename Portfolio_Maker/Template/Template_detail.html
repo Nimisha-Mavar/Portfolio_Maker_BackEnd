@@ -1,7 +1,34 @@
 {% extends 'Master.html' %}
 {% block content %}
 {% load static%}
+<style>
+              .services .icon-box:hover::before {
+                  background: #fff;
+                  right: 0;
+                  top: 0;
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 0px;
+                }
 
+                .services .icon-box:hover .title a,
+                .services .icon-box:hover .description {
+                  color:black;
+                }
+                label
+                {
+                  margin-left: 10px;
+                }
+                hr
+                {
+                  background-color: skyblue;
+                  height: 5px;
+                }
+                i
+                {
+                  color:#3498db;
+                }
+</style> 
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
@@ -85,10 +112,78 @@
               </div>
           </div>
         </div>
-
-      </div>
+     </div>
     </section><!-- End Portfolio Details Section -->
-
+    <section id="services" class="services">
+        <div class="container">
+          <div class="section-title" data-aos="fade-up">
+            <h2>Feedback</h2>
+          </div>
+          {% for i in feed %}
+          <div class="row justify-content-center">
+            <div id="des" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
+              <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                <div class="row">
+                  <div class="col-lg-3">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="rounded-circle" style="height:120px" alt="Cinque Terre">
+                  </div>
+                  <div class="col-lg-8">
+                      <h5>{{i.uname}}</h5>
+                      <h4>{{data.Temp_name}}</h4>
+                      {% if i.Rate1 == 1 %}
+                      <div>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star"></i>
+                        <i class="bi bi-star"></i>
+                        <i class="bi bi-star"></i>
+                        <i class="bi bi-star"></i>
+                      </div>
+                      {% endif %}
+                      {% if i.Rate1 == 2 %}
+                      <div>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star"></i>
+                        <i class="bi bi-star"></i>
+                        <i class="bi bi-star"></i>
+                      </div>
+                      {% endif %}
+                      {% if i.Rate1 == 3 %}
+                      <div>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star"></i>
+                        <i class="bi bi-star"></i>
+                      </div>
+                      {% endif %}
+                      {% if i.Rate1 == 4 %}
+                      <div>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star"></i>
+                      </div>
+                      {% endif %}
+                      {% if i.Rate1 == 5 %}
+                      <div>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                      </div>
+                      {% endif %}
+                      <div>{{i.Message1}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><br>
+          {% endfor %}
+        </div>
+      </section><!-- End Services Section -->
   </main><!-- End #main -->
-
+  
 {% endblock %} 

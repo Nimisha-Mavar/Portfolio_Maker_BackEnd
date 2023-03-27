@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Detail
 from Services.models import *
+from Index.models import feedback
 from django.contrib.auth.models import User,auth
 # Create your views here.
 def Resume_list(request):
@@ -20,7 +21,12 @@ def ATS_list(request):
 
 def temp_detail(request,id):
     data=Detail.objects.get(id=id)
-    return render(request,'Template_detail.html',{'data':data})
+    feed=feedback.objects.filter(Template_id=id)
+    context={
+         'data':data,
+         'feed':feed
+    }
+    return render(request,'Template_detail.html',context)
 
 #forms and REsuem and portfolio insert logic
 def form(request):
