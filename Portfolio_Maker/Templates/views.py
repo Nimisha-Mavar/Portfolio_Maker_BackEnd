@@ -50,6 +50,7 @@ def form(request):
                     Port=Portfolio(Portfolio_id=port_id,Template_id=T_id,User_id=u_id.id)
                     Port.save()
                     Pid=Port.Portfolio_id
+                    print(Pid)
                     return render(request,'Portfolio_form.html',{'Portid':Pid})
                 except:
                     err= {
@@ -111,7 +112,7 @@ def edit(request):
         award=Award.objects.filter(Portfolio_id=idd)
         social=Social_Media.objects.filter(Portfolio_id=idd)
         contaxt={
-            'portid':idd,
+            'Portid':idd,
             'edu':edu,
             'ex':ex,
             'pro':proj,

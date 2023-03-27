@@ -45,7 +45,7 @@
           <div class="container">
     
             <div class="section-title">
-              <h2>Portfolio Form {{portid}}</h2>
+              <h2>Portfolio Form {{Portid}}</h2>
             </div>
             
             <!--==>Personal info form<==-->
@@ -504,7 +504,7 @@
          <!-- Vendor JS Files -->
       <form action="{% url 'Data_display' %}" method="POST">
       {% csrf_token %}
-        <input type="hidden" value="{{portid}}" name="id">
+        <input type="hidden" value="{{Portid}}" name="id">
         <input type="hidden" value="Portfolio" name="Ccat">
         <div class="row text-right">
           <div class="col-lg-11" data-aos="fade-up" data-aos-delay="50">
