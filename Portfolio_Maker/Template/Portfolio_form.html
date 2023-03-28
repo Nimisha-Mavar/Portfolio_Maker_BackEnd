@@ -58,7 +58,7 @@
                     <form id="Personal_info">
                         {% csrf_token %}
                         <div class="row">
-                          <input type="hidden" value="{{portid}}" id="pid">
+                          <input type="hidden" value="{{Portid}}" id="pid">
                           <input type="hidden" value="Portfolio" id="catt">
                           <div class="col form-floating mb-3">
                             <input type="text" class="form-control" placeholder="First name" id="fname" name="fname" required>
@@ -137,7 +137,7 @@
                   <form id="Education">
                     {% csrf_token %}
                     <div class="row">
-                        <input type="hidden" value="{{portid}}" id="pid">
+                        <input type="hidden" value="{{Portid}}" id="pid">
                         <input type="hidden" value="Portfolio" id="catt">
                         <div class="form-floating mb-3 mt-3">
                           <input type="text" class="form-control" id="iname" placeholder="Institute name" name="iname" required> 
@@ -350,7 +350,7 @@
                       {% csrf_token %}            
                       <div class="row">
                         <div class="form-floating mb-3 mt-3">
-                          <input type="hidden" value="{{portid}}" id="pid">
+                          <input type="hidden" value="{{Portid}}" id="pid">
                           <input type="hidden" value="Portfolio" id="catt">
                           <input type="text" class="form-control" id="sname" placeholder="Skill name" name="sname" required> 
                           <label for="sname">Skill Name</label>

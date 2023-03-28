@@ -30,14 +30,22 @@ def Personal(request):
                 return HttpResponse('Data updated successfully')
             else:
                 p_id=Personal_info.objects.only('Personal_id').count()
-                p_id=p_id+1
+                if p_id == 0:
+                    p_id=1
+                else:
+                    p_id=(Personal_info.objects.last()).Personal_id
+                    p_id+=1
                 obj=Personal_info(Personal_id=p_id,Portfolio_id=port_id,First_name=fname,Last_name=lname,Address=address,Phone=phone,Email=eml,Dob=dob,Philosophy=philo)
                 obj.save()
                 return HttpResponse('Data stored successfully')
         else:
             res_id=request.POST['res_id']
             p_id=Personal_info.objects.only('Personal_id').count()
-            p_id=p_id+1
+            if p_id == 0:
+                p_id=1
+            else:
+                p_id=(Personal_info.objects.last()).Personal_id
+                p_id+=1
             data=Personal_info(Personal_id=p_id,Resume_id=res_id,First_name=fname,Last_name=lname,Address=address,Phone=phone,Email=eml,Dob=dob,Philosophy=philo)
             data.save()
             return HttpResponse('Data stored successfully')
