@@ -34,3 +34,5 @@ class Detail(models.Model):
 
     def __str__(self):
         return self.Temp_name
+    def offer(self):
+        return self.Temp_offer.Offer_value

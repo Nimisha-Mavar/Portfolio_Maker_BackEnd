@@ -307,13 +307,20 @@ def Ready_page(request):
     pid=request.POST['id']
     pdata=Portfolio.objects.get(Portfolio_id=pid)
     tid=pdata.Template_id
-    tname=pdata.temp_nm()
-    print(tname)
-    Data={
-        'pid':pid,
-        'tname':tname
-    }
-    return render(request,'Temp_ready.html',Data)
+    temp=Detail.objects.get(id=tid)
+    ttype=temp.Temp_type
+    if ttype == 'Premium':
+        data={
+            'pid':pid,
+            'temp':temp
+        }
+        return render(request,'Invoice.html',data)
+    else:
+        Data={
+            'pid':pid,
+            'tname':temp.Temp_name
+        }
+        return render(request,'Temp_ready.html',Data)
 
 #for Url 
 def Get_url(request):
