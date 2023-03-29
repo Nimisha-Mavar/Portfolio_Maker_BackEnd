@@ -16,7 +16,8 @@ def Premium_pf_2(request):
 def iportfolio(request):
     if request.method=='GET':
         pid=request.GET['pid']
-        prs=Personal_info.objects.filter(Portfolio_id=pid)
+        u_id=request.user
+        prs=Personal_info.objects.filter(User_id=u_id.id)
         edu=Education.objects.filter(Portfolio_id=pid)
         ex=Experience.objects.filter(Portfolio_id=pid)
         proj=Project.objects.filter(Portfolio_id=pid)

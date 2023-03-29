@@ -55,40 +55,42 @@
                     <h1 class="title fs-2">Personal Infomation</h1>
                     <h2 id="msg1" class="bg-warning"></h2>
                     <hr>
-                    <form id="Personal_info">
+                    <form id="Personal_info" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="row">
-                          <input type="hidden" value="{{Portid}}" id="pid">
-                          <input type="hidden" value="Portfolio" id="catt">
                           <div class="col form-floating mb-3">
-                            <input type="text" class="form-control" placeholder="First name" id="fname" name="fname" required>
+                            <input type="text" class="form-control" placeholder="First name" id="fname" name="fname" required value="{{prs.First_name}}">
                             <label for="fname">First name</label>
                           </div>
                           <div class="col form-floating">
-                            <input type="text" class="form-control" placeholder="Last name" id="lname" name="lname" required>
+                            <input type="text" class="form-control" placeholder="Last name" id="lname" name="lname" required value="{{prs.Last_name}}">
                             <label for="lname">Last name</label>
                           </div>
                           <div class="form-floating mb-3 mt-3">
-                            <textarea type="text" class="form-control" id="address" placeholder="Enter address" name="address" required></textarea> 
+                            <textarea type="text" class="form-control" id="address" placeholder="Enter address" name="address" required value="{{prs.Address}}"></textarea> 
                             <label for="address">Address</label>
                             <br>
                           </div>
                           <div class="col form-floating mb-3">
                             <input type="number" class="form-control" id="phone" placeholder="Phone"
                             name="phone"
-                            maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
+                            maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required value="{{prs.Phone}}">
                             <label for="phone">Phone number</label>
                           </div>
                           <div class="col form-floating">
-                            <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
+                            <input type="email" class="form-control" id="email" placeholder="Email" name="email" required value="{{prs.Email}}">
                             <label for="email">Email</label>
                           </div>
                           <div class="form-floating mb-3 mt-3">
-                            <input type="date" class="form-control" id="dob" placeholder="Date of birth" name="dob" required> 
+                            <input type="date" class="form-control" id="dob" placeholder="Date of birth" name="dob" required value="{{prs.Dob}}"> 
                             <label for="dob">Date of Birth</label>
                           </div>
+                          <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="pic" value="{{prs.Pic}}">
+                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                          </div>
                           <div class="form-floating mb-3 mt-3">
-                            <input type="text" class="form-control" id="philo" placeholder=" philosophy statement" name="philo" required> 
+                            <input type="text" class="form-control" id="philo" placeholder=" philosophy statement" name="philo" required value="{{prs.Philosophy}}"> 
                             <label for="philo">Philosophy Statement</label>
                           </div>
                           </div>
@@ -544,8 +546,6 @@
             type:'POST',
             url:"{% url 'Personal_data' %}",
             data:{
-                port_id:$('#pid').val(),
-                catt:$('#catt').val(),
                 curnt:$('#curnt').val(),
                 fnm:$('#fname').val(),
                 lnm:$('#lname').val(),
@@ -554,6 +554,7 @@
                 eml:$('#email').val(),
                 dob:$('#dob').val(),
                 philo:$('#philo').val(),
+                pic:$('#pic').val(),
                 csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
                 
             },

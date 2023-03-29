@@ -112,7 +112,9 @@ def select_dlt(request):
 def edit(request):
     cat=request.POST['Ccat']
     idd=request.POST['id']
+    u_id=request.user
     if cat=="Portfolio":
+        prs=Personal_info.objects.get(User_id=u_id.id)
         edu=Education.objects.filter(Portfolio_id=idd)
         ex=Experience.objects.filter(Portfolio_id=idd)
         proj=Project.objects.filter(Portfolio_id=idd)
@@ -120,6 +122,7 @@ def edit(request):
         award=Award.objects.filter(Portfolio_id=idd)
         social=Social_Media.objects.filter(Portfolio_id=idd)
         contaxt={
+            'prs':prs,
             'Portid':idd,
             'edu':edu,
             'ex':ex,

@@ -13,12 +13,13 @@ def Personal(request):
         eml=request.POST['eml']
         dob=request.POST['dob']
         philo=request.POST['philo']
-        port_id=request.POST['port_id']
-        cat=request.POST['catt']
-        print(cat)
-        if cat=="Portfolio":
-            if Personal_info.objects.filter(Portfolio_id=port_id).exists():
-                obj=Personal_info.objects.get(Portfolio_id=port_id)
+        U_id=request.user
+        if len(request.POST['pic']) != 0:
+            pic=request.POST['pic']
+        else:
+            pic=''
+        if Personal_info.objects.filter(User_id=U_id.id).exists():
+                obj=Personal_info.objects.get(User_id=U_id.id)
                 obj.First_name=fname
                 obj.Last_name=lname
                 obj.Address=address
@@ -26,29 +27,19 @@ def Personal(request):
                 obj.Email=eml
                 obj.Dob=dob
                 obj.Philosophy=philo
+                obj.Pic=pic
                 obj.save()
                 return HttpResponse('Data updated successfully')
-            else:
+        else:
                 p_id=Personal_info.objects.only('Personal_id').count()
                 if p_id == 0:
                     p_id=1
                 else:
                     p_id=(Personal_info.objects.last()).Personal_id
                     p_id+=1
-                obj=Personal_info(Personal_id=p_id,Portfolio_id=port_id,First_name=fname,Last_name=lname,Address=address,Phone=phone,Email=eml,Dob=dob,Philosophy=philo)
+                obj=Personal_info(Personal_id=p_id,User_id=U_id.id,First_name=fname,Last_name=lname,Address=address,Phone=phone,Email=eml,Dob=dob,Philosophy=philo,Pic=pic)
                 obj.save()
                 return HttpResponse('Data stored successfully')
-        else:
-            res_id=request.POST['res_id']
-            p_id=Personal_info.objects.only('Personal_id').count()
-            if p_id == 0:
-                p_id=1
-            else:
-                p_id=(Personal_info.objects.last()).Personal_id
-                p_id+=1
-            data=Personal_info(Personal_id=p_id,Resume_id=res_id,First_name=fname,Last_name=lname,Address=address,Phone=phone,Email=eml,Dob=dob,Philosophy=philo)
-            data.save()
-            return HttpResponse('Data stored successfully')
     else:
         return HttpResponse('Error')
 
@@ -66,14 +57,22 @@ def Education_data(request):
                 return HttpResponse("Record exist....")
             else:
                 eid=Education.objects.only('Education_id').count()
-                eid=eid+1
+                if eid == 0:
+                    eid=1
+                else:
+                    eid=(Education.objects.last()).Education_id
+                    eid+=1
                 obj=Education(Education_id=eid,Portfolio_id=port_id,Institute=iname,Degree=degree,Start_year=syear,End_year=eyear)
                 obj.save()
                 return HttpResponse("Data stored successfully...")
         else:
             res_id=request.POST['res_id']
             eid=Education.objects.only('Education_id').count()
-            eid=eid+1
+            if eid == 0:
+                eid=1
+            else:
+                eid=(Education.objects.last()).Education_id
+                eid+=1
             obj=Education(Education_id=eid,Resume_id=res_id,Institute=iname,Degree=degree,Start_year=syear,End_year=eyear)
             obj.save()
             return HttpResponse("Data stored successfully...")
@@ -100,14 +99,22 @@ def Experience_data(request):
                return HttpResponse("Record Exist...")
             else:
                 eid=Experience.objects.only('Experience_id').count()
-                eid=eid+1
+                if eid == 0:
+                    eid=1
+                else:
+                    eid=(Experience.objects.last()).Experience_id
+                    eid+=1
                 obj=Experience(Experience_id=eid,Portfolio_id=port_id,Company=cname,Role=rname,Start_year=syear,End_year=eyear,Description=des)
                 obj.save()
                 return HttpResponse("Data stored successfully...")
         else:
             res_id=request.POST['res_id']
             eid=Experience.objects.only('Experience_id').count()
-            eid=eid+1
+            if eid == 0:
+               eid=1
+            else:
+                eid=(Experience.objects.last()).Experience_id
+                eid+=1
             obj=Experience(Experience_id=eid,Resume_id=res_id,Company=cname,Role=rname,Start_year=syear,End_year=eyear,Description=des)
             obj.save()
             return HttpResponse("Data stored successfully...")
@@ -136,7 +143,11 @@ def Project_data(request):
                return HttpResponse("Record Exist...")
             else:
                 pid=Project.objects.only('Project_id').count()
-                pid=pid+1
+                if pid == 0:
+                   pid=1
+                else:
+                    pid=(Project.objects.last()).Project_id
+                    pid+=1
                 if curnt=="yes":
                     curnt=True
                 else:
@@ -147,7 +158,11 @@ def Project_data(request):
         else:
             res_id=request.POST['res_id']
             pid=Project.objects.only('Project_id').count()
-            pid=pid+1
+            if pid == 0:
+               pid=1
+            else:
+                pid=(Project.objects.last()).Project_id
+                pid+=1
             obj=Project(Project_id=pid,Resume_id=res_id,Title=title,Start_year=syear,End_year=eyear,Description=des,Current=curnt)
             obj.save()
             return HttpResponse("Data stored successfully...")
@@ -172,7 +187,11 @@ def Skill_data(request):
                return HttpResponse("Record Exist...")
            else:
                 sid=Skill.objects.only('Skill_id').count()
-                sid=sid+1 
+                if sid == 0:
+                   sid=1
+                else:
+                    sid=(Skill.objects.last()).Skill_id
+                    sid+=1
                 obj=Skill(Skill_id=sid,Portfolio_id=port_id,Name=sname,Level=lvl)
                 obj.save()
                 return HttpResponse("Data stored successfully...")
@@ -199,7 +218,11 @@ def Award_data(request):
             return HttpResponse("Record Exist...")
         else:
             aid=Award.objects.only('Award_id').count()
-            aid=aid+1 
+            if aid == 0:
+                aid=1
+            else:
+                aid=(Award.objects.last()).Award_id
+                aid+=1 
             obj=Award(Award_id=aid,Portfolio_id=port_id,Title=title,Institute=institute,Year=year,Description=des)
             obj.save()
             return HttpResponse("Data stored successfully...")
@@ -222,7 +245,11 @@ def Social_data(request):
             return HttpResponse("Record Exist...")
         else:
             sid=Social_Media.objects.only('Social_id').count()
-            sid=sid+1 
+            if sid == 0:
+                sid=1
+            else:
+                sid=(Social_Media.objects.last()).Social_id
+                sid+=1  
             obj=Social_Media(Social_id=sid,Portfolio_id=port_id,Name=act,Url=url)
             obj.save()
             return HttpResponse("Data stored successfully...")
@@ -239,8 +266,9 @@ def Social_del(request):
 def Data_display(request):
     cat=request.POST['Ccat']
     idd=request.POST['id']
+    u_id=request.user
     if cat=="Portfolio":
-        prs=Personal_info.objects.filter(Portfolio_id=idd)
+        prs=Personal_info.objects.filter(User_id=u_id.id)
         edu=Education.objects.filter(Portfolio_id=idd)
         ex=Experience.objects.filter(Portfolio_id=idd)
         proj=Project.objects.filter(Portfolio_id=idd)
@@ -278,6 +306,7 @@ def Data_display(request):
 def Ready_page(request):
     pid=request.POST['id']
     pdata=Portfolio.objects.get(Portfolio_id=pid)
+    tid=pdata.Template_id
     tname=pdata.temp_nm()
     print(tname)
     Data={
