@@ -39,8 +39,7 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-
-         <!-- ======= Services Section ======= -->
+   <!-- ======= Services Section ======= -->
 <section id="services" class="services">
           <div class="container">
     
@@ -57,6 +56,7 @@
                     <hr>
                     <form id="Personal_info" enctype="multipart/form-data">
                         {% csrf_token %}
+                        {% for prs in prs %}
                         <div class="row">
                           <div class="col form-floating mb-3">
                             <input type="text" class="form-control" placeholder="First name" id="fname" name="fname" required value="{{prs.First_name}}">
@@ -93,6 +93,7 @@
                             <input type="text" class="form-control" id="philo" placeholder=" philosophy statement" name="philo" required value="{{prs.Philosophy}}"> 
                             <label for="philo">Philosophy Statement</label>
                           </div>
+                          {% endfor %}
                           </div>
                           <div class="row">
                             <div class="col-lg-12 float-end">
@@ -510,12 +511,32 @@
         <input type="hidden" value="Portfolio" name="Ccat">
         <div class="row text-right">
           <div class="col-lg-11" data-aos="fade-up" data-aos-delay="50">
-              <button id="button1" type="submit" value="Check Details">Check Details&nbsp;<i class='bx bxs-chevrons-right fs-5'></i></button>
+              <button id="button1" type="submit" value="Check Details" data-toggle="modal" data-target="#exampleModalCenter">Check Details&nbsp;<i class='bx bxs-chevrons-right fs-5'></i></button>
           </div>
         </div>
       </form>
       <br><br>
-    
+    <!--For resume popup-->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+      
     <script>
 
     function Educat_reset() {

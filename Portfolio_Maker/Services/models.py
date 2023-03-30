@@ -44,7 +44,7 @@ class Personal_info(models.Model):
     Dob=models.DateField()
     Philosophy=models.TextField()
     Pic=models.ImageField(upload_to='Personal_Pic',null=True,blank=True)
-    User=models.ForeignKey(User,default=0,on_delete=models.CASCADE)
+    User=models.ForeignKey(User,null=True,blank=True,on_delete=models.CASCADE)
 
 #educaion model
 class Education(models.Model):
