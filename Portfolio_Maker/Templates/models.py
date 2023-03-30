@@ -31,11 +31,8 @@ class Detail(models.Model):
     Temp_file=models.FileField(upload_to='Template_files')
     Temp_active=models.BooleanField(default=False)
     Temp_offer=models.ForeignKey('Offer',default=0,on_delete=models.SET_DEFAULT)
-
     def __str__(self):
         return self.Temp_name
-    def offer(self):
-        return self.Temp_offer.Offer_value
-    @property
-    def total(self):
-        return (self.Temp_price)-(self.Temp_offer.Offer_value)
+    #def offer(self):
+       # return self.Temp_offer.Offer_value
+    
