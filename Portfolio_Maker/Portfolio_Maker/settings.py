@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'Template_Preview',
     'Services',
     'Dashboard',
+    'payment'
     
 ]
 
@@ -86,9 +87,9 @@ WSGI_APPLICATION = 'Portfolio_Maker.wsgi.application'
 DATABASES = {
     'default': {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "Portfolio_Maker",
+        "NAME": "main_db",
         "USER": "postgres",
-        "PASSWORD":"PG12345",
+        "PASSWORD":"anjali1309",
         "HOST":"localhost"
     }
 }
@@ -137,3 +138,6 @@ STATICFILES_DIRS=[
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+RAZORPAY_API_KEY='rzp_test_hkuiJH0EY8P30X'
+RAZORPAY_API_SECRET_KEY='zsKgNKiyPxtRtGETgqMdwAT4'

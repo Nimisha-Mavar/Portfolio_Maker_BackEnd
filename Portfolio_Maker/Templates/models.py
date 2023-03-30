@@ -36,3 +36,6 @@ class Detail(models.Model):
         return self.Temp_name
     def offer(self):
         return self.Temp_offer.Offer_value
+    @property
+    def total(self):
+        return (self.Temp_price)-(self.Temp_offer.Offer_value)
