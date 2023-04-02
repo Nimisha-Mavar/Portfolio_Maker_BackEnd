@@ -9,6 +9,6 @@ def dashboard(request):
     res=Resume.objects.filter(User_id=u_id.id)
     doc={
         'Port':port,
-        'Res':res
+        'Res':res,
     }
     return render(request,'dashboard.html',doc)

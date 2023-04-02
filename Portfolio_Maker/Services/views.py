@@ -302,26 +302,6 @@ def Data_display(request):
         }
         return render(request,'Section_Details.html',contaxt)
     
-#for Ready page
-def Ready_page(request):
-    pid=request.POST['id']
-    pdata=Portfolio.objects.get(Portfolio_id=pid)
-    tid=pdata.Template_id
-    temp=Detail.objects.get(id=tid)
-    ttype=temp.Temp_type
-    if ttype == 'Premium':
-        data={
-            'pid':pid,
-            'temp':temp
-        }
-        return render(request,'Invoice.html',data)
-    else:
-        Data={
-            'pid':pid,
-            'tname':temp.Temp_name
-        }
-        return render(request,'Temp_ready.html',Data)
-
 #for Url 
 def Get_url(request):
     pid=request.POST['pid']

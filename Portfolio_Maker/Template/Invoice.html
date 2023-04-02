@@ -31,7 +31,7 @@
             <div class="row justify-content-center section-title">
 
                 <div id="key" class="col-md-12 col-lg-6 align-items-stretch mb-5 mb-lg-0">
-                    <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="1">
                         <h4 class="">Your Portfolio is now ready!</h4>
                         <!--<a href=""><button class="btn">Next</button></a>-->
                         <br><br>
@@ -48,35 +48,31 @@
                                             <span>Template Price</span><span>&#8377;{{temp.Temp_price}}</span>
                                         </div>
                                         <div class="d-flex justify-content-between">
-                                            <span>Offer</span><span>&#8377;{{temp.offer}}</span>
+                                            <span>Offer</span><span>- {{temp.offer}}%</span>
                                         </div>
 
                                     </div>
                                     <div class="d-flex justify-content-between total font-weight-bold mt-4">
-                                        <span>Total</span><span>&#8377;{{temp.total}}</span>
+                                        <span>Total</span><span>&#8377;{{total}}</span>
                                     </div>
 
                                 </div>
 
                                 <div class="text-center">
-                                    <form action="{% url 'payment' %}" method="Post">
-                                        {% csrf_token %}
-                                        <input name="pid" type="hidden" value="{{pid}}">
                                         <button type="submit" id="rzp-button1" class="btn btn-lg mb-4 rounded" style="background-color:#3498db;color:#fff;">Pay
-                      </button>
+                                        </button>
                                         <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
                                         <script>
                                             var options = {
                                                 "key": "{{api_key}}", // Enter the Key ID generated from the Dashboard
                                                 "amount": "{{payment_order.amount}}",
-                                                "currency": "INR",
                                                 "name": "Portfolio Maker", //your business name
                                                 "description": "Test Transaction",
                                                 "image": "https://example.com/your_logo",
-                                                "order_id": "{{payment_order.id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                                                "order_id": "{{order_id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
                                                 "handler": function(response) {
 
-                                                    window.location.href = 'http://127.0.0.1:8000/success/?order_id={{payment_order.id}}'
+                                                    window.location.href = 'http://127.0.0.1:8000/success/?order_id={{payment_order.id}}&pid={{pid}}&total={{total}}'
 
                                                 },
                                                 "theme": {
@@ -98,7 +94,6 @@
                                                 e.preventDefault();
                                             }
                                         </script>
-                                    </form>
                                 </div>
                             </div>
                         </div>

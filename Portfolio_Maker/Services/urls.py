@@ -17,8 +17,6 @@ urlpatterns=[
     path('Skill_del',views.Project_del,name="Project_del"),
     path('Award_del',views.Award_del,name="Award_del"),
     path('Social_del',views.Social_del,name="Social_del"),
-    #for ready template
-    path('Ready',views.Ready_page,name="Ready"),
     #for get portfolio url
     path('Get_url',views.Get_url,name="Get_url"),
 ]

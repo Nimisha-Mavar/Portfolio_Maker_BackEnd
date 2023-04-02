@@ -33,6 +33,6 @@ class Detail(models.Model):
     Temp_offer=models.ForeignKey('Offer',default=0,on_delete=models.SET_DEFAULT)
     def __str__(self):
         return self.Temp_name
-    #def offer(self):
-       # return self.Temp_offer.Offer_value
+    def offer(self):
+        return self.Temp_offer.Offer_value
     

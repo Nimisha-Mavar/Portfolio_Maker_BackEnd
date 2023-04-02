@@ -6,6 +6,6 @@ from Services.models import Resume,Portfolio
 class Payment(models.Model):
     Resume=models.ForeignKey(Resume,null=True,on_delete=models.CASCADE)
     Portfolio=models.ForeignKey(Portfolio,null=True,on_delete=models.CASCADE)
-    Temp_price = models.ForeignKey(Detail,null=True,on_delete=models.CASCADE)
+    Total = models.FloatField(default=0)
     is_paid = models.BooleanField(default=False)
     razor_pay_order_id = models.CharField(max_length=100, null=True, blank=True)

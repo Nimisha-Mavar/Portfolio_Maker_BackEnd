@@ -33,7 +33,7 @@ admin.site.register(Offer,Admin_Offer),
 
 class Admin_Temp_Detail(admin.ModelAdmin):
     model = Detail
-    fields = ['Temp_name', 'Temp_cat','Temp_type','Temp_date','Temp_img1','Temp_img2','Temp_img3','Temp_des','Temp_price','Temp_file','Temp_active','Temp_offer' ]
+    fields = ['Temp_name','Temp_cat','Temp_type','Temp_date','Temp_img1','Temp_img2','Temp_img3','Temp_des','Temp_price','Temp_file','Temp_active','Temp_offer' ]
     actions = ['export_as_csv']
 
     def export_as_csv(self,request,queryset):
