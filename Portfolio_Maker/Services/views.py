@@ -46,13 +46,13 @@ def Personal(request):
 # Education function
 def Education_data(request):
     if request.method == 'POST': 
-        port_id=request.POST['port_id']
-        cat=request.POST['catt']
+        cat=request.POST['cat']
         iname=request.POST['iname']
         degree=request.POST['degree']
         syear=request.POST['syear']
         eyear=request.POST['eyear']
         if cat=="Portfolio":
+            port_id=request.POST['port_id']
             if Education.objects.filter(Portfolio_id=port_id,Institute=iname,Degree=degree).exists():
                 return HttpResponse("Record exist....")
             else:
@@ -67,15 +67,18 @@ def Education_data(request):
                 return HttpResponse("Data stored successfully...")
         else:
             res_id=request.POST['res_id']
-            eid=Education.objects.only('Education_id').count()
-            if eid == 0:
-                eid=1
+            if Education.objects.filter(Resume_id=res_id,Institute=iname,Degree=degree).exists():
+                return HttpResponse("Record exist....")
             else:
-                eid=(Education.objects.last()).Education_id
-                eid+=1
-            obj=Education(Education_id=eid,Resume_id=res_id,Institute=iname,Degree=degree,Start_year=syear,End_year=eyear)
-            obj.save()
-            return HttpResponse("Data stored successfully...")
+                eid=Education.objects.only('Education_id').count()
+                if eid == 0:
+                    eid=1
+                else:
+                    eid=(Education.objects.last()).Education_id
+                    eid+=1
+                obj=Education(Education_id=eid,Resume_id=res_id,Institute=iname,Degree=degree,Start_year=syear,End_year=eyear)
+                obj.save()
+                return HttpResponse("Data stored successfully...")
     else:
         return HttpResponse("Error")
 
@@ -87,15 +90,15 @@ def Education_del(request,id):
 #foe experience
 def Experience_data(request):
     if request.method == 'POST': 
-        port_id=request.POST['port_id']
-        cat=request.POST['catt']
+        idd=request.POST['idd']
+        cat=request.POST['cat']
         cname=request.POST['cname']
         rname=request.POST['rname']
         syear=request.POST['syear']
         eyear=request.POST['eyear']
         des=request.POST['des']
         if cat=="Portfolio":
-            if Experience.objects.filter(Portfolio_id=port_id,Company=cname,Role=rname).exists():
+            if Experience.objects.filter(Portfolio_id=idd,Company=cname,Role=rname).exists():
                return HttpResponse("Record Exist...")
             else:
                 eid=Experience.objects.only('Experience_id').count()
@@ -104,20 +107,22 @@ def Experience_data(request):
                 else:
                     eid=(Experience.objects.last()).Experience_id
                     eid+=1
-                obj=Experience(Experience_id=eid,Portfolio_id=port_id,Company=cname,Role=rname,Start_year=syear,End_year=eyear,Description=des)
+                obj=Experience(Experience_id=eid,Portfolio_id=idd,Company=cname,Role=rname,Start_year=syear,End_year=eyear,Description=des)
                 obj.save()
                 return HttpResponse("Data stored successfully...")
         else:
-            res_id=request.POST['res_id']
             eid=Experience.objects.only('Experience_id').count()
-            if eid == 0:
-               eid=1
+            if Experience.objects.filter(Resume_id=idd,Company=cname,Role=rname).exists():
+               return HttpResponse("Record Exist...")
             else:
-                eid=(Experience.objects.last()).Experience_id
-                eid+=1
-            obj=Experience(Experience_id=eid,Resume_id=res_id,Company=cname,Role=rname,Start_year=syear,End_year=eyear,Description=des)
-            obj.save()
-            return HttpResponse("Data stored successfully...")
+                if eid == 0:
+                    eid=1
+                else:
+                    eid=(Experience.objects.last()).Experience_id
+                    eid+=1
+                obj=Experience(Experience_id=eid,Resume_id=idd,Company=cname,Role=rname,Start_year=syear,End_year=eyear,Description=des)
+                obj.save()
+                return HttpResponse("Data stored successfully...")
     else:
         return HttpResponse("Error")
 
@@ -130,16 +135,19 @@ def Experience_del(request):
 #for Project
 def Project_data(request):
     if request.method == 'POST': 
-        cat=request.POST['catt']
+        idd=request.POST['idd']
+        cat=request.POST['cat']
         title=request.POST['title']
         curnt=request.POST['curnt']
         syear=request.POST['syear']
         eyear=request.POST['eyear']
-        des=request.POST['des']
-        print(curnt)
+        des=request.POST['dess']
+        if curnt=="yes":
+            curnt=True
+        else:
+            curnt=False
         if cat=="Portfolio":
-            port_id=request.POST['port_id']
-            if Project.objects.filter(Portfolio_id=port_id,Title=title).exists():
+            if Project.objects.filter(Portfolio_id=idd,Title=title).exists():
                return HttpResponse("Record Exist...")
             else:
                 pid=Project.objects.only('Project_id').count()
@@ -148,24 +156,22 @@ def Project_data(request):
                 else:
                     pid=(Project.objects.last()).Project_id
                     pid+=1
-                if curnt=="yes":
-                    curnt=True
-                else:
-                    curnt=False
-                obj=Project(Project_id=pid,Portfolio_id=port_id,Title=title,Start_year=syear,End_year=eyear,Description=des,Current=curnt)
+                obj=Project(Project_id=pid,Portfolio_id=idd,Title=title,Start_year=syear,End_year=eyear,Description=des,Current=curnt)
                 obj.save()
                 return HttpResponse("Data stored successfully...")
         else:
-            res_id=request.POST['res_id']
-            pid=Project.objects.only('Project_id').count()
-            if pid == 0:
-               pid=1
+            if Project.objects.filter(Resume_id=idd,Title=title).exists():
+               return HttpResponse("Record Exist...")
             else:
-                pid=(Project.objects.last()).Project_id
-                pid+=1
-            obj=Project(Project_id=pid,Resume_id=res_id,Title=title,Start_year=syear,End_year=eyear,Description=des,Current=curnt)
-            obj.save()
-            return HttpResponse("Data stored successfully...")
+                pid=Project.objects.only('Project_id').count()
+                if pid == 0:
+                    pid=1
+                else:
+                    pid=(Project.objects.last()).Project_id
+                    pid+=1
+                obj=Project(Project_id=pid,Resume_id=idd,Title=title,Start_year=syear,End_year=eyear,Description=des,Current=curnt)
+                obj.save()
+                return HttpResponse("Data stored successfully...")
     else:
         return HttpResponse("GET method called...")
 
@@ -178,12 +184,12 @@ def Project_del(request):
 #for Skill  
 def Skill_data(request):
     if request.method == 'POST':
-        cat=request.POST['catt']
+        idd=request.POST['idd']
+        cat=request.POST['cat']
         sname=request.POST['sk_nm']
         lvl=request.POST['lvl']
         if cat=="Portfolio":
-           port_id=request.POST['port_id']
-           if Skill.objects.filter(Portfolio_id=port_id,Name=sname).exists():
+           if Skill.objects.filter(Portfolio_id=idd,Name=sname).exists():
                return HttpResponse("Record Exist...")
            else:
                 sid=Skill.objects.only('Skill_id').count()
@@ -192,11 +198,22 @@ def Skill_data(request):
                 else:
                     sid=(Skill.objects.last()).Skill_id
                     sid+=1
-                obj=Skill(Skill_id=sid,Portfolio_id=port_id,Name=sname,Level=lvl)
+                obj=Skill(Skill_id=sid,Portfolio_id=idd,Name=sname,Level=lvl)
                 obj.save()
                 return HttpResponse("Data stored successfully...")
         else:
-            return HttpResponse("Resumee")
+            if Skill.objects.filter(Resume_id=idd,Name=sname).exists():
+               return HttpResponse("Record Exist...")
+            else:
+                sid=Skill.objects.only('Skill_id').count()
+                if sid == 0:
+                   sid=1
+                else:
+                    sid=(Skill.objects.last()).Skill_id
+                    sid+=1
+                obj=Skill(Skill_id=sid,Resume_id=idd,Name=sname,Level=lvl)
+                obj.save()
+                return HttpResponse("Data stored successfully...")
     else:
        return HttpResponse("GET method called...")
 
@@ -276,29 +293,32 @@ def Data_display(request):
         award=Award.objects.filter(Portfolio_id=idd)
         social=Social_Media.objects.filter(Portfolio_id=idd)
         contaxt={
-            'portid':idd,
+            'idd':idd,
             'prs':prs,
             'edu':edu,
             'ex':ex,
             'pro':proj,
             'sk':skill,
             'awd':award,
-            'scl':social
+            'scl':social,
+            'cat':cat
         }
         return render(request,'Section_Details.html',contaxt)
     else:
-        prs=Personal_info.objects.filter(Resume_id=idd)
+        prs=Personal_info.objects.filter(User_id=u_id.id)
         edu=Education.objects.filter(Resume_id=idd)
         ex=Experience.objects.filter(Resume_id=idd)
         proj=Project.objects.filter(Resume_id=idd)
         skill=Skill.objects.filter(Portfolio_id=idd)
         contaxt={
-            'resid':idd,
+            'idd':idd,
             'prs':prs,
             'edu':edu,
             'ex':ex,
             'pro':proj,
-            'sk':skill
+            'sk':skill,
+            'active':True,
+            'cat':cat
         }
         return render(request,'Section_Details.html',contaxt)
     

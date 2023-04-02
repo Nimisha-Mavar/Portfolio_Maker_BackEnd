@@ -144,5 +144,5 @@ def edit(request):
             'pro':proj,
             'sk':skill
         }
-        return render(request,'Resume_form.html')
+        return render(request,'Resume_form.html',contaxt)
     

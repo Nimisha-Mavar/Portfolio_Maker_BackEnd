@@ -1,6 +1,7 @@
 {% extends 'Master.html' %}
 {% block content %}
 {% load static %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <style>
   body
   {
@@ -35,7 +36,7 @@
         <div class="container">
     
             <div class="section-title" data-aos="fade-up">
-              <h2>Resume Form</h2>
+              <h2>Resume Form {{resid}}</h2>
             </div>
             
             <!--==>Personal info form<==-->
@@ -43,10 +44,13 @@
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                     <h1 class="title fs-2">Personal Infomation</h1>
+                    <h2 id="msg3" class="bg-warning"></h2>
                     <hr>
-                    <form>
+                    <form id="Persnal_info">
                         {% csrf_token %}
                         <div class="row">
+                          <input type="hidden" value="{{resid}}" id="resid">
+                          <input type="hidden" value="Resume" id="catt">
                           <div class="col form-floating mb-3">
                             <input type="text" class="form-control" placeholder="First name" id="fname" name="fname" required>
                             <label for="fname">First name</label>
@@ -74,16 +78,23 @@
                             <input type="date" class="form-control" id="dob" placeholder="Date of birth" name="dob" required> 
                             <label for="dob">Date of Birth</label>
                           </div>
+                          <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="pic" value="{{prs.Pic}}">
+                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                          </div>
                           <div class="form-floating mb-3 mt-3">
                             <input type="text" class="form-control" id="philo" placeholder=" philosophy statement" name="philo" required> 
                             <label for="philo">Philosophy Statement</label>
                           </div>
                           </div>
                           <div class="row">
-                            <div class="col-lg-12 float-end">
-                              <button id="button1">Save</button>
+                            <div class="col-lg-6">
+                              <input id="button1" class="float-start" value="Clear" type="button" onclick="personal()">
+                            </div>  
+                            <div class="col-lg-6">
+                              <input id="button1" type="submit" value="Save">
                             </div>
-                          </div> 
+                          </div>  
                         </div>
                     </form>
                 </div>
@@ -115,10 +126,14 @@
                 </div>
                 <br>
                   <h1 class="title fs-2">Education</h1>
+                  <h2 id="msg1" class="bg-warning"></h2>
                   <hr>
-                  <form>
+                  <form id="Education">
                     {% csrf_token %}
+                    
                     <div class="row">
+                      <input type="hidden" value="{{resid}}" id="resid">
+                      <input type="hidden" value="Resume" id="catt">
                         <div class="form-floating mb-3 mt-3">
                           <input type="text" class="form-control" id="iname" placeholder="Institute name" name="iname" required> 
                           <label for="iname">Institute Name</label>
@@ -138,12 +153,12 @@
                         </div> 
                         <div class="row">
                           <div class="col-lg-6">
-                            <button id="button1" class="float-start">Add</button>
+                            <input id="button1" class="float-start" value="Clear" type="button" onclick="Edu_reset()">
                           </div>  
                           <div class="col-lg-6">
-                            <button id="button1">Save</button>
+                            <input id="button1" type="submit" value="Save">
                           </div>
-                        </div>                  
+                        </div>               
                       </div>
                   </form>
                   </div>
@@ -181,10 +196,14 @@
                 </div>
                 <br>
                   <h1 class="title fs-2">Experience</h1>
+                  <h2 id="msg2" class="bg-warning"></h2>
                   <hr> 
-                    <form>  
-                      {% csrf_token %}            
+                    <form id="Experience">  
+                      {% csrf_token %}  
+                               
                       <div class="row">
+                      <input type="hidden" value="{{resid}}" id="resid">
+                      <input type="hidden" value="Resume" id="catt">
                         <div class="form-floating mb-3 mt-3">
                           <input type="text" class="form-control" id="cname" placeholder="company name" name="cname" required> 
                           <label for="cname">Company Name</label>
@@ -208,12 +227,12 @@
                         </div>
                         <div class="row">
                           <div class="col-lg-6">
-                            <button id="button1" class="float-start">Add</button>
+                            <input id="button1" class="float-start" value="Clear" type="button" onclick="Exe_reset()">
                           </div>  
                           <div class="col-lg-6">
-                            <button id="button1">Save</button>
+                            <input id="button1" type="submit" value="Save">
                           </div>
-                        </div>                 
+                        </div>               
                       </div>
                     </form>
                   </div>
@@ -257,10 +276,13 @@
                 </div>
                 <br>
                   <h1 class="title fs-2">Project</h1>
+                  <h2 id="msg4" class="bg-warning"></h2>
                   <hr> 
-                    <form>
+                    <form id="Project">
                       {% csrf_token %}               
                       <div class="row">
+                        <input type="hidden" value="{{resid}}" id="resid">
+                        <input type="hidden" value="Resume" id="catt">
                         <div class="form-floating mb-3 mt-3">
                           <input type="text" class="form-control" id="ptitle" placeholder="Project title" name="ptitle" required> 
                           <label for="ptitle">Project Title</label>
@@ -274,34 +296,26 @@
                           <br>
                         </div>
                         <div class="col form-floating mb-3">
-                          <input type="number" class="form-control" placeholder="Start year" id="syear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
+                          <input type="number" class="form-control" placeholder="Start year" id="psyear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
                           <label for="iname">Start Year</label>
                         </div>
                         <div class="col form-floating">
-                          <input type="number" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
+                          <input type="number" class="form-control" placeholder="End year" id="peyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030">
                           <label for="degree">End Year</label>
                           <br>
                         </div> 
-                        <div class="col form-floating mb-3">
-                          <input type="number" class="form-control" placeholder="Start month" id="smonth" name="smonth" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
-                          <label for="smonth">Start Month</label>
-                        </div>
-                        <div class="col form-floating">
-                          <input type="number" class="form-control" placeholder="End month" id="emonth" name="emonth" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
-                          <label for="smonth">End Month</label>
-                        </div>
                         <div class="form-floating mb-3 mt-3">
-                          <input type="text" class="form-control" id="des" placeholder="description" name="des" required> 
+                          <input type="text" class="form-control" id="pdes" placeholder="description" name="pdes" required> 
                           <label for="des">Description</label>
                         </div>  
                         <div class="row">
                           <div class="col-lg-6">
-                            <button id="button1" class="float-start">Add</button>
+                            <input id="button1" class="float-start" value="Clear" type="button" onclick="project_reset()">
                           </div>  
                           <div class="col-lg-6">
-                            <button id="button1">Save</button>
+                            <input id="button1" type="submit" value="Save">
                           </div>
-                        </div>                
+                        </div>            
                       </div>
                     </form>
                   </div>
@@ -330,32 +344,36 @@
                 </div>
                 <br>
                   <h1 class="title fs-2">Skill</h1>
+                  <h2 id="msg5" class="bg-warning"></h2>
                   <hr>    
-                    <form>
+                    <form id="Skill"> 
                       {% csrf_token %}            
                       <div class="row">
+                        <input type="hidden" value="{{resid}}" id="resid">
+                        <input type="hidden" value="Resume" id="catt">
                         <div class="form-floating mb-3 mt-3">
                           <input type="text" class="form-control" id="sname" placeholder="Skill name" name="sname" required> 
                           <label for="sname">Skill Name</label>
                         </div>
                         <div class="form-floating mb-3 mt-3">
-                          <select name="working" id="work" class="form-control">
-                            <option value="">Skill level</option>
-                            <option value="yes">Average</option>
-                            <option value="no">Good</option>
-                            <option value="no">Very Good</option>
-                            <option value="no">Better</option>
-                            <option value="no">Expert</option>
+                          <select name="working" id="level" class="form-control" required>
+                            <option>Skill level</option>
+                            <option value="Average">Average</option>
+                            <option value="Good">Good</option>
+                            <option value="Very Good">Very Good</option>
+                            <option value="Better">Better</option>
+                            <option value="Expert">Expert</option>
                           </select>                                                           
                         </div>
                         <div class="row">
                           <div class="col-lg-6">
-                            <button id="button1" class="float-start">Add</button>
+                            <input id="button1" class="float-start" value="Clear" type="button" onclick="Skill_reset()">
                           </div>  
                           <div class="col-lg-6">
-                            <button id="button1">Save</button>
+                            <input id="button1" type="submit" value="Save">
                           </div>
-                        </div>                
+                        </div>            
+                      </div>            
                       </div>
                     </form>
                   </div>
@@ -365,14 +383,151 @@
             <!--==>skill ended<==-->
         </div>
 </section>
-      
-         <!-- Vendor JS Files -->
-      <div class="row justify-content-center">
-        <div class="form-group col-lg-4 col-md-3 p-1">
-          <a href="Document.html" class="">
-            <button id="button1" class="btn btn-lg">Next</button>
-          </a>
+<form action="{% url 'Data_display' %}" method="POST">
+      {% csrf_token %}
+        <input type="hidden" value="{{resid}}" name="id">
+        <input type="hidden" value="Resume" name="Ccat">
+        <div class="row text-right">
+          <div class="col-lg-11" data-aos="fade-up" data-aos-delay="50">
+              <button id="button1" type="submit" value="Check Details" data-toggle="modal" data-target="#exampleModalCenter">Check Details&nbsp;<i class='bx bxs-chevrons-right fs-5'></i></button>
+          </div>
         </div>
-      </div>
+</form>
       <br><br>
+<script>
+    function Edu_reset()
+    {
+      document.getElementById('Education').reset();
+    }
+
+    function Exe_reset()
+    {
+      document.getElementById('Experience').reset();
+    }
+
+    function personal()
+    {
+      document.getElementById('Persnal_info').reset();
+    }
+
+    function project_reset()
+    {
+      document.getElementById('Project').reset();
+    }
+
+    function Skill_reset()
+    {
+      document.getElementById('Skill').reset();
+    }
+    //for Education
+    $(document).on('submit','#Education',function(e){
+      e.preventDefault();
+      $.ajax({
+        type:'POST',
+        url:"{% url 'Education_data' %}",
+        data:{
+          res_id:$('#resid').val(),
+          cat:$('#catt').val(),
+          iname:$('#iname').val(),
+          degree:$('#degree').val(),
+          syear:$('#syear').val(),
+          eyear:$('#eyear').val(),
+          csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+        },
+          success:function(data){
+            $("#msg1").html(data)
+          }
+         })
+    })
+
+    //for Experience
+    $(document).on('submit','#Experience',function(e){
+      e.preventDefault();
+      $.ajax({
+        type:'POST',
+        url:"{% url 'Experience_data' %}",
+        data:{
+          idd:$('#resid').val(),
+          cat:$('#catt').val(),
+          cname:$('#cname').val(),
+          rname:$('#rname').val(),
+          syear:$('#syear').val(),
+          eyear:$('#eyear').val(),
+          des:$('#des').val(),
+          csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                
+        },
+        success:function(data){
+          $("#msg2").html(data)
+        }
+      })
+    })    
+
+    //for personal information
+    $(document).on('submit','#Persnal_info',function(e){
+      e.preventDefault();
+      $.ajax({
+        type:'POST',
+        url:"{% url 'Personal_data' %}",
+        data:{
+          fnm:$('#fname').val(),
+          lnm:$('#lname').val(),
+          adr:$('#address').val(),
+          phn:$('#phone').val(),
+          eml:$('#email').val(),
+          dob:$('#dob').val(),
+          philo:$('#philo').val(),
+          pic:$('#pic').val(),
+          csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                
+        },
+        success:function(data){
+          $("#msg3").html(data)
+        }
+      })
+    })
+
+    //for project
+    $(document).on('submit','#Project',function(e){
+      e.preventDefault();
+      $.ajax({
+        type:'POST',
+        url:"{% url 'Project_data' %}",
+        data:{
+          idd:$('#resid').val(),
+          cat:$('#catt').val(),
+          title:$('#ptitle').val(),
+          curnt:$('#work').val(),
+          syear:$('#psyear').val(),
+          eyear:$('#peyear').val(),
+          dess:$('#pdes').val(),
+          csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+        },
+        success:function(data){
+          $("#msg4").html(data)
+        }
+      })
+    })
+
+    //for Skill
+    $(document).on('submit','#Skill',function(e){
+      e.preventDefault();
+      $.ajax({
+        type:'POST',
+        url:"{% url 'Skill_data' %}",
+        data:{
+          idd:$('#resid').val(),
+          cat:$('#catt').val(),
+          sk_nm:$('#sname').val(),
+          lvl:$('#level').val(),
+          csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+        },
+        success:function(data){
+          $("#msg5").html(data)
+        }
+      })
+    })
+
+</script>
+     
 {% endblock %}

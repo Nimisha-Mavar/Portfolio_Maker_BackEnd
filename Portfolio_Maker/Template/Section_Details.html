@@ -251,8 +251,9 @@
             </div>
             <!--==>skill ended<==-->
             <br><br><br>
-
+            {% if active == True %}
             <!--==>award form<==-->
+            {% else %}
             <div class="row justify-content-center">
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
@@ -309,10 +310,12 @@
             </div>
             <!--==>social media ended<==-->
           </div>
+           {% endif %}
 </section>
       <form action="{% url 'Ready' %}" method="POST">
       {% csrf_token %}
-        <input type="hidden" value="{{portid}}" name="id">
+        <input type="hidden" value="{{cat}}" name="cat">
+        <input type="hidden" value="{{idd}}" name="id">
         <div class="row text-right">
           <div class="col-lg-11" data-aos="fade-up" data-aos-delay="50">
               <button id="button1" type="submit" >Next&nbsp;<i class='bx bxs-chevrons-right fs-5'></i></button>

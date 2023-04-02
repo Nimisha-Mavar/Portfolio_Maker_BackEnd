@@ -8,39 +8,43 @@ from Services.models import Portfolio,Resume
 #for Ready page
 client = razorpay.Client(auth=(settings.RAZORPAY_API_KEY, settings.RAZORPAY_API_SECRET_KEY))
 def Ready_page(request):
-    pid=request.POST['id']
-    pdata=Portfolio.objects.get(Portfolio_id=pid)
-    tid=pdata.Template_id
-    temp=Detail.objects.get(id=tid)
-    ttype=temp.Temp_type
-    data={
-            'pid':pid,
-            'tname':temp.Temp_name
-        }
-    if ttype == 'Premium':
-        if Payment.objects.filter(Portfolio_id=pid).exists():
-             return render(request,'Temp_ready.html',data)
-        else:
-            Total=temp.Temp_price-(temp.Temp_price*temp.offer()/100)
-            Payment.Temp_price = Total*100
-            order_currency = 'INR'
-            payment_order= client.order.create({'amount':Payment.Temp_price, 'currency':order_currency, 'payment_capture': 1})
-            Payment.razor_pay_order_id = payment_order['id']
-            context = {
-                'pid':pid,
-                'temp':temp,
-                'total':Total,
-                'amount' : 500, 
-                'api_key':RAZORPAY_API_KEY, 
-                'payment_order': payment_order,
-                'order_id': Payment.razor_pay_order_id
+    cat=request.POST['cat']
+    idd=request.POST['id']
+    if cat == 'Portfolio':
+        pdata=Portfolio.objects.get(Portfolio_id=idd)
+        tid=pdata.Template_id
+        temp=Detail.objects.get(id=tid)
+        ttype=temp.Temp_type
+        data={
+                'pid':idd,
+                'tname':temp.Temp_name
             }
-            return render(request,'Invoice.html',context)
+        if ttype == 'Premium':
+            if Payment.objects.filter(Portfolio_id=idd).exists():
+                return render(request,'Temp_ready.html',data)
+            else:
+                Total=temp.Temp_price-(temp.Temp_price*temp.offer()/100)
+                Payment.Temp_price = Total*100
+                order_currency = 'INR'
+                payment_order= client.order.create({'amount':Payment.Temp_price, 'currency':order_currency, 'payment_capture': 1})
+                Payment.razor_pay_order_id = payment_order['id']
+                context = {
+                    'pid':idd,
+                    'temp':temp,
+                    'total':Total,
+                    'amount' : 500, 
+                    'api_key':RAZORPAY_API_KEY, 
+                    'payment_order': payment_order,
+                    'order_id': Payment.razor_pay_order_id
+                }
+                return render(request,'Invoice.html',context)
+        else:
+            return render(request,'Temp_ready.html',data)
     else:
-        return render(request,'Temp_ready.html',data)
+        return HttpResponse("Resume")
 # Create your views here.
 
-client = razorpay.Client(auth=(settings.RAZORPAY_API_KEY, settings.RAZORPAY_API_SECRET_KEY))
+#client = razorpay.Client(auth=(settings.RAZORPAY_API_KEY, settings.RAZORPAY_API_SECRET_KEY))
 """def payment(request):
     pid=request.POST['pid']
     Payment.Temp_price = 400*100

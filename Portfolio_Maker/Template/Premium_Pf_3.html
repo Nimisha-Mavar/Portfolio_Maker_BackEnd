@@ -50,7 +50,7 @@
 
       <div class="profile">
       {% for i in prs %}
-        <img src="{{i.Pic.url}}" alt="" class="img-fluid rounded-circle">
+        <img src="{% static 'Portfolio_templates/Premium_Pf_3/assets/img/profile-img.jpg' %}" alt="" class="img-fluid rounded-circle">
         
         <h1 class="text-light"><a href="index.html">{{i.First_name}} {{i.Last_name}}</a></h1>
         {% endfor %}

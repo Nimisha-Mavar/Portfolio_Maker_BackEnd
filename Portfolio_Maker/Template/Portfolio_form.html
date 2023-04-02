@@ -596,7 +596,7 @@
             url:"{% url 'Education_data' %}",
             data:{
                 port_id:$('#pid').val(),
-                catt:$('#catt').val(),
+                cat:$('#catt').val(),
                 iname:$('#iname').val(),
                 degree:$('#degree').val(),
                 syear:$('#syear').val(),
@@ -621,8 +621,8 @@
             type:'POST',
             url:"{% url 'Experience_data' %}",
             data:{
-                port_id:$('#pid').val(),
-                catt:$('#catt').val(),
+                idd:$('#pid').val(),
+                cat:$('#catt').val(),
                 cname:$('#cname').val(),
                 rname:$('#rname').val(),
                 syear:$('#styear').val(),
@@ -647,13 +647,13 @@
             type:'POST',
             url:"{% url 'Project_data' %}",
             data:{
-                port_id:$('#pid').val(),
-                catt:$('#catt').val(),
+                idd:$('#pid').val(),
+                cat:$('#catt').val(),
                 title:$('#ptitle').val(),
                 syear:$('#stryear').val(),
                 eyear:$('#endyear').val(),
                 curnt:$('#work').val(),
-                des:$('#pdes').val(),
+                dess:$('#pdes').val(),
                 csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
                 
             },
@@ -673,8 +673,8 @@
             type:'POST',
             url:"{% url 'Skill_data' %}",
             data:{
-                port_id:$('#pid').val(),
-                catt:$('#catt').val(),
+                idd:$('#pid').val(),
+                cat:$('#catt').val(),
                 sk_nm:$('#sname').val(),
                 lvl:$('#level').val(),
                 csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
