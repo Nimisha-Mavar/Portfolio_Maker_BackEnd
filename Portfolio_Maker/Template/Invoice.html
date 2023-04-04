@@ -25,14 +25,14 @@
         <div class="container">
 
             <div class="section-title" data-aos="fade-up">
-                <h2>Portfolio Ready</h2>
+                <h2>{{temp.Temp_cat}} Ready</h2>
             </div>
 
             <div class="row justify-content-center section-title">
 
                 <div id="key" class="col-md-12 col-lg-6 align-items-stretch mb-5 mb-lg-0">
                     <div class="icon-box" data-aos="fade-up" data-aos-delay="1">
-                        <h4 class="">Your Portfolio is now ready!</h4>
+                        <h4 class="">Your {{temp.Temp_cat}} is now ready!</h4>
                         <!--<a href=""><button class="btn">Next</button></a>-->
                         <br><br>
                         <div class="row">
@@ -72,7 +72,7 @@
                                                 "order_id": "{{order_id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
                                                 "handler": function(response) {
 
-                                                    window.location.href = 'http://127.0.0.1:8000/success/?order_id={{payment_order.id}}&pid={{pid}}&total={{total}}'
+                                                    window.location.href = 'http://127.0.0.1:8000/success/?order_id={{payment_order.id}}&pid={{pid}}&total={{total}}&tcat={{temp.Temp_cat}}'
 
                                                 },
                                                 "theme": {

@@ -261,15 +261,18 @@
                       {% csrf_token %}
                         <input type="hidden" value="{{res.temp_cat}}" name="Ccat">
                         <input type="hidden" value="{{res.Resume_id}}" name="id">
-                        <button type="submit" class="btn mb-4 rounded float-end" style="background-color:#3498db;color:#fff;">
+                        <button type="submit" class="btn mb-4 rounded float-start" style="background-color:#3498db;color:#fff;">
                           <a class="" style="color: #fff;">Edit</a>
                         </button>
                     </form>
                 </div>
                 <div class="col-lg-4 col-md-6 col-3">
-                  <button type="submit" class="btn mb-4 rounded float-end" style="background-color:#3498db;color:#fff;">
-                    <a class="" href="Login.html" style="color: #fff;">View</a>
-                  </button>
+                 <form action="{% url res.temp_nm %}" method="Get">
+                    <input type="hidden" value="{{res.Resume_id}}" name="pid">
+                    <button type="submit" class="btn mb-4 rounded float-end" style="background-color:#3498db;color:#fff;">
+                      <a class="" style="color: #fff;">Download</a>
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>

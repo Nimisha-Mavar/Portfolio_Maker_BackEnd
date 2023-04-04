@@ -309,7 +309,7 @@ def Data_display(request):
         edu=Education.objects.filter(Resume_id=idd)
         ex=Experience.objects.filter(Resume_id=idd)
         proj=Project.objects.filter(Resume_id=idd)
-        skill=Skill.objects.filter(Portfolio_id=idd)
+        skill=Skill.objects.filter(Resume_id=idd)
         contaxt={
             'idd':idd,
             'prs':prs,

@@ -39,7 +39,25 @@ def iportfolio(request):
 
 # Resume Template
 def Basic_Rm_1(request):
-    return render(request,'Basic_Resume_1.html')
+    if request.method=='GET':
+        pid=request.GET['pid']
+        u_id=request.user
+        prs=Personal_info.objects.filter(User_id=u_id.id)
+        edu=Education.objects.filter(Resume_id=pid)
+        ex=Experience.objects.filter(Resume_id=pid)
+        proj=Project.objects.filter(Resume_id=pid)
+        skill=Skill.objects.filter(Resume_id=pid)
+        contaxt={
+            'prs':prs,
+            'edu':edu,
+            'ex':ex,
+            'pro':proj,
+            'sk':skill,
+            'active':True
+        }
+        return render(request,'Basic_Resume_1.html',contaxt)
+    else:
+        return render(request,'Basic_Resume_1.html')
 
 def Basic_Rm_2(request):
     return render(request,'Premium_R_2.html')

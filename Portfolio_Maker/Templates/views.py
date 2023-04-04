@@ -6,18 +6,27 @@ from django.contrib.auth.models import User,auth
 # Create your views here.
 def Resume_list(request):
     temp="Resume"
-    resume=Detail.objects.filter(Temp_cat=temp)
-    return render(request,'Template_list.html',{'Temps':resume})
+    data={
+        'Temps':Detail.objects.filter(Temp_cat=temp),
+        'type':temp
+    }
+    return render(request,'Template_list.html',data)
 
 def Portfolio_list(request):
     temp="Portfolio"
-    Ports=Detail.objects.filter(Temp_cat=temp)
-    return render(request,'Template_list.html',{'Temps':Ports})
+    data={
+        'Temps':Detail.objects.filter(Temp_cat=temp),
+        'type':temp
+    }
+    return render(request,'Template_list.html',data)
 
 def ATS_list(request):
     temp="ATS"
-    ATS=Detail.objects.filter(Temp_cat=temp)
-    return render(request,'Template_list.html',{'Temps':ATS})
+    data={
+        'Temps':Detail.objects.filter(Temp_cat=temp),
+        'type':temp
+    }
+    return render(request,'Template_list.html',data)
 
 def temp_detail(request,id):
     data=Detail.objects.get(id=id)
@@ -85,7 +94,7 @@ def form(request):
                     Res=Resume(Resume_id=res_id,Template_id=T_id,User_id=u_id.id)
                     Res.save()
                     R_id=Res.Resume_id
-                    return render(request,'Resume_form.html',{'Resid':R_id})
+                    return render(request,'Resume_form.html',{'resid':R_id})
                 except:
                     err= {
                       'msg':"Template used after login",
