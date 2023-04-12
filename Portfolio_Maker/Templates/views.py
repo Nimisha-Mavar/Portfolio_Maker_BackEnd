@@ -39,9 +39,13 @@ def temp_detail(request,id):
 
 #forms and REsuem and portfolio insert logic
 def form(request):
+   try:
     Cat=request.POST["cat"]
     T_id=request.POST["id"]
     u_id=request.user
+   except:
+    return render(request,'Context_error.html')
+   else:
     if Cat=="Portfolio":
             if Portfolio.objects.filter(Template_id=T_id,User_id=u_id.id).exists():
                  err= {
@@ -119,9 +123,13 @@ def select_dlt(request):
     
 
 def edit(request):
+   try:
     cat=request.POST['Ccat']
     idd=request.POST['id']
     u_id=request.user
+   except:
+    return render(request,'Context_error.html')
+   else:
     if cat=="Portfolio":
         prs=Personal_info.objects.filter(User_id=u_id.id)
         edu=Education.objects.filter(Portfolio_id=idd)

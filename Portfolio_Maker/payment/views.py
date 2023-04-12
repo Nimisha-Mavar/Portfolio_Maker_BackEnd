@@ -17,7 +17,8 @@ def Ready_page(request):
         ttype=temp.Temp_type
         data={
                 'pid':idd,
-                'tname':temp.Temp_name
+                'tname':temp.Temp_name,
+                'Cat':'Portfolio'
             }
         if ttype == 'Premium':
             if Payment.objects.filter(Portfolio_id=idd).exists():

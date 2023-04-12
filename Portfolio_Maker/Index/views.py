@@ -36,6 +36,7 @@ def feed(request):
     else:
         return render(request,'feedback1.html')
 
-    
+def Cnt_err(request):
+    return render(request,'Context_error.html')
     
 
