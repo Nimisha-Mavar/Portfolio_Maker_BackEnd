@@ -67,8 +67,13 @@ def form(request):
                     Port=Portfolio(Portfolio_id=port_id,Template_id=T_id,User_id=u_id.id)
                     Port.save()
                     Pid=Port.Portfolio_id
-                    print(Pid)
-                    return render(request,'Portfolio_form.html',{'Portid':Pid})
+                    u_id=request.user
+                    prs=Personal_info.objects.filter(User_id=u_id.id)
+                    data={
+                        'Portid':Pid,
+                        'prs':prs
+                    }
+                    return render(request,'Portfolio_form.html',data)
                 except:
                     err= {
                       'msg':"Template use after login",

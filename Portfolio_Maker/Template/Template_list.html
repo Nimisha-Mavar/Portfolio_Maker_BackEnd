@@ -1,6 +1,8 @@
 {% extends 'Master.html' %}
 {% block content %}
 {% load static %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
@@ -27,12 +29,25 @@
             <div class="portfolio-info">
               <h4>{{temp.Temp_cat}}</h4>
               <p>{{temp.Temp_type}}</p>
-              <div class="portfolio-links">
-              <form action="{% url temp.Temp_name %}" method="post">
-                {% csrf_token %}
-                <a><button type="submit"><i class="bx bx-plus"></i></button></a>
-              </form>
-                <a href="{{temp.id}}" title="More Details"><i class="bx bx-link"></i></a>
+              <div class="portfolio-links row">
+              <div class="col-lg-3">
+                <form action="{% url temp.Temp_name %}" method="post">
+                  {% csrf_token %}
+                  <button class="fs-3" type="submit" title="Preview" style="background-color: transparent;border:none"><i style="color:#fff" class='bx bxs-plus-square'></i></button>
+                </form>
+              </div>
+              <div class="col-lg-1"></div>
+              <div class="col-lg-3">
+                <a href="{{temp.id}}" title="More Details"><i class='bx bx-detail'></i></a>
+              </div>
+              <div class="col-lg-1"></div>
+              <div class="col-lg-3">
+                <form action="{% url 'Favourite' %}" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="tid" value="{{temp.id}}">
+                  <button class="fs-3" type="submit" title="Preview" style="background-color: transparent;border:none"><i style="color:#fff" class='bx bxs-heart'></i></button>
+                </form>
+              </div>
               </div>
             </div>
           </div>
@@ -156,6 +171,24 @@
 
     </div>
 </section><!-- End Template Section -->
-
+<script>
+ //For Skill
+    $(document).on('submit','#fav',function(e){
+        e.preventDefault();
+        $.ajax({
+            type:'POST',
+            url:"{% url 'Favourite' %}",
+            data:{
+                tid:$('#tid').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success: function (data) {
+                // alert the error if any error occured
+                $("#msg").html(data)
+                
+            }
+        })
+    })
+</script>
 {% endblock %}
   

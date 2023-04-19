@@ -167,20 +167,14 @@
       <div class="profile">
         <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="index.html">{{user.first_name}}</a></h1>
-        <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-        </div>
       </div>
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
           <li><a href="/" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="#home" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Document</span></a></li>
-          <li><a href="#pytm" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Pyment</span></a></li>
+          <li><a href="#home" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Portfolio</span></a></li>
+          <li><a href="#home1" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+          <li><a href="#fav" class="nav-link scrollto"><i class="bx bx-heart"></i> <span>Favourite</span></a></li>
           <li><a href="#pass" class="nav-link scrollto"><i class='bx bx-cog' ></i> <span>Change Password</span></a></li>
           <li><a href="#log" class="nav-link scrollto"><i class='bx bx-log-out'></i> <span>Logout</span></a></li>
         </ul>
@@ -191,12 +185,12 @@
   
 
   <main id="main">
-    <!-- ======= Document Section ======= -->
+    <!-- ======= Portfolio Section ======= -->
     <section id="home" class="skills section-bg" style="background-color: #e1f0fa;">
       <div class="container">
   
         <div class="text-center section-title" data-aos="fade-up">
-          <h2>Documets</h2>
+          <h2>Portfolio</h2>
         </div>
         <br>
         <div class="row justify-content-center">
@@ -239,7 +233,20 @@
             </div>
           </div>
           {% endfor %}
-          {% for res in Res %}
+        </div>
+      </div>
+    </section><!-- End Portfolio Section -->
+<br>
+     <!-- ======= Resume Section ======= -->
+    <section id="home1" class="skills section-bg" style="background-color: #e1f0fa;">
+      <div class="container">
+  
+        <div class="text-center section-title" data-aos="fade-up">
+          <h2>Resume</h2>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+           {% for res in Res %}
           <div class="col-md-12 col-lg-5 align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class=""><a href=""><img src="{{res.temp_img.url}}" class="img-fluid"></a></div>
@@ -278,71 +285,39 @@
             </div>
           </div>
           {% endfor %}
-        </div>
-
+           </div>
       </div>
-    </section><!-- End document Section -->
-
-    <!-- ======= Payment Section ======= -->
-    <section id="pytm" style="background-color: #fff;">
+    </section>
+    <!-- End Resume Section -->
+    
+    <!-- ======= Favourite Section ======= -->
+    <section id="fav" style="background-color: #fff;">
       <div class="container py-5">
         <div class="text-center section-title" data-aos="fade-up">
-          <h1 style="text-transform:uppercase" class="fs-2"><b>Payment History</b></h1>
+          <h1 style="text-transform:uppercase" class="fs-2"><b>Favourite</b></h1>
         </div>
         <br>
         <div class="row justify-content-center">
-          <div class="col-md-8 col-lg-4 col-xl-4" style="background-color: #3498db;" data-aos="fade-up">
-            <div class="card text-black">
-              <div class="card-body">
-                <div class="text-center">
-                  <h5 class="card-title">Believing is seeing</h5>
-                  <p class="text-muted mb-4">Apple pro display XDR</p>
-                </div>
-                <div>
-                  <div class="d-flex justify-content-between">
-                    <span>Pro Display XDR</span><span>$5,999</span>
+        {% for i in Fav %}
+           <div id="des" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
+              <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <img src="{{i.img.url}}" class="rounded" style="height:100px; width:150px" alt="Cinque Terre">
                   </div>
-                  <div class="d-flex justify-content-between">
-                    <span>Pro stand</span><span>$999</span>
+                  <div class="col-lg-6">
+                      <h5>{{i.name}}</h5>
+                      <h4>{{i.cat}}</h4>
+                      <div class="row">
+                        <div class="col-lg-6"><a href="{{i.Template_id}}"><button style="background-color:#3498db;color:#fff;" class="btn mb-4 rounded float-start">View</button></a></div>
+                        <div class="col-lg-6"><button style="background-color:#3498db;color:#fff;" class="btn mb-4 rounded float-end">Delete</button></div>
+                      </div>
                   </div>
-                  <div class="d-flex justify-content-between">
-                    <span>Vesa Mount Adapter</span><span>$199</span>
-                  </div>
-                </div>
-                <div class="d-flex justify-content-between total font-weight-bold mt-4">
-                  <span>Total</span><span>$7,197.00</span>
                 </div>
               </div>
-            </div>
-          </div>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <!--paste 2 div-->
-          <div class="col-md-8 col-lg-4 col-xl-4" style="background-color: #3498db;" data-aos="fade-up">
-            <div class="card text-black">
-              <div class="card-body">
-                <div class="text-center">
-                  <h5 class="card-title">Believing is seeing</h5>
-                  <p class="text-muted mb-4">Apple pro display XDR</p>
-                </div>
-                <div>
-                  <div class="d-flex justify-content-between">
-                    <span>Pro Display XDR</span><span>$5,999</span>
-                  </div>
-                  <div class="d-flex justify-content-between">
-                    <span>Pro stand</span><span>$999</span>
-                  </div>
-                  <div class="d-flex justify-content-between">
-                    <span>Vesa Mount Adapter</span><span>$199</span>
-                  </div>
-                </div>
-                <div class="d-flex justify-content-between total font-weight-bold mt-4">
-                  <span>Total</span><span>$7,197.00</span>
-                </div>
-              </div>
-            </div>
-          </div>
+            </div><br><br>
+          {% endfor %}
         </div>
-        
       </div>
     </section>
     <!-- End Payment Section -->
