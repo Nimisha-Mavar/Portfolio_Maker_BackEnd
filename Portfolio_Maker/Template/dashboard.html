@@ -298,8 +298,8 @@
         </div>
         <br>
         <div class="row justify-content-center">
-        {% for i in Fav %}
            <div id="des" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
+            {% for i in Fav %}
               <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                 <div class="row">
                   <div class="col-lg-4">
@@ -309,14 +309,23 @@
                       <h5>{{i.name}}</h5>
                       <h4>{{i.cat}}</h4>
                       <div class="row">
-                        <div class="col-lg-6"><a href="{{i.Template_id}}"><button style="background-color:#3498db;color:#fff;" class="btn mb-4 rounded float-start">View</button></a></div>
-                        <div class="col-lg-6"><button style="background-color:#3498db;color:#fff;" class="btn mb-4 rounded float-end">Delete</button></div>
+                        <div class="col-lg-6">
+                          <form action="{% url 'Temp_detail' %}" method="get">
+                            <input type="hidden" name="tid" value="{{i.Template_id}}">
+                            <button class="btn mb-4 rounded float-start" type="submit" title="more detail" style="background-color:#3498db;color:#fff;">View</button>
+                          </form>
+                        </div>
+                        <div class="col-lg-6">
+                          <a href="{{i.id}}">
+                            <button style="background-color:#3498db;color:#fff;" class="btn mb-4 rounded float-end">Delete</button>
+                          </a>
+                        </div>
                       </div>
                   </div>
                 </div>
-              </div>
-            </div><br><br>
-          {% endfor %}
+              </div><br>
+            {% endfor %}
+            </div>
         </div>
       </div>
     </section>

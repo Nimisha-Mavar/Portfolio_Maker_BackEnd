@@ -92,9 +92,10 @@
               <br>
               <div class="row">
                 <div class="col-sm-12">
-                  <a href="{% url data.Temp_name %}">
-                    <button type="button" class="btn btn-lg" style="background-color:rgb(51, 152, 241); color:#fff;">Preview</button>
-                  </a>
+                  <form action="{% url data.Temp_name %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-lg" style="background-color:rgb(51, 152, 241); color:#fff;">Preview</button>
+                  </form>
                 </div>
               </div>
               <br>

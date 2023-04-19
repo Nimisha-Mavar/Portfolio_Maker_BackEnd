@@ -4,4 +4,5 @@ from . import views
 urlpatterns=[
     path('Dashboard',views.dashboard,name='Dashboard'),
     path('Add_to_Favourite',views.favourite,name="Favourite"),
+    path('<int:id>',views.fav_del)
 ]

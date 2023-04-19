@@ -38,7 +38,10 @@
               </div>
               <div class="col-lg-1"></div>
               <div class="col-lg-3">
-                <a href="{{temp.id}}" title="More Details"><i class='bx bx-detail'></i></a>
+                <form action="{% url 'Temp_detail' %}" method="get">
+                  <input type="hidden" name="tid" value="{{temp.id}}">
+                  <button class="fs-3" type="submit" title="more detail" style="background-color: transparent;border:none"><i style="color:#fff" class='bx bxs-detail'></i></button>
+                </form>
               </div>
               <div class="col-lg-1"></div>
               <div class="col-lg-3">

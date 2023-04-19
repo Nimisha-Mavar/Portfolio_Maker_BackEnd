@@ -35,6 +35,6 @@ class Detail(models.Model):
         return self.Temp_name
     def offer(self):
         return self.Temp_offer.Offer_value
-    def img(self):
-        return self.Temp_img1
+    
+
     

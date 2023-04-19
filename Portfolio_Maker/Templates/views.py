@@ -28,9 +28,10 @@ def ATS_list(request):
     }
     return render(request,'Template_list.html',data)
 
-def temp_detail(request,id):
-    data=Detail.objects.get(id=id)
-    feed=feedback.objects.filter(Template_id=id)
+def temp_detail(request):
+    tid=request.GET["tid"]
+    data=Detail.objects.get(id=tid)
+    feed=feedback.objects.filter(Template_id=tid)
     context={
          'data':data,
          'feed':feed

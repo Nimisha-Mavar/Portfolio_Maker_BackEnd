@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,redirect
 from Templates.models import Detail
 from Services.models import Portfolio,Resume
 from .models import Favourite
@@ -19,18 +19,15 @@ def dashboard(request):
 def favourite(request):
     tid=request.POST['tid']
     uid=request.user
-    port=Portfolio.objects.filter(User_id=uid.id)
-    res=Resume.objects.filter(User_id=uid.id)
-    fav=Favourite.objects.filter(User_id=uid.id)
-    doc={
-        'Port':port,
-        'Res':res,
-        'Fav':fav
-    }
     if Favourite.objects.filter(Template_id=tid,User_id=uid.id).exists():
-        return render(request,'dashboard.html',doc)
+        return redirect('Dashboard')
     else:
         obj=Favourite(Template_id=tid,User_id=uid.id)
         obj.save()
-        return render(request,'dashboard.html',doc)
-
+        return redirect('Dashboard')
+    
+def fav_del(request,id):
+    obj=Favourite.objects.filter(id=id)
+    obj.delete()
+    print(obj)
+    return redirect('Dashboard')
