@@ -3,16 +3,16 @@ from Services.models import *
 from payment.models import Payment
 # Portfolio Templates
 def Basic_pf_1(request):
-    return render(request,'Basic_Pf_1.html')
+    return render(request,'D_Basic_Pf_1.html')
 
 def Basic_pf_2(request):
-    return render(request,'Basic_Pf_2.html')
+    return render(request,'D_Basic_Pf_2.html')
 
 def Premium_pf_1(request):
-    return render(request,'Premium_Pf_1.html')
+    return render(request,'D_Premium_Pf_1.html')
 
 def Premium_pf_2(request):
-    return render(request,'Premium_Pf_2.html')
+    return render(request,'D_Premium_Pf_2.html')
 
 def iportfolio(request):
     if request.method=='GET':
@@ -31,7 +31,7 @@ def Basic_Rm_1(request):
         contaxt=Resume_data(pid,u_id)
         return render(request,'Basic_Resume_1.html',contaxt)
     else:
-        return render(request,'Basic_Resume_1.html')
+        return render(request,'D_Basic_Resume_1.html')
 
 def Basic_Rm_2(request):
     return render(request,'Premium_R_2.html')
