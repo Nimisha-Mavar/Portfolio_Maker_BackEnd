@@ -7,46 +7,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'Resume_Templates/Basic_Resume_1/css/style.css' %}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
+
 </head>
 <style>
-        #printable { display:none; }
-        @media only print {
-            #data { display:none !important; } <-- This is the wrapper container for all of the site data
-            #printable { display:block !important; } <-- This is my added printable container with a message about not printing the page
+    #printable {
+        display: none;
+    }
+    
+    @media only print {
+        #data {
+            display: none !important;
         }
-        .button {
-            background-color: rgb(51, 152, 241);
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            -webkit-transition-duration: 0.4s; /* Safari */
-            transition-duration: 0.4s;
-            }
-
-            .button1 {
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-            }
-
-            .button2:hover {
-            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-            }
+        <-- This is the wrapper container for all of the site data #printable {
+            display: block !important;
+        }
+        <-- This is my added printable container with a message about not printing the page
+    }
+    
+    .button {
+        background-color: rgb(51, 152, 241);
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        -webkit-transition-duration: 0.4s;
+        /* Safari */
+        transition-duration: 0.4s;
+    }
+    
+    .button1 {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    
+    .button2:hover {
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    }
 </style>
 <script>
-function prnt()
-{
-    var bd=document.getElementById("bd").innerHTML;
-    var data=document.getElementById("data").innerHTML;
-    document.getElementById("bd").innerHTML=data;
-    window.print();
-    document.getElementById("bd").innerHTML=bd;
-}
+    function prnt() {
+        var bd = document.getElementById("bd").innerHTML;
+        var data = document.getElementById("data").innerHTML;
+        document.getElementById("bd").innerHTML = data;
+        window.print();
+        document.getElementById("bd").innerHTML = bd;
+    }
 </script>
 
 <body id="bd">
@@ -59,73 +68,35 @@ function prnt()
                 <div class="heading">
                     <p>CONTACT</p>
                 </div>
+                <br>
+                <p class="p1"><i class="material-icons icons1">home</i>{{i.Address}}</p>
                 <p class="p1"><i class="material-icons icons1">call</i>{{i.Phone}}</p>
                 <p class="p1"><i class="material-icons icons1">email</i>{{i.Email}}</p>
+                <p class="p1"><i class="material-icons icons1">cake</i>{{i.Dob}}</p>
+                <br>
             </div>
             {% endfor %}
 
             <div class="box-1">
                 <div class="heading">
-                    <p>LANGUAGES</p>
+                    <p>SKILLS</p>
                 </div>
-
-                <p class="p1">HTML
+                {% for i in sk %}
+                <br>
+                <p class="p1">{{i.Name}}
                     <div class="skill-container">
                         <div class="skill html"></div>
                     </div>
                 </p>
+                {% endfor %}
 
-                <p class="p1">CSS
-                    <div class="skill-container">
-                        <div class="skill css"></div>
-                    </div>
-                </p>
-
-                <p class="p1">JAVASCRIPT
-                    <div class="skill-container">
-                        <div class="skill js"></div>
-                    </div>
-                </p>
-
-                <p class="p1">JQUERY
-                    <div class="skill-container">
-                        <div class="skill jquery"></div>
-                    </div>
-                </p>
             </div>
             <br>
 
             <div class="box-1">
-                <div class="heading">
-                    <p>SKILLS</p>
-                </div>
 
-                <p class="p1">WEBSITE DESIGN
-                    <div class="skill-container">
-                        <div class="skill web"></div>
-                    </div>
-                </p>
-
-                <p class="p1">GRAPHIC DESIGN
-                    <div class="skill-container">
-                        <div class="skill gra"></div>
-                    </div>
-                </p>
             </div>
             <br>
-            <div class="box-1">
-                <div class="heading">
-                    <p>HOBBIES</p>
-                </div>
-
-                <div class="h-div">
-                    <i class="material-icons icons2">camera_roll</i>
-                    <i class="material-icons icons2">music_note</i>
-                    <i class="material-icons icons2">motorcycle</i>
-                    <i class="material-icons icons2">border_color</i>
-                </div>
-
-            </div>
 
         </div>
 
@@ -138,54 +109,52 @@ function prnt()
             </div>
             {% endfor %}
             <div class="box-2">
-                <h2>ABOUT ME <i class="material-icons icons3" style="font-size: 28px!important; ">perm_identity</i></h2>
-                <p class="p2">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,<br> when an unknown printer took a galley of type and scrambled it to make a type
-                    specimen book. It has survived not only five centuries,
+                <h2>PHILOSOPHY <i class="material-icons icons3" style="font-size: 28px!important; ">perm_identity</i></h2>
+                {% for i in prs %}
+                <p class="p2" style="font-size: 15px; ">
+                    {{i.Philosophy}}
                 </p>
+                {% endfor %}
             </div>
 
 
 
-            <div class="box-2">
-                <h2>EDUCATION <i class="material-icons icons3">border_color</i></h2>
-                <p class="p3">2010-2013 <span>Lorem Ipsum is simply dummy</span></p>
-                <p class="p2">
-                    Lorem Ipsum is simply dummy text of
+            <div class="box-2 ">
+                <h2>EDUCATION <i class="material-icons icons3 ">border_color</i></h2>
+                {% for i in edu %}
+                <p class="p3 ">{{i.Start_year}} - {{i.End_year}}<span>{{i.Degree}}</span></p>
+                <p class="p2 ">
+                    {{i.Institute}}
                 </p>
-
-                <p class="p3">2013-2016 <span>Lorem Ipsum </span></p>
-                <p class="p2">
-                    Lorem Ipsum is simply dummy text of
-                </p>
-
-                <p class="p3">2016-2021 <span>Lorem Ipsum is</span></p>
-                <p class="p2">
-                    Lorem Ipsum is simply dummy text of
-                </p>
+                {% endfor %}
             </div>
 
 
-            <div class="box-2">
-                <h2>WORK EXPERIENCE <i class="material-icons icons3">folder</i></h2>
-                <p class="p3">2010-2013 <span>Lorem Ipsum is simply dummy</span></p>
-                <p class="p2">
-                    Lorem Ipsum is simply dummy text of
+            <div class="box-2 ">
+                <h2>WORK EXPERIENCE <i class="material-icons icons3 ">folder</i></h2>
+                {% for i in ex %}
+                <p class="p3 ">{{i.Start_year}} - {{i.End_year}}<span>{{i.Company}}</span></p>
+                <p class="p2 ">
+                    {{i.Role}}
                 </p>
+                {% endfor %}
+            </div>
 
-                <p class="p3">2013-2016 <span>Lorem Ipsum </span></p>
-                <p class="p2">
-                    Lorem Ipsum is simply dummy text of
+            <div class="box-2 ">
+                <h2>PROJECT <i class="material-icons icons3 ">folder</i></h2>
+                {% for i in pro %}
+                <p class="p3 ">{{i.Start_year}} - {{i.End_year}}<span>{{i.Title}}</span></p>
+                <p class="p2 ">
+                    {{i.Description}}
                 </p>
-
-
+                {% endfor %}
             </div>
 
         </div>
     </div>
     {% if active %}
-    <div style=" text-align:right;">
-        <button onclick="prnt()" class="button button1">Download</button>
+    <div style=" text-align:right; ">
+        <button onclick="prnt() " class="button button1 ">Download</button>
     </div>
     {% endif %}
 </body>
