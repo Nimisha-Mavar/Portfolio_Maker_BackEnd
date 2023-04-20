@@ -43,11 +43,14 @@
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
                 <p class="description">Find keywords from job description</p>
+                <form action="{% url 'keyword' %}" method="post">
+                {% csrf_token %}
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp;
-                <button onclick="myFunction()" type="button" class="btn btn-primary btn-lg">Keyword</button>
+                <button onclick="" type="submit" class="btn btn-primary btn-lg">Keyword</button>
+                </form>
               </div>
             </div>
   

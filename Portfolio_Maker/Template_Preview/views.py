@@ -58,19 +58,33 @@ def Basic_Rm_1(request):
         return render(request,'D_Basic_Resume_1.html')
 
 def Basic_Rm_2(request):
-    return render(request,'Premium_R_2.html')
+    if request.method=='GET':
+        pid=request.GET['pid']
+        u_id=request.user
+        contaxt=Resume_data(pid,u_id)
+        return render(request,'Premium_R_2.html',contaxt)
+    else:
+        return render(request,'D_Premium_R_2.html')
 
 def Premium_Rm_1(request):
-    return render(request,'Premium_R_1.html')
+    if request.method=='GET':
+        pid=request.GET['pid']
+        u_id=request.user
+        contaxt=Resume_data(pid,u_id)
+        return render(request,'Premium_R_1.html',contaxt)
+    else:
+        return render(request,'D_Premium_R_1.html')
 
 def Premium_Rm_2(request):
     if request.method=='GET':
         pid=request.GET['pid']
         u_id=request.user
         contaxt=Resume_data(pid,u_id)
+        print("hi")
         return render(request,'Premium_R_3.html',contaxt)
     else:
-        return render(request,'Premium_R_3.html')
+        print("demo")
+        return render(request,'D_Premium_R_3.html')
 
 def Resume_data(pid,u_id):
         prs=Personal_info.objects.filter(User_id=u_id.id)
