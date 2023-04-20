@@ -1,5 +1,5 @@
 from django.shortcuts import render,HttpResponse
-from rake_nltk import Rake
+#from rake_nltk import Rake
 # Create your views here.
 def scanner_page(request):
     return render(request,'Scanner.html')

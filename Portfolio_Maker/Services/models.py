@@ -50,7 +50,7 @@ class Personal_info(models.Model):
     Pic=models.ImageField(upload_to='Personal_Pic',null=True,blank=True)
     User=models.ForeignKey(User,null=True,blank=True,on_delete=models.CASCADE)
 
-#educaion model
+#education model
 class Education(models.Model):
     Education_id=models.IntegerField(primary_key=True)
     Resume=models.ForeignKey(Resume,null=True,on_delete=models.CASCADE)
