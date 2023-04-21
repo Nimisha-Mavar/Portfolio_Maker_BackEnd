@@ -34,35 +34,14 @@
           </div>
   
           <div class="row justify-content-center">
-
-            <div id="des" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
-              <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                <h1 class="title fs-2"><a href="">Find Keywords</a></h1>
-                <div class="mb-3">
-                <form action="{% url 'keyword' %}" method="post">
-                {% csrf_token %}
-                    <label for="exampleFormControlTextarea1" class="description form-label">Job Description</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="text"></textarea>
-                </div>
-                <p class="description">Find keywords from job description</p>
-                
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp; &nbsp;
-                <button onclick="" type="submit" class="btn btn-primary btn-lg">Keyword</button>
-                </form>
-              </div>
-            </div>
-  
-            <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0" style="display:none;">
+            <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0" style="display:;">
               <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
                 <h3 class="title fs-2"><a href="">Keywords</a></h3>
                 <p class="description">Following keywords found from job Description</p>
                 <ul class="list-group list-group-numbered">
-                    <li class="list-group-item">First item</li>
-                    <li class="list-group-item">Second item</li>
-                    <li class="list-group-item">Third item</li>
+                {% for i in key %}
+                    <li class="list-group-item">{{i}}</li>
+                {% endfor %}
                 </ul>
               </div>
             </div>

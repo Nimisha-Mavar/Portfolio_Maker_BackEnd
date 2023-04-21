@@ -80,10 +80,8 @@ def Premium_Rm_2(request):
         pid=request.GET['pid']
         u_id=request.user
         contaxt=Resume_data(pid,u_id)
-        print("hi")
         return render(request,'Premium_R_3.html',contaxt)
     else:
-        print("demo")
         return render(request,'D_Premium_R_3.html')
 
 def Resume_data(pid,u_id):
