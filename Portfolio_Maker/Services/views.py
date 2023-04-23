@@ -51,6 +51,12 @@ def Education_data(request):
         degree=request.POST['degree']
         syear=request.POST['syear']
         eyear=request.POST['eyear']
+        des=request.POST.get('des')
+        cunt=request.POST.get('crnt')
+        if cunt=="yes":
+            cunt=True
+        else:
+            cunt=False
         if cat=="Portfolio":
             port_id=request.POST['port_id']
             if Education.objects.filter(Portfolio_id=port_id,Institute=iname,Degree=degree).exists():
@@ -62,7 +68,7 @@ def Education_data(request):
                 else:
                     eid=(Education.objects.last()).Education_id
                     eid+=1
-                obj=Education(Education_id=eid,Portfolio_id=port_id,Institute=iname,Degree=degree,Start_year=syear,End_year=eyear)
+                obj=Education(Education_id=eid,Portfolio_id=port_id,Institute=iname,Degree=degree,Start_year=syear,End_year=eyear,Description=des,Current=cunt)
                 obj.save()
                 return HttpResponse("Data stored successfully...")
         else:
@@ -76,7 +82,7 @@ def Education_data(request):
                 else:
                     eid=(Education.objects.last()).Education_id
                     eid+=1
-                obj=Education(Education_id=eid,Resume_id=res_id,Institute=iname,Degree=degree,Start_year=syear,End_year=eyear)
+                obj=Education(Education_id=eid,Resume_id=res_id,Institute=iname,Degree=degree,Start_year=syear,End_year=eyear,Current=cunt)
                 obj.save()
                 return HttpResponse("Data stored successfully...")
     else:

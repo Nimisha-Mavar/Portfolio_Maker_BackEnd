@@ -1,7 +1,8 @@
 from django.db import models
 from Templates.models import Detail
 from django.contrib.auth.models import User, auth
-# Create your models here.
+# Create your models here
+
 #Portfolio model
 class Portfolio(models.Model):
     Portfolio_id=models.IntegerField(primary_key=True)
@@ -49,46 +50,45 @@ class Personal_info(models.Model):
     Philosophy=models.TextField()
     Pic=models.ImageField(upload_to='Personal_Pic',null=True,blank=True)
     User=models.ForeignKey(User,null=True,blank=True,on_delete=models.CASCADE)
-
 #education model
 class Education(models.Model):
     Education_id=models.IntegerField(primary_key=True)
-    Resume=models.ForeignKey(Resume,null=True,on_delete=models.CASCADE)
-    Portfolio=models.ForeignKey(Portfolio,null=True,on_delete=models.CASCADE)
+    Resume=models.ForeignKey(Resume,null=True,blank=True,on_delete=models.CASCADE)
+    Portfolio=models.ForeignKey(Portfolio,null=True,blank=True,on_delete=models.CASCADE)
     Institute=models.CharField(max_length=50)
     Degree=models.CharField(max_length=50)
     Start_year=models.CharField(max_length=10)
-    End_year=models.CharField(max_length=10,null=True)
+    End_year=models.CharField(max_length=10,null=True,blank=True)
     Current=models.BooleanField(default=False)
-
+    Description=models.TextField(null=True,blank=True)
 #Experience model
 class Experience(models.Model):
     Experience_id=models.IntegerField(primary_key=True)
-    Resume=models.ForeignKey(Resume,null=True,on_delete=models.CASCADE)
-    Portfolio=models.ForeignKey(Portfolio,null=True,on_delete=models.CASCADE)
+    Resume=models.ForeignKey(Resume,null=True,blank=True,on_delete=models.CASCADE)
+    Portfolio=models.ForeignKey(Portfolio,null=True,blank=True,on_delete=models.CASCADE)
     Company=models.CharField(max_length=50)
     Role=models.CharField(max_length=30)
     Start_year=models.CharField(max_length=10)
-    End_year=models.CharField(max_length=10,null=True)
+    End_year=models.CharField(max_length=10,null=True,blank=True)
     Current=models.BooleanField(default=False)
-    Description=models.TextField(null=True)
+    Description=models.TextField(null=True,blank=True)
 
 #Project model
 class Project(models.Model):
     Project_id=models.IntegerField(primary_key=True)
-    Resume=models.ForeignKey(Resume,null=True,on_delete=models.CASCADE)
-    Portfolio=models.ForeignKey(Portfolio,null=True,on_delete=models.CASCADE)
+    Resume=models.ForeignKey(Resume,null=True,blank=True,on_delete=models.CASCADE)
+    Portfolio=models.ForeignKey(Portfolio,null=True,blank=True,on_delete=models.CASCADE)
     Title=models.CharField(max_length=50)
     Start_year=models.CharField(max_length=10)
-    End_year=models.CharField(max_length=10,null=True)
+    End_year=models.CharField(max_length=10,null=True,blank=True)
     Current=models.BooleanField(default=False)
-    Description=models.TextField(null=True)
+    Description=models.TextField(null=True,blank=True)
 
 #Skill model
 class Skill(models.Model):
     Skill_id=models.IntegerField(primary_key=True)
-    Resume=models.ForeignKey(Resume,null=True,on_delete=models.CASCADE)
-    Portfolio=models.ForeignKey(Portfolio,null=True,on_delete=models.CASCADE)
+    Resume=models.ForeignKey(Resume,null=True,blank=True,on_delete=models.CASCADE)
+    Portfolio=models.ForeignKey(Portfolio,null=True,blank=True,on_delete=models.CASCADE)
     Name=models.CharField(max_length=30)
     Level=models.CharField(max_length=20)
 
@@ -99,7 +99,7 @@ class Award(models.Model):
     Title=models.CharField(max_length=50)
     Institute=models.CharField(max_length=50)
     Year=models.CharField(max_length=10)
-    Description=models.TextField(null=True)
+    Description=models.TextField(null=True,blank=True)
 
 class Social_Media(models.Model):
     Social_id=models.IntegerField(primary_key=True)

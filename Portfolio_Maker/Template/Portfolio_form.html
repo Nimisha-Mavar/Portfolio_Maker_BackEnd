@@ -159,6 +159,19 @@
                           <input type="taxt" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030">
                           <label for="degree">End Year</label>
                         </div> 
+                        <div class="form-floating mb-3 mt-3">
+                          <label for="ptitle">Currently working?</label><br>
+                          <select name="working" id="eduwork" class="form-control">
+                            <option value="">Select</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                          </select>                                         
+                          <br>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                          <input type="text" class="form-control" id="edudes" placeholder="description" name="des" required> 
+                          <label for="des">Description</label>
+                        </div>
                         <div class="row">
                           <div class="col-lg-6">
                             <input id="button1" class="float-start" value="Clear" type="button" onclick="Educat_reset()">
@@ -601,6 +614,8 @@
                 degree:$('#degree').val(),
                 syear:$('#syear').val(),
                 eyear:$('#eyear').val(),
+                des:$('#edudes').val(),
+                crnt:$('#eduwork').val(),
                 csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
                 
             },
