@@ -31,8 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'admin_interface',
-    'colorfield',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -87,9 +86,9 @@ WSGI_APPLICATION = 'Portfolio_Maker.wsgi.application'
 DATABASES = {
     'default': {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "Portfolio_Maker",
+        "NAME": "Backend",
         "USER": "postgres",
-        "PASSWORD":"PG12345",
+        "PASSWORD":"nidhi",
         "HOST":"localhost"
     }
 }
