@@ -45,7 +45,7 @@
           <div class="container">
     
             <div class="section-title">
-              <h2>Portfolio Form {{iid}}</h2>
+              <h2>Form Details{{iid}}</h2>
             </div>
             
             <!--==>Personal info form<==-->
@@ -76,8 +76,17 @@
                             <div class="col-lg-6" style="padding-left:20px;">
                                 Dob : {{i.Dob}}
                             </div>
-                            <div class="col-lg-6" style="padding-left:20px;">
+                            <div class="col-lg-12" style="padding-left:20px;">
                                 Philosophy : {{i.Philosophy}}
+                            </div>
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                Country : {{i.Country}}
+                            </div>
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                State : {{i.State}}
+                            </div>
+                            <div class="col-lg-6" style="padding-left:20px;">
+                                City : {{i.City}}
                             </div>
                         </div>
                       </div>
@@ -116,8 +125,17 @@
                         <div class="col-lg-6" style="padding-left:20px;">
                             Start Year : {{i.Start_year}}
                         </div>
+                        {% if i.Current %}
+                        <div class="col-lg-6" style="padding-left:20px;">
+                            End Year : Present
+                        </div>
+                        {% else %}
                         <div class="col-lg-6" style="padding-left:20px;">
                             End Year : {{i.End_year}}
+                        </div>
+                        {% endif %}
+                        <div class="col-lg-12" style="padding-left:20px;">
+                            Discription : {{i.Description}}
                         </div>
                     </div>
                   </div>
@@ -161,10 +179,16 @@
                         <div class="col-lg-6" style="padding-left:20px;">
                             Start Year : {{i.Start_year}}
                         </div>
+                        {% if i.Current %}
+                        <div class="col-lg-6" style="padding-left:20px;">
+                            End Year : Present
+                        </div>
+                        {% else %}
                         <div class="col-lg-6" style="padding-left:20px;">
                             End Year : {{i.End_year}}
                         </div>
-                        <div class="col-lg-6" style="padding-left:20px;">
+                        {% endif %}
+                        <div class="col-lg-12" style="padding-left:20px;">
                             Discription : {{i.Description}}
                         </div>
                     </div>

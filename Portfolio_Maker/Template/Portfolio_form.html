@@ -87,7 +87,19 @@
                           </div>
                           <div class="input-group mb-3">
                             <input type="file" class="form-control" id="pic" value="{{prs.Pic}}">
-                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                            <label class="input-group-text" for="inputGroupFile02">Upload Pic</label>
+                          </div>
+                          <div class="col form-floating mb-3">
+                            <input type="text" class="form-control" placeholder="Country" id="Cnty" name="Cnty" required value="{{prs.Country}}">
+                            <label for="fname">Country</label>
+                          </div>
+                          <div class="col form-floating">
+                            <input type="text" class="form-control" placeholder="State" id="st" name="st" required value="{{prs.State}}">
+                            <label for="lname">State</label>
+                          </div>
+                          <div class="col form-floating">
+                            <input type="text" class="form-control" placeholder="City" id="cty" name="cty" required value="{{prs.City}}">
+                            <label for="lname">City</label>
                           </div>
                           <div class="form-floating mb-3 mt-3">
                             <input type="text" class="form-control" id="philo" placeholder=" philosophy statement" name="philo" required value="{{prs.Philosophy}}"> 
@@ -125,8 +137,17 @@
                         <div class="col-lg-6" style="padding-left:20px;">
                             Start Year : {{i.Start_year}}
                         </div>
+                        {% if i.Current %}
+                        <div class="col-lg-6" style="padding-left:20px;">
+                            End Year : Present
+                        </div>
+                        {% else %}
                         <div class="col-lg-6" style="padding-left:20px;">
                             End Year : {{i.End_year}}
+                        </div>
+                        {% endif %}
+                        <div class="col-lg-12" style="padding-left:20px;">
+                            Discription : {{i.Description}}
                         </div>
                     </div>
                   </div>
@@ -205,14 +226,20 @@
                         <div class="col-lg-6" style="padding-left:20px;">
                             Start Year : {{i.Start_year}}
                         </div>
+                        {% if i.Current %}
+                        <div class="col-lg-6" style="padding-left:20px;">
+                            End Year : Present
+                        </div>
+                        {% else %}
                         <div class="col-lg-6" style="padding-left:20px;">
                             End Year : {{i.End_year}}
                         </div>
-                        <div class="col-lg-6" style="padding-left:20px;">
+                        {% endif %}
+                        <div class="col-lg-12" style="padding-left:20px;">
                             Discription : {{i.Description}}
                         </div>
                     </div>
-                </div>
+                </div><br>
                 {% endfor %}
                 <br>
                   <h1 class="title fs-2">Experience</h1>
@@ -285,7 +312,7 @@
                         {% endif %}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Start Year : {{i.End_year}}
+                            Start Year : {{i.Start_year}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
                         {% if i.Current %}
@@ -293,7 +320,7 @@
                             End Year : 2023
                         {% endif %}
                         </div>
-                        <div class="col-lg-6" style="padding-left:20px;">
+                        <div class="col-lg-12" style="padding-left:20px;">
                             Description : {{i.Description}}
                         </div>
                     </div>
@@ -598,6 +625,9 @@
                 dob:$('#dob').val(),
                 philo:$('#philo').val(),
                 pic:$('#pic').val(),
+                cnty:$('#Cnty').val(),
+                st:$('#st').val(),
+                cty:$('#cty').val(),
                 csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
                 
             },

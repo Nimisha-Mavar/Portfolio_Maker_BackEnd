@@ -48,42 +48,55 @@
                     <hr>
                     <form id="Persnal_info">
                         {% csrf_token %}
+                        {% for prs in prs %}
                         <div class="row">
                           <input type="hidden" value="{{resid}}" id="resid">
                           <input type="hidden" value="Resume" id="catt">
                           <div class="col form-floating mb-3">
-                            <input type="text" class="form-control" placeholder="First name" id="fname" name="fname" required>
+                            <input type="text" class="form-control" placeholder="First name" id="fname" name="fname" required value="{{prs.First_name}}">
                             <label for="fname">First name</label>
                           </div>
                           <div class="col form-floating">
-                            <input type="text" class="form-control" placeholder="Last name" id="lname" name="lname" required>
+                            <input type="text" class="form-control" placeholder="Last name" id="lname" name="lname" required value="{{prs.Last_name}}">
                             <label for="lname">Last name</label>
                           </div>
                           <div class="form-floating mb-3 mt-3">
-                            <textarea type="text" class="form-control" id="address" placeholder="Enter address" name="address" required></textarea> 
+                            <textarea type="text" class="form-control" id="address" placeholder="Enter address" name="address" required value="{{prs.Address}}"></textarea> 
                             <label for="address">Address</label>
                             <br>
                           </div>
                           <div class="col form-floating mb-3">
                             <input type="number" class="form-control" id="phone" placeholder="Phone"
                             name="phone"
-                            maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
+                            maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required value="{{prs.Phone}}">
                             <label for="phone">Phone number</label>
                           </div>
                           <div class="col form-floating">
-                            <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
+                            <input type="email" class="form-control" id="email" placeholder="Email" name="email" required value="{{prs.Email}}">
                             <label for="email">Email</label>
                           </div>
                           <div class="form-floating mb-3 mt-3">
-                            <input type="date" class="form-control" id="dob" placeholder="Date of birth" name="dob" required> 
+                            <input type="date" class="form-control" id="dob" placeholder="Date of birth" name="dob" required value="{{prs.Dob}}"> 
                             <label for="dob">Date of Birth</label>
                           </div>
                           <div class="input-group mb-3">
                             <input type="file" class="form-control" id="pic" value="{{prs.Pic}}">
-                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                            <label class="input-group-text" for="inputGroupFile02">Upload Pic</label>
+                          </div>
+                          <div class="col form-floating mb-3">
+                            <input type="text" class="form-control" placeholder="Country" id="Cnty" name="Cnty" required value="{{prs.Country}}">
+                            <label for="fname">Country</label>
+                          </div>
+                          <div class="col form-floating">
+                            <input type="text" class="form-control" placeholder="State" id="st" name="st" required value="{{prs.State}}">
+                            <label for="lname">State</label>
+                          </div>
+                          <div class="col form-floating">
+                            <input type="text" class="form-control" placeholder="City" id="cty" name="cty" required value="{{prs.City}}">
+                            <label for="lname">City</label>
                           </div>
                           <div class="form-floating mb-3 mt-3">
-                            <input type="text" class="form-control" id="philo" placeholder=" philosophy statement" name="philo" required> 
+                            <input type="text" class="form-control" id="philo" placeholder=" philosophy statement" name="philo" required value="{{prs.Philosophy}}"> 
                             <label for="philo">Philosophy Statement</label>
                           </div>
                           </div>
@@ -96,6 +109,7 @@
                             </div>
                           </div>  
                         </div>
+                        {% endfor %}
                     </form>
                 </div>
               </div>
@@ -107,23 +121,34 @@
             <div class="row justify-content-center">
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                {% for i in edu %}
                   <div id="d1">
                     <div class="row">
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Institute Name : LJ College
+                            Institute Name : {{i.Institute}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Degree : BCA
+                            Degree : {{i.Degree}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Start Year : 2019
+                            Start Year : {{i.Start_year}}
                         </div>
+                        {% if i.Current %}
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Start Year : 2022
-                            <button class="btn=sm" id="button1">delete</button>
+                            End Year : Present
+                        </div>
+                        {% else %}
+                        <div class="col-lg-6" style="padding-left:20px;">
+                            End Year : {{i.End_year}}
+                        </div>
+                        {% endif %}
+                        <div class="col-lg-12" style="padding-left:20px;">
+                            Discription : {{i.Description}}
                         </div>
                     </div>
-                </div>
+                  </div>
+                  <br>
+                  {% endfor %}
                 <br>
                   <h1 class="title fs-2">Education</h1>
                   <h2 id="msg1" class="bg-warning"></h2>
@@ -148,8 +173,21 @@
                           <label for="iname">Start Year</label>
                         </div>
                         <div class="col form-floating">
-                          <input type="number" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
+                          <input type="taxt" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030">
                           <label for="degree">End Year</label>
+                        </div> 
+                        <div class="form-floating mb-3 mt-3">
+                          <label for="ptitle">Currently working?</label><br>
+                          <select name="working" id="eduwork" class="form-control">
+                            <option value="">Select</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                          </select>                                         
+                          <br>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                          <input type="text" class="form-control" id="edudes" placeholder="description" name="des" required> 
+                          <label for="des">Description</label>
                         </div> 
                         <div class="row">
                           <div class="col-lg-6">
@@ -172,28 +210,33 @@
             <div class="row justify-content-center">
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                  {% for i in ex %}
                   <div id="d1">
                     <div class="row">
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Company Name : Google
+                            Company Name : {{i.Company}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Role Name : Web Developer
+                            Role Name : {{i.Role}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Start Year : 2019
+                            Start Year : {{i.Start_year}}
                         </div>
+                        {% if i.Current %}
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Start Year : 2022
+                            End Year : Present
                         </div>
+                        {% else %}
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Discription : Creating website layout/user interfaces by using standard HTML/CSS practices
+                            End Year : {{i.End_year}}
                         </div>
-                        <div class="col-lg-6">
-                          <button class="btn=sm" id="button1">delete</button>
+                        {% endif %}
+                        <div class="col-lg-12" style="padding-left:20px;">
+                            Discription : {{i.Description}}
                         </div>
                     </div>
-                </div>
+                </div><br>
+                {% endfor %}
                 <br>
                   <h1 class="title fs-2">Experience</h1>
                   <h2 id="msg2" class="bg-warning"></h2>
@@ -214,12 +257,21 @@
                           <br>
                         </div>
                         <div class="col form-floating mb-3">
-                          <input type="number" class="form-control" placeholder="Start year" id="syear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
+                          <input type="number" class="form-control" placeholder="Start year" id="styear" name="syear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2022" required>
                           <label for="iname">Start Year</label>
                         </div>
                         <div class="col form-floating">
-                          <input type="number" class="form-control" placeholder="End year" id="eyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
+                          <input type="number" class="form-control" placeholder="End year" id="enyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030">
                           <label for="degree">End Year</label>
+                        </div> 
+                        <div class="form-floating mb-3 mt-3">
+                          <label for="ptitle">Currently working?</label><br>
+                          <select name="working" id="exwork" class="form-control">
+                            <option value="">Select</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                          </select>                                         
+                          <br>
                         </div>  
                         <div class="form-floating mb-3 mt-3">
                           <input type="text" class="form-control" id="des" placeholder="description" name="des" required> 
@@ -246,34 +298,33 @@
             <div class="row justify-content-center">
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                  {% for i in pro %}
                   <div id="d1">
                     <div class="row">
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Project Title : Portfolio Maker
+                            Project Title : {{i.Title}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Currently working : yes
+                        {% if i.Current %}
+                            Currently working : Yes
+                        {% else %}
+                        {% endif %}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            Start Year : 2022
+                            Start Year : {{i.Start_year}}
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
+                        {% if i.Current %}
+                        {% else %}
                             End Year : 2023
+                        {% endif %}
                         </div>
-                        <div class="col-lg-6" style="padding-left:20px;">
-                            Start month : 6
+                        <div class="col-lg-12" style="padding-left:20px;">
+                            Description : {{i.Description}}
                         </div>
-                        <div class="col-lg-6" style="padding-left:20px;">
-                            End month : 2
-                        </div>
-                        <div class="col-lg-6" style="padding-left:20px;">
-                            Discription : Project is about to making portfolio and resumes easily
-                        </div>
-                        <div class="col-lg-6">
-                            <button class="btn=sm" id="button1">delete</button>
-                         </div>
                     </div>
-                </div>
+                </div><br>
+                {% endfor %}
                 <br>
                   <h1 class="title fs-2">Project</h1>
                   <h2 id="msg4" class="bg-warning"></h2>
@@ -329,19 +380,18 @@
             <div class="row justify-content-center">
               <div id="key" class="col-md-12 col-lg-8 align-items-stretch mb-5 mb-lg-0">
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                  {% for i in sk %}
                   <div id="d1">
                     <div class="row">
                         <div class="col-lg-4" style="padding-left:20px;">
-                            Skill Name : HTML
+                            Skill Name : {{i.Name}}
                         </div>
                         <div class="col-lg-4" style="padding-left:20px;">
-                            Skill level : Expert
-                        </div>   
-                        <div class="col-lg-4">
-                            <button class="btn=sm" id="button1">delete</button>
-                        </div>                       
+                            Skill level : {{i.Level}}
+                        </div>                   
                     </div>
-                </div>
+                </div><br>
+                  {% endfor %}
                 <br>
                   <h1 class="title fs-2">Skill</h1>
                   <h2 id="msg5" class="bg-warning"></h2>
@@ -432,6 +482,8 @@
           degree:$('#degree').val(),
           syear:$('#syear').val(),
           eyear:$('#eyear').val(),
+          des:$('#edudes').val(),
+          crnt:$('#eduwork').val(),
           csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
         },
           success:function(data){
@@ -451,9 +503,10 @@
           cat:$('#catt').val(),
           cname:$('#cname').val(),
           rname:$('#rname').val(),
-          syear:$('#syear').val(),
-          eyear:$('#eyear').val(),
+          syear:$('#styear').val(),
+          eyear:$('#enyear').val(),
           des:$('#des').val(),
+          crnt:$('#exwork').val(),
           csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
                 
         },
@@ -478,6 +531,9 @@
           dob:$('#dob').val(),
           philo:$('#philo').val(),
           pic:$('#pic').val(),
+          cnty:$('#Cnty').val(),
+          st:$('#st').val(),
+          cty:$('#cty').val(),
           csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
                 
         },

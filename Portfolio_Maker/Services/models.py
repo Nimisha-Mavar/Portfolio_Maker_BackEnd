@@ -50,6 +50,9 @@ class Personal_info(models.Model):
     Philosophy=models.TextField()
     Pic=models.ImageField(upload_to='Personal_Pic',null=True,blank=True)
     User=models.ForeignKey(User,null=True,blank=True,on_delete=models.CASCADE)
+    Country=models.CharField(max_length=40,null=True,blank=True)
+    State=models.CharField(max_length=40,null=True,blank=True)
+    City=models.CharField(max_length=40,null=True,blank=True)
 #education model
 class Education(models.Model):
     Education_id=models.IntegerField(primary_key=True)

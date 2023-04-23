@@ -13,6 +13,9 @@ def Personal(request):
         eml=request.POST['eml']
         dob=request.POST['dob']
         philo=request.POST['philo']
+        cnty=request.POST.get('cnty')
+        st=request.POST.get('st')
+        cty=request.POST.get('cty')
         U_id=request.user
         if len(request.POST['pic']) != 0:
             pic=request.POST['pic']
@@ -28,6 +31,9 @@ def Personal(request):
                 obj.Dob=dob
                 obj.Philosophy=philo
                 obj.Pic=pic
+                obj.Country=cnty
+                obj.State=st
+                obj.City=cty
                 obj.save()
                 return HttpResponse('Data updated successfully')
         else:
@@ -37,7 +43,7 @@ def Personal(request):
                 else:
                     p_id=(Personal_info.objects.last()).Personal_id
                     p_id+=1
-                obj=Personal_info(Personal_id=p_id,User_id=U_id.id,First_name=fname,Last_name=lname,Address=address,Phone=phone,Email=eml,Dob=dob,Philosophy=philo,Pic=pic)
+                obj=Personal_info(Personal_id=p_id,User_id=U_id.id,First_name=fname,Last_name=lname,Address=address,Phone=phone,Email=eml,Dob=dob,Philosophy=philo,Pic=pic,Country=cnty,State=st,City=cty)
                 obj.save()
                 return HttpResponse('Data stored successfully')
     else:
@@ -82,7 +88,7 @@ def Education_data(request):
                 else:
                     eid=(Education.objects.last()).Education_id
                     eid+=1
-                obj=Education(Education_id=eid,Resume_id=res_id,Institute=iname,Degree=degree,Start_year=syear,End_year=eyear,Current=cunt)
+                obj=Education(Education_id=eid,Resume_id=res_id,Institute=iname,Degree=degree,Start_year=syear,End_year=eyear,Current=cunt,Description=des)
                 obj.save()
                 return HttpResponse("Data stored successfully...")
     else:
