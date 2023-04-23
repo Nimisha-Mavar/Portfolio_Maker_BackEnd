@@ -235,9 +235,18 @@
                           <label for="iname">Start Year</label>
                         </div>
                         <div class="col form-floating">
-                          <input type="text" class="form-control" placeholder="End year" id="enyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030" required>
+                          <input type="text" class="form-control" placeholder="End year" id="enyear" name="eyear" maxlength="4"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="1950" max="2030">
                           <label for="degree">End Year</label>
-                        </div>  
+                        </div> 
+                        <div class="form-floating mb-3 mt-3">
+                          <label for="ptitle">Currently working?</label><br>
+                          <select name="working" id="exwork" class="form-control">
+                            <option value="">Select</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                          </select>                                         
+                          <br>
+                        </div> 
                         <div class="form-floating mb-3 mt-3">
                           <input type="text" class="form-control" id="des" placeholder="description" name="des" required> 
                           <label for="des">Description</label>
@@ -643,6 +652,7 @@
                 syear:$('#styear').val(),
                 eyear:$('#enyear').val(),
                 des:$('#des').val(),
+                crnt:$('#exwork').val(),
                 csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
                 
             },

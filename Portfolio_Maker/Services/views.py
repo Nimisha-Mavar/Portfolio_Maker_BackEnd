@@ -103,6 +103,11 @@ def Experience_data(request):
         syear=request.POST['syear']
         eyear=request.POST['eyear']
         des=request.POST['des']
+        cunt=request.POST.get('crnt')
+        if cunt=="yes":
+            cunt=True
+        else:
+            cunt=False
         if cat=="Portfolio":
             if Experience.objects.filter(Portfolio_id=idd,Company=cname,Role=rname).exists():
                return HttpResponse("Record Exist...")
@@ -113,7 +118,7 @@ def Experience_data(request):
                 else:
                     eid=(Experience.objects.last()).Experience_id
                     eid+=1
-                obj=Experience(Experience_id=eid,Portfolio_id=idd,Company=cname,Role=rname,Start_year=syear,End_year=eyear,Description=des)
+                obj=Experience(Experience_id=eid,Portfolio_id=idd,Company=cname,Role=rname,Start_year=syear,End_year=eyear,Description=des,Current=cunt)
                 obj.save()
                 return HttpResponse("Data stored successfully...")
         else:
@@ -126,7 +131,7 @@ def Experience_data(request):
                 else:
                     eid=(Experience.objects.last()).Experience_id
                     eid+=1
-                obj=Experience(Experience_id=eid,Resume_id=idd,Company=cname,Role=rname,Start_year=syear,End_year=eyear,Description=des)
+                obj=Experience(Experience_id=eid,Resume_id=idd,Company=cname,Role=rname,Start_year=syear,End_year=eyear,Description=des,Current=cunt)
                 obj.save()
                 return HttpResponse("Data stored successfully...")
     else:
