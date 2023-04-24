@@ -17,7 +17,9 @@
                 {% csrf_token %}
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="row">
-                <h5 class="text-danger">{{msg}}</h5>
+                {% if error %}
+                <h5 class="text-danger" style="border:solid red 1px;padding:2px"><i class='bx bxs-error'></i>&nbsp;<b>{{msg}}</b></h5>
+                {% endif %}
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
                       <input type="text" id="form3Example1" class="form-control" name="firstname"/>

@@ -36,7 +36,9 @@
             <div class="card-body py-5 px-md-5">
               <form action="login" method="post">
                 {% csrf_token %}
-                <h5 class="text-danger">{{msg}}</h5>
+                {% if error %}
+                <h5 class="text-danger" style="border:solid red 1px;padding:2px"><i class='bx bxs-error'></i>&nbsp;<b>{{msg}}</b></h5>
+                {% endif %}
               <!-- Email input -->
                 <div class="form-outline mb-4">
                   <input type="text" class="form-control" name="uname"/>

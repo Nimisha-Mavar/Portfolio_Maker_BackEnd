@@ -92,7 +92,7 @@
               <br>
               <div class="row">
                 <div class="col-sm-12">
-                  <form action="{% url data.Temp_name %}" method="post">
+                  <form action="{% url data.Temp_name %}" target="_blank" method="post">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-lg" style="background-color:rgb(51, 152, 241); color:#fff;">Preview</button>
                   </form>

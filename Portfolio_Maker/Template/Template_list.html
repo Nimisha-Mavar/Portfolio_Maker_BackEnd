@@ -31,7 +31,7 @@
               <p>{{temp.Temp_type}}</p>
               <div class="portfolio-links row">
               <div class="col-lg-3">
-                <form action="{% url temp.Temp_name %}" method="post">
+                <form action="{% url temp.Temp_name %}" target="_blank" method="post">
                   {% csrf_token %}
                   <button class="fs-3" type="submit" title="Preview" style="background-color: transparent;border:none"><i style="color:#fff" class='bx bxs-plus-square'></i></button>
                 </form>

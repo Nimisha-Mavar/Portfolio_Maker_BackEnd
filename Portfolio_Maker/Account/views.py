@@ -15,11 +15,17 @@ def Register(request):
 
         if password==password1:
             if User.objects.filter(email=email).exists():
-                msg="Email exist."
-                return render(request,'Register.html',{'msg':msg}) 
+                data={
+                    'error':True,
+                    'msg':'Email exist.',
+                }
+                return render(request,'Register.html',data) 
             elif User.objects.filter(username=username).exists():
-                msg="Username exist."
-                return render(request,'Register.html',{'msg':msg}) 
+                data={
+                    'error':True,
+                    'msg':'Username exist.',
+                }
+                return render(request,'Register.html',data) 
             else:
                 user=User.objects.create_user(first_name=firstname, last_name=lastname, email=email, username=username,  password=password)
                 user.save();
@@ -27,8 +33,11 @@ def Register(request):
                 return render(request,'Login.html')
             
         else:
-            msg="Password doesn't match."
-            return render(request,'Register.html',{'msg':msg}) 
+            data={
+                    'error':True,
+                    'msg':'Password does not match.',
+                }
+            return render(request,'Register.html',data) 
             
     else:
         return render(request,'Register.html')
@@ -39,22 +48,34 @@ def login(request):
         username=request.POST.get('uname')
         password=request.POST.get('password') 
         if username=='' and password=='':
-            msg="Please enter username and password."
-            return render(request,'Login.html',{'msg':msg}) 
+            data={
+                    'error':True,
+                    'msg':'Please enter username and password.',
+                }
+            return render(request,'Login.html',data) 
         elif username=='':
-            msg="Please enter username."
-            return render(request,'Login.html',{'msg':msg}) 
+            data={
+                    'error':True,
+                    'msg':'Please enter username.',
+                }
+            return render(request,'Login.html',data) 
         elif password=='':
-            msg="Please enter password."
-            return render(request,'Login.html',{'msg':msg})
+            data={
+                    'error':True,
+                    'msg':'Please enter password.',
+                }
+            return render(request,'Login.html',data)
         else:
             user=auth.authenticate(username=username,password=password)
             if user is not None:
                 auth.login(request,user)
                 return redirect('/')
             else:
-                msg="Invalid Username and password."
-                return render(request,'Login.html',{'msg':msg})
+                data={
+                    'error':True,
+                    'msg':'Invalid Username and password',
+                }
+                return render(request,'Login.html',data)
             
     else:
      return render(request,'login.html')
