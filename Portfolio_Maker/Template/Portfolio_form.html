@@ -56,7 +56,6 @@
                     <hr>
                     <form id="Personal_info" enctype="multipart/form-data">
                         {% csrf_token %}
-                        {% for prs in prs %}
                         <div class="row">
                           <div class="col form-floating mb-3">
                             <input type="text" class="form-control" placeholder="First name" id="fname" name="fname" required value="{{prs.First_name}}">
@@ -105,7 +104,6 @@
                             <input type="text" class="form-control" id="philo" placeholder=" philosophy statement" name="philo" required value="{{prs.Philosophy}}"> 
                             <label for="philo">Philosophy Statement</label>
                           </div>
-                          {% endfor %}
                           </div>
                           <div class="row">
                             <div class="col-lg-12 float-end">

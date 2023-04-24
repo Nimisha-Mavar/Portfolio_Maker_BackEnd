@@ -337,43 +337,16 @@
            {% endif %}
 </section>
       <div class="row" style="">
-        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="20">
-          <button id="button1" data-bs-target="#m1" data-bs-toggle="modal" type="submit" class="float-end">Make Resume&nbsp;<i class='bx bxs-chevrons-right fs-5'></i></button>
-        </div>
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="50">
+        <div class="" data-aos="fade-up" data-aos-delay="50">
           <form action="{% url 'Ready' %}" method="POST">
             {% csrf_token %}
             <input type="hidden" value="{{cat}}" name="cat">
             <input type="hidden" value="{{idd}}" name="id">
-                <button id="button1" type="submit" class="float-start">Next&nbsp;<i class='bx bxs-chevrons-right fs-5'></i></button>
+                <button id="button1" type="submit" class="float-end">Next&nbsp;<i class='bx bxs-chevrons-right fs-5'></i></button>
           </form>
         </div>
       </div>
-<!-- Modal -->
-<div class="modal fade" id="m1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Also Make Resume</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Use the same data for making resume.<br>Follow the step to make resume</p>
-        <ol>
-          <li>Select resume template.</li>
-          <li>Make payment if your selected resume template is premium.</li>
-          <li>Receive your resume.</li>
-        </ol>
-        <p>Do yo want resume?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-secondary" style="background-color: #3498db;" id="">Continue</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 <script>
 //refresh function
 function refreshPage(){

@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HttpResponse
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.hashers import check_password
@@ -15,8 +15,11 @@ def Register(request):
 
         if password==password1:
             if User.objects.filter(email=email).exists():
-                messages.info(request,'Email taken')
-                return redirect('Register')
+                msg="Email exist."
+                return render(request,'Register.html',{'msg':msg}) 
+            elif User.objects.filter(username=username).exists():
+                msg="Username exist."
+                return render(request,'Register.html',{'msg':msg}) 
             else:
                 user=User.objects.create_user(first_name=firstname, last_name=lastname, email=email, username=username,  password=password)
                 user.save();
@@ -24,7 +27,8 @@ def Register(request):
                 return render(request,'Login.html')
             
         else:
-            print('Password does not match')
+            msg="Password doesn't match."
+            return render(request,'Register.html',{'msg':msg}) 
             
     else:
         return render(request,'Register.html')
@@ -32,17 +36,26 @@ def Register(request):
 
 def login(request):
     if request.method=='POST':
-        username=request.POST['uname']
-        password=request.POST['password']
-
-        user=auth.authenticate(username=username,password=password)
-        if user is not None:
-            auth.login(request,user)
-            return redirect('/')
-
+        username=request.POST.get('uname')
+        password=request.POST.get('password') 
+        if username=='' and password=='':
+            msg="Please enter username and password."
+            return render(request,'Login.html',{'msg':msg}) 
+        elif username=='':
+            msg="Please enter username."
+            return render(request,'Login.html',{'msg':msg}) 
+        elif password=='':
+            msg="Please enter password."
+            return render(request,'Login.html',{'msg':msg})
         else:
-            return redirect('Login')
-
+            user=auth.authenticate(username=username,password=password)
+            if user is not None:
+                auth.login(request,user)
+                return redirect('/')
+            else:
+                msg="Invalid Username and password."
+                return render(request,'Login.html',{'msg':msg})
+            
     else:
      return render(request,'login.html')
     

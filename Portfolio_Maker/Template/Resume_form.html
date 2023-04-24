@@ -48,7 +48,6 @@
                     <hr>
                     <form id="Persnal_info">
                         {% csrf_token %}
-                        {% for prs in prs %}
                         <div class="row">
                           <input type="hidden" value="{{resid}}" id="resid">
                           <input type="hidden" value="Resume" id="catt">
@@ -109,7 +108,6 @@
                             </div>
                           </div>  
                         </div>
-                        {% endfor %}
                     </form>
                 </div>
               </div>

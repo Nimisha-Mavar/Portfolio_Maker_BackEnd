@@ -1,8 +1,28 @@
 {% extends 'Master.html' %}
 {% block content %}
 {% load static %}
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <!-- Section: Design Block -->
+<script>
+ //For login
+    $(document).on('submit','#login',function(e){
+        e.preventDefault();
+        $.ajax({
+            type:'POST',
+            url:"{% url 'Login' %}",
+            data:{
+                uname:$('#uname').val(),
+                password:$('#password').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success: function (data) {
+                // alert the error if any error occured
+                $("#msg").html(data)
+                
+            }
+        })
+    })
+</script>
 <section class="">
   <!-- Jumbotron -->
   <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(204, 50%, 96%)">
@@ -16,20 +36,21 @@
             <div class="card-body py-5 px-md-5">
               <form action="login" method="post">
                 {% csrf_token %}
+                <h5 class="text-danger">{{msg}}</h5>
               <!-- Email input -->
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example3" class="form-control" name="uname"/>
+                  <input type="text" class="form-control" name="uname"/>
                   <label class="form-label" for="form3Example3">Enter user name</label>
                 </div>
 
                 <!-- Password input -->
                 <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4" class="form-control" name="password"/>
+                  <input type="password" class="form-control" name="password"/>
                   <label class="form-label" for="form3Example4">Enter Password</label>
                 </div>
 
                 <!-- Submit button -->
-                <input type="submit" class="btn mb-4 rounded" style="background-color:#3498db;color:#fff;" value="Login">
+                <input type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn mb-4 rounded" style="background-color:#3498db;color:#fff;" value="Login">
                   <br>
                  </form>
                 <a href="forgot_password" style="color: #393f81;">Forgot password?</a>
@@ -46,7 +67,8 @@
       </div>
     </div>
   </div>
-  <!-- Jumbotron -->
+
+
 </section>
 <!-- Section: Design Block -->
 {% endblock %}
