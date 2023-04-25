@@ -85,7 +85,7 @@ def Premium_Rm_2(request):
         return render(request,'D_Premium_R_3.html')
 
 def Resume_data(pid,u_id):
-        prs=Personal_info.objects.filter(User_id=u_id.id)
+        prs=Personal_info.objects.get(User_id=u_id.id)
         edu=Education.objects.filter(Resume_id=pid)
         ex=Experience.objects.filter(Resume_id=pid)
         proj=Project.objects.filter(Resume_id=pid)
@@ -101,7 +101,7 @@ def Resume_data(pid,u_id):
         return contaxt
 
 def Portfolio_data(pid,u_id):
-        prs=Personal_info.objects.filter(User_id=u_id.id)
+        prs=Personal_info.objects.get(User_id=u_id.id)
         edu=Education.objects.filter(Portfolio_id=pid)
         ex=Experience.objects.filter(Portfolio_id=pid)
         proj=Project.objects.filter(Portfolio_id=pid)

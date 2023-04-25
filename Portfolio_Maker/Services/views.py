@@ -302,7 +302,7 @@ def Data_display(request):
     idd=request.POST['id']
     u_id=request.user
     if cat=="Portfolio":
-        prs=Personal_info.objects.filter(User_id=u_id.id)
+        prs=Personal_info.objects.get(User_id=u_id.id)
         edu=Education.objects.filter(Portfolio_id=idd)
         ex=Experience.objects.filter(Portfolio_id=idd)
         proj=Project.objects.filter(Portfolio_id=idd)
@@ -322,7 +322,7 @@ def Data_display(request):
         }
         return render(request,'Section_Details.html',contaxt)
     else:
-        prs=Personal_info.objects.filter(User_id=u_id.id)
+        prs=Personal_info.objects.get(User_id=u_id.id)
         edu=Education.objects.filter(Resume_id=idd)
         ex=Experience.objects.filter(Resume_id=idd)
         proj=Project.objects.filter(Resume_id=idd)

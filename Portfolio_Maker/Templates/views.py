@@ -50,7 +50,7 @@ def form(request):
     if Cat=="Portfolio":
             if Portfolio.objects.filter(Template_id=T_id,User_id=u_id.id).exists():
                  err= {
-                      'msg':"Already selected by you",
+                      'msg':"Already selected",
                       'ttl':"Already Exist",
                       'active':'True',
                       'temp_cat':Cat,
@@ -86,7 +86,7 @@ def form(request):
     else:
             if Resume.objects.filter(Template_id=T_id,User_id=u_id.id):
                 err= {
-                      'msg':"Already selected by you",
+                      'msg':"Already selected",
                       'ttl':"Already Exist",
                       'active':'True',
                       'temp_cat':Cat,
