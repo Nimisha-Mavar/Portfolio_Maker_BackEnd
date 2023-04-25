@@ -54,44 +54,41 @@
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                     <h1 class="title fs-2">Personal Infomation</h1>
                     <hr>
-                      {% for i in prs %}
-                       <h5>{{ forloop.counter }}.<h5>
                       <div id="d1">
                         <div class="row">
                             <div class="col-lg-6" style="padding-left:20px;">
-                                First Name : {{i.First_name}}
+                                First Name : {{prs.First_name}}
                             </div>
                             <div class="col-lg-6" style="padding-left:20px;">
-                                Last Name : {{i.Last_name}}
+                                Last Name : {{prs.Last_name}}
                             </div>
                             <div class="col-lg-6" style="padding-left:20px;">
-                                Address : {{i.Address}}
+                                Address : {{prs.Address}}
                             </div>
                             <div class="col-lg-6" style="padding-left:20px;">
-                                Phone NO : {{i.Phone}}
+                                Phone NO : {{prs.Phone}}
                             </div>
                             <div class="col-lg-6" style="padding-left:20px;">
-                                Email : {{i.Email}}
+                                Email : {{prs.Email}}
                             </div>
                             <div class="col-lg-6" style="padding-left:20px;">
-                                Dob : {{i.Dob}}
+                                Dob : {{prs.Dob}}
                             </div>
                             <div class="col-lg-12" style="padding-left:20px;">
-                                Philosophy : {{i.Philosophy}}
+                                Philosophy : {{prs.Philosophy}}
                             </div>
                             <div class="col-lg-6" style="padding-left:20px;">
-                                Country : {{i.Country}}
+                                Country : {{prs.Country}}
                             </div>
                             <div class="col-lg-6" style="padding-left:20px;">
-                                State : {{i.State}}
+                                State : {{prs.State}}
                             </div>
                             <div class="col-lg-6" style="padding-left:20px;">
-                                City : {{i.City}}
+                                City : {{prs.City}}
                             </div>
                         </div>
                       </div>
                       <br>
-                  {% endfor %}
                 </div>
               </div>
             </div>

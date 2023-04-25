@@ -59,24 +59,22 @@
     }
 </script>
 
-<body id="bd" style="background-color:#fff">
+<body id="bd" style="background-color:white">
     <div class="main" id="data">
         <div class="left">
             <br>
             <div class="profile-img"><img src="{% static 'Resume_Templates/Basic_Resume_1/image/profile.png' %}"></div>
-            {% for i in prs %}
             <div class="box-1">
                 <div class="heading">
                     <p>CONTACT</p>
                 </div>
                 <br>
-                <p class="p1"><i class="material-icons icons1">home</i>{{i.Address}}</p>
-                <p class="p1"><i class="material-icons icons1">call</i>{{i.Phone}}</p>
-                <p class="p1"><i class="material-icons icons1">email</i>{{i.Email}}</p>
-                <p class="p1"><i class="material-icons icons1">cake</i>{{i.Dob}}</p>
+                <p class="p1"><i class="material-icons icons1">home</i>{{prs.Address}}</p>
+                <p class="p1"><i class="material-icons icons1">call</i>{{prs.Phone}}</p>
+                <p class="p1"><i class="material-icons icons1">email</i>{{prs.Email}}</p>
+                <p class="p1"><i class="material-icons icons1">cake</i>{{prs.Dob}}</p>
                 <br>
             </div>
-            {% endfor %}
 
             <div class="box-1">
                 <div class="heading">
@@ -103,19 +101,16 @@
 
 
         <div class="right">
-            {% for i in prs %}
             <div class="name-div">
-                <h1>{{i.First_name}} {{i.Last_name}}</h1>
-                <p>WEBSITE DESIGNER</p>
+                <h1>{{prs.First_name}} {{prs.Last_name}}</h1>
+                {% for i in ex %}<p>{{i.Role}}</p>{% endfor %}
             </div>
-            {% endfor %}
             <div class="box-2">
                 <h2>PHILOSOPHY <i class="material-icons icons3" style="font-size: 28px!important; ">perm_identity</i></h2>
-                {% for i in prs %}
+                
                 <p class="p2" style="font-size: 15px; ">
-                    {{i.Philosophy}}
+                    {{prs.Philosophy}}
                 </p>
-                {% endfor %}
             </div>
 
 
