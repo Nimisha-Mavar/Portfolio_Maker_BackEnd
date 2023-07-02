@@ -18,25 +18,29 @@ The site offers different type templates like resume , portfolio.
 
 ## Documentation
 
-[Documentation](https://drive.google.com/file/d/11nT3a1auT9kCfJyeZcjX9XXFhBDWSSJl/view?usp=sharing)
+[Documentation](https://docs.google.com/document/d/1vzrld73K5_HhIZ0CkwTIFI4qc0uPpcfB/edit?usp=sharing&ouid=108824912583036609418&rtpof=true&sd=true)
 
 
 
 
 
 ## Features
- These features are provided according to requirements 
-- Detailed report generation
-- Statistical Insights
-- Activity timelines
-- Easier Operational tasks
+ Our System will be used to create Resume and Portfolio at One place. Our system provide following facilities to user :
+- Form based easy inputs.
+- Also build resume 
+- Dynamic aesthetic templates for portfolios.
+- Pricing plans to upgrade
+
 
 ## Lessons Learned
 
-- Leanrned analytical and problem-solving skills by handling ambiguous or undefined
-problems. Improved formal written communication skills.
-- Gained experience of requirement engineering, analysis and strategic designing software solutions.
-- Hands on experience of new technologies and concepts.
+- I build all APIs and make their response function in Portfolio maker.
+- Also done the payment integration using razor pay that used to get premium templates.
+- I learn the MVT, ORM, concepts.
+- Learn bootstrap for build website's frontend components.
+- In backend used Django with jinja format for fetching the data from database and perform CRUD operation using get and
+  post methods.
+
 
 
 
